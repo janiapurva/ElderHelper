@@ -76,19 +76,14 @@ export default function SignUpUsers () {
       //update state on successfull insertion 
       //so that redirect happens
       setSuccessfulForm(true);
-
     })
-
-    
-    
-    
+   
   }
-
     
   if (successfulForm) {
     return <Redirect to='/sign-in' />
   }
-  
+
   
   return (
     

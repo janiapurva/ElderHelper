@@ -35,11 +35,10 @@ function App() {
 
         <div className="outer">
           <div className="inner">
-            <Switch>
+            <Switch>              
               <Route exact path="/" component={Login} />
               <Route path="/sign-in" component={Login} />
-              <Route path="/sign-up" component={SignUp}  />
-              
+              <Route path="/sign-up" component={SignUp}  />             
             </Switch>
           </div>
         </div>
