@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Redirect } from "react-router";
 
 export default function SignUpUsers () {
   const [fullName, setfullName] = useState('')
@@ -9,6 +10,7 @@ export default function SignUpUsers () {
   const [phone, setPhone] = useState('')
   const [postal, setPostal] = useState('')
   const [belongs_to, setbelongs_to] = useState('')
+  const [successfulForm, setSuccessfulForm] = useState(false)
   
   const handleFullNameChange = evt => {
 
@@ -71,14 +73,23 @@ export default function SignUpUsers () {
     axios.post('http://localhost:8000/register', {newUser})
     .then((res)=> {
 
-      console.log('res LINE 74', res);
-      console.log('res.data LINE 75',res.data);
+      //update state on successfull insertion 
+      //so that redirect happens
+      setSuccessfulForm(true);
 
-    })     
+    })
+
+    
+    
+    
   }
 
     
-    
+  if (successfulForm) {
+    return <Redirect to='/sign-in' />
+  }
+  
+  
   return (
     
     <form onSubmit = {onSubmit}>

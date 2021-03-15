@@ -29,13 +29,12 @@ module.exports = ({
       phone_number,
       postal_code, 
       belongs_to)
-    .then((users) => res.send('inserted!'))
+    .then((users) => res.redirect('/'))
     .catch((err) => res.json({
         error: err.message
     }));
 
     //
-    res.redirect('/')
     
 
   });
