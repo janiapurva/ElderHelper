@@ -1,0 +1,5 @@
+INSERT INTO users_elders (full_name, age, email_address,password, phone_number, postal_code, belongs_to) VALUES ('Sean John',80,'sean_john@email.com','123456','123-456-7891','L5R3Y1','Sunny skies Old Age Home');
+INSERT INTO users_elders (full_name, age, email_address,password, phone_number, postal_code, belongs_to) VALUES ('Sean Paul',85,'sean_paul@email.com','123456','123-456-1111','L5R4Y1','Blue skies Old Age Home');
+INSERT INTO users_elders (full_name, age, email_address,password, phone_number, postal_code, belongs_to) VALUES ('Sean Smith',87,'sean_smith@email.com','123456','123-456-2222','L4R3Y1','Misty skies Old Age Home');
+INSERT INTO users_elders (full_name, age, email_address,password, phone_number, postal_code, belongs_to) VALUES ('Sean Pam',100,'sean_pam@email.com','123456','123-456-3333','L5R2Y1','Rainy skies Old Age Home');
+INSERT INTO users_elders (full_name, age, email_address,password, phone_number, postal_code, belongs_to) VALUES ('Sean Mary',55,'sean_mary@email.com','123456','123-456-4444','L5R3Y1','Cloudy skies Old Age Home');
