@@ -1,10 +1,4 @@
 
-
-
-const { password } = require("../db");
-
-
-
 module.exports = (db) => {
   
     const getUsers = () => {
@@ -19,10 +13,10 @@ module.exports = (db) => {
   };
 
 
-  const getUserByEmailandPassWord = email => {
+  const getUserByEmailandPassWord = (email, password) => {
 
       const query = {
-          text: `SELECT * FROM users_elders WHERE email_address = $1 and password = $2` ,
+          text: `SELECT * FROM users_elders WHERE email_address = $1 and password = $2;` ,
           values: [email_address, password]
       }
 

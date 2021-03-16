@@ -8,7 +8,7 @@ module.exports = ({
 }) => {
   
   router.post('/', (req, res) => {
-    console.log('isnide login post req', req.body)
+    console.log('isnide login post req', req.body.checkUser)
     //destructure values from form field. 
     const {
       email_address,

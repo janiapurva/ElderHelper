@@ -60,9 +60,9 @@ export default function SignUpUsers () {
 
     const newUser = {
 
-      full_name : fullName,
+      full_name: fullName,
       age: age,
-      email_address : email,
+      email_address: email,
       password: pass,
       phone_number: phone,
       postal_code: postal,
@@ -70,7 +70,9 @@ export default function SignUpUsers () {
 
     }
 
+    
     axios.post('http://localhost:8000/register', {newUser})
+    
     .then((res)=> {
 
       //update state on successfull insertion 
@@ -81,7 +83,7 @@ export default function SignUpUsers () {
   }
     
   if (successfulForm) {
-    return <Redirect to='/sign-in' />
+    return <Redirect to='/homeUsers' />
   }
 
   
@@ -89,7 +91,7 @@ export default function SignUpUsers () {
     
     <form onSubmit = {onSubmit}>
 
-    <h3>Register - Users</h3>
+    <h3>Sign - Users</h3>
 
     <div className="form-group">
         <label>Full Name</label>

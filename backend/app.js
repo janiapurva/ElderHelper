@@ -16,6 +16,9 @@ var usersRouter = require('./routes/users');
 //get routes in this file 
 var usersLogin = require('./routes/login');
 
+var usersLoginTest = require('./routes/test');
+
+
 //get routes in this file 
 var usersRegister = require('./routes/register');
 
@@ -42,10 +45,9 @@ app.use('/', indexRouter);
 
 
 app.use('/api/users', usersRouter(dbHelpers));
-app.use('/login', usersLogin(dbHelpers));
+
 app.use('/register', usersRegister(dbHelpers));
-
-
+app.use('/login', usersLogin(dbHelpers));
 
 
 app.listen(PORT, () => {

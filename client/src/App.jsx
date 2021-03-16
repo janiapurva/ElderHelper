@@ -6,6 +6,7 @@ import { Redirect } from "react-router";
 
 import Login from "./components/login";
 import SignUp from "./components/signUpUsers";
+import homeUsers from "./components/homeUsers";
 
 function App() {
   return (
@@ -36,9 +37,10 @@ function App() {
         <div className="outer">
           <div className="inner">
             <Switch>              
-              <Route exact path="/" component={Login} />
+              <Route exact path="/" component={homeUsers} />
               <Route path="/sign-in" component={Login} />
-              <Route path="/sign-up" component={SignUp}  />             
+              <Route path="/sign-up" component={SignUp} />   
+              <Route path="/homeUsers" component={homeUsers} />             
             </Switch>
           </div>
         </div>
