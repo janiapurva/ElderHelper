@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {getPostsByUsers} = require('../helpers/dbHelpers');
 
 module.exports = ({
     getUsers,
     getUserByEmail,
-    addUser,
-    getUsersPosts
+    addUser
 }) => {
     /* GET users listing. */
     router.get('/', (req, res) => {

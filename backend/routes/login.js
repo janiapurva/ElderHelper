@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { token } = require("morgan");
-const {getUserByEmailandPassWord} = require('../helpers/dbHelpers');
+
 
 module.exports = ({
   
@@ -10,6 +10,14 @@ module.exports = ({
   
   router.post('/', (req, res) => {
     console.log('isnide login post req', req.body)
+
+    if (!req.body.email_address || !req.body.password) {
+      return res.status(400).send({'message': 'Either email or Password is missing!'});
+    }
+
+    const hashPassword = Helper.hashPassword(req.body.password);
+
+
     //destructure values from form field. 
     const {
       email_address,

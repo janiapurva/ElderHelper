@@ -5,7 +5,7 @@ CREATE TABLE "users_elders" (
   "id" SERIAL PRIMARY KEY,
   "full_name" varchar,
   "age" int,
-  "email_address" varchar,
+  "email_address" varchar UNIQUE,
   "password" varchar,
   "phone_number" varchar,
   "postal_code" varchar,
