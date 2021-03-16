@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { token } = require("morgan");
 const {getUserByEmailandPassWord} = require('../helpers/dbHelpers');
 
 module.exports = ({
@@ -20,7 +21,7 @@ module.exports = ({
     getUserByEmailandPassWord( 
       email_address,
       password)
-    .then((users) => res.send('HEllo lo'))
+    .then((users) => res.send({token:'test123'}))
     .catch((err) => res.json({
         error: err.message
     }));

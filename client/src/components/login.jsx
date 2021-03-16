@@ -1,85 +1,96 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Redirect } from "react-router";
+import PropTypes from "prop-types";
 
-export default function LoginUsers () {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [successfulForm, setSuccessfulForm] = useState(false);
 
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
-  const [successfulForm, setSuccessfulForm] = useState(false)
+  const [token, setToken] = useState("");
 
+  const handleEmailChange = (evt) => {
+    setEmail(evt.target.value);
+  };
 
-  const handleEmailChange = evt => {
+  const handlePassChange = (evt) => {
+    setPass(evt.target.value);
+  };
 
-    setEmail(evt.target.value)
-
-  }
-  
-  const handlePassChange = evt => {
-
-    setPass(evt.target.value)
-
-  }
-
-
-  const onSubmit = evt => {
-
-    evt.preventDefault(); 
+  const onSubmit = (evt) => {
+    evt.preventDefault();
 
     const checkUser = {
-
       email_address: email,
-      password: pass
+      password: pass,
+    };
 
-    }
-
-    console.log('values from login form', email, pass)
-    
+    console.log("values from login form", email, pass);
 
     // axios.post('http://localhost:8000/login', {checkUser})
-    
-    
-    axios.post('http://localhost:8000/login', {checkUser})
-    .then((res)=> {
-      console.log('Successful login')
 
-      //update state on successfull insertion 
-      //so that redirect happens
-      //setSuccessfulForm(true);
-    })
-    .catch((err) => {console.log('login error LOGIN JSX: ', err) })
-   
-  }
-    
+    axios
+      .post("http://localhost:8000/login", { checkUser })
+      .then((res) => {
+        console.log("Successful login", res);
+        // setToken(token)
+        
+
+        //update state on successfull insertion
+        //so that redirect happens
+        setSuccessfulForm(true);
+      })
+      .catch((err) => {
+        console.log("login error LOGIN JSX: ", err);
+      });
+  };
+
   if (successfulForm) {
-    return <Redirect to='/homeUsers' />
+    return <Redirect to="/homeUsers" />;
   }
 
-  
   return (
-    
-    <form onSubmit = {onSubmit}>
+    <form onSubmit={onSubmit}>
+      <h3>Login</h3>
 
-    <h3>Login</h3>
-
-   
-    <div className="form-group">
+      <div className="form-group">
         <label>Email</label>
-        <input type = "email" name = "email" onChange ={handleEmailChange} className="form-control" placeholder="Enter Email" />
-    </div>
+        <input
+          type="email"
+          name="email"
+          onChange={handleEmailChange}
+          className="form-control"
+          placeholder="Enter Email"
+        />
+      </div>
 
-    <div className="form-group">
+      <div className="form-group">
         <label>Password</label>
-        <input type = "password" name = "password" onChange ={handlePassChange} className="form-control" placeholder="Enter Password" />
-    </div>
+        <input
+          type="password"
+          name="password"
+          onChange={handlePassChange}
+          className="form-control"
+          placeholder="Enter Password"
+        />
+      </div>
 
-    <button type="submit" className="btn btn-dark btn-lg btn-block">Login</button>
-    <p className="forgot-password text-right">
-        <a href="/register
-        ">Looking to Register?</a>
-    </p>
-</form>
-
+      <button type="submit" className="btn btn-dark btn-lg btn-block">
+        Login
+      </button>
+      <p className="forgot-password text-right">
+        <a
+          href="/register
+        "
+        >
+          Looking to Register?
+        </a>
+      </p>
+    </form>
   );
-    
+}
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
 }

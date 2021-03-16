@@ -11,6 +11,8 @@ export default function SignUpUsers () {
   const [postal, setPostal] = useState('')
   const [belongs_to, setbelongs_to] = useState('')
   const [successfulForm, setSuccessfulForm] = useState(false)
+  const [token, setToken] = useState("");
+
   
   const handleFullNameChange = evt => {
 

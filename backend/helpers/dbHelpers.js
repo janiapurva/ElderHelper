@@ -13,7 +13,7 @@ module.exports = (db) => {
   };
 
 
-  const getUserByEmailandPassWord = (email, password) => {
+  const getUserByEmailandPassWord = (email_address, password) => {
 
       const query = {
           text: `SELECT * FROM users_elders WHERE email_address = $1 and password = $2;` ,
