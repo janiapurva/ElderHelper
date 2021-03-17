@@ -28,7 +28,7 @@ module.exports = ({
     //pass the values from form to addUser which inserts new user to DB
     getUserByEmailandPassWord( 
       email_address,
-      password)
+      hashPassword)
     .then((users) => res.send({token:'test123'}))
     .catch((err) => res.json({
         error: err.message

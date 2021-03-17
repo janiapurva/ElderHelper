@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
     //salt rounds: 10
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10))
 
-  }
+  } 
 
   const comparePassword = (hashPassword, password) => {
     
@@ -19,12 +19,15 @@ const jwt = require('jsonwebtoken');
 
 
   const generateToken = (id) => {
-
-    const token = jwt.sign({
-      userId: id
-    },
+    // console.log('inside gen token')
+   
+    const token = jwt.sign(
+      {userId: id},
       process.env.SECRET, { expiresIn: '7d' }
     );
+    // console.log('token', token)
+   
+   
     return token;
   }
 

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import NavBar from "../components/NavBar";
+
 
 export default function homeUsers () {
   // const [token, setToken] = useState("");
@@ -6,8 +8,9 @@ export default function homeUsers () {
     
   return (
     
+    <>
 
-    <h3>Vagrant Sucks but you are in homeUsers </h3>
+    </>
 
   );
     

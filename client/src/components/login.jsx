@@ -81,8 +81,7 @@ export default function Login() {
       </button>
       <p className="forgot-password text-right">
         <a
-          href="/register
-        "
+          href="/sign-up"
         >
           Looking to Register?
         </a>

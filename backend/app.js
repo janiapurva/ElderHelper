@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const PORT       = process.env.PORT || 8000;
 var cors = require('cors')
+const { Auth } = require('./db/middleware/Auth');
 
 
 //get the routes
@@ -44,10 +45,9 @@ app.use('/', indexRouter);
     // };
 
 
-app.use('/api/users', usersRouter(dbHelpers));
-
-app.use('/register', usersRegister(dbHelpers));
-app.use('/login', usersLogin(dbHelpers));
+app.use('/api/users', usersRouter(dbHelpers), Auth.verifyToken);
+app.use('/register', usersRegister(dbHelpers), Auth.verifyToken);
+app.use('/login', usersLogin(dbHelpers), Auth.verifyToken);
 
 
 app.listen(PORT, () => {

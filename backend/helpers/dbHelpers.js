@@ -34,7 +34,7 @@ module.exports = (db) => {
     postalCode,
     afiliations
   ) => {
-    console.log(`adding user`)
+    //console.log(`adding user`)
     const query = {
       text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code, belongs_to) VALUES ($1, $2, $3, $4, $5,$6,$7) RETURNING *`,
       values: [
@@ -51,7 +51,8 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log(`res from add user: ${result}`)
+        // console.log('id',result.rows[0].id)
+        // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
         return result.rows[0]
       })
       .catch((err) => {

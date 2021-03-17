@@ -1,15 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router";
+import { Navbar,Nav,Form,FormControl,Button } from 'react-bootstrap'
 
+import NavBar from "./components/NavBar";
 import Login from "./components/login";
-import SignUp from "./components/signUpUsers";
+import Register from "./components/register";
 import homeUsers from "./components/homeUsers";
 
 function App() {
-
   const [token, setToken] = useState("");
 
   const validate = () => {
@@ -17,21 +18,22 @@ function App() {
     // if there is no token, i.e. unsuccessful login, the token is not set and and the Login component gets displayed..
     if (!token) {
       //want to send message saying you have not logged in
-      console.log('BAD LOGIN')
+      console.log("BAD LOGIN");
       return <Login setToken={setToken} section />;
     } else {
       //succesfull login, redirect to home
-      Redirect('/homeUsers')
+      Redirect("/homeUsers");
     }
   };
 
-  validate()
-
+  validate();
 
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        {/* </div> <NavBar> */}
+        <NavBar/>
+        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={"/sign-in"}>
               elderHelper
@@ -51,19 +53,19 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
         <div className="outer">
-          <div className="inner">
-            <Switch>              
+
+            <Switch>
               <Route exact path="/" component={homeUsers} />
               <Route path="/sign-in" component={Login} />
-              <Route path="/sign-up" component={SignUp} />   
-              <Route path="/homeUsers" component={homeUsers} />             
+              <Route path="/sign-up" component={Register} />
+              <Route path="/homeUsers" component={homeUsers} />
             </Switch>
           </div>
         </div>
-      </div>
+
     </Router>
   );
 }

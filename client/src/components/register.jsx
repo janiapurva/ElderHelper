@@ -2,16 +2,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Redirect } from "react-router";
 
+
+
 export default function SignUpUsers () {
-  const [fullName, setfullName] = useState('')
-  const [age, setAge] = useState('')
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
-  const [phone, setPhone] = useState('')
-  const [postal, setPostal] = useState('')
-  const [belongs_to, setbelongs_to] = useState('')
+
+  const [fullName, setfullName] = useState()
+  const [age, setAge] = useState()
+  const [email, setEmail] = useState()
+  const [pass, setPass] = useState()
+  const [phone, setPhone] = useState()
+  const [postal, setPostal] = useState()
+  const [belongs_to, setbelongs_to] = useState()
   const [successfulForm, setSuccessfulForm] = useState(false)
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState();
 
   
   const handleFullNameChange = evt => {
@@ -56,6 +59,12 @@ export default function SignUpUsers () {
 
   }
 
+  const handleToken = (data) => {
+
+    setToken(data)
+
+  }
+
   const onSubmit = evt => {
 
     evt.preventDefault(); 
@@ -79,7 +88,24 @@ export default function SignUpUsers () {
 
       //update state on successfull insertion 
       //so that redirect happens
+      console.log('inside front end - signUpUsers.js - consloe log res...want to set token', res.data)
+      console.log(`previous value of toke ${{token}}`);
+      handleToken(res.data)
+      console.log('updated value of toke', {token});
+      //
+      if (token) {
+        console.log('token exist');
+
+      } else {
+        
+        console.log('token DOESNT  exist');
+        
+      }
+
+
       setSuccessfulForm(true);
+      
+
     })
    
   }
