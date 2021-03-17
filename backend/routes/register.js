@@ -39,14 +39,14 @@ module.exports = ({ addUser }) => {
       belongs_to
     )
       .then((users) => {
-        console.log("register.js - checking response after registration - users", users);
+        // console.log("register.js - checking response after registration - users", users);
         // console.log('IN REG.JS')
         // console.log('register.js want user id', (users))
         // let token;
 
         try {
           
-          token = generateToken(users.id);
+          token = generateToken(users.id, users.full_name);
         //  console.log('token - register.js', token)
           res.send(token)
 

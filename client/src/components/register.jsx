@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Redirect } from "react-router";
-
+import jwt_decode from "jwt-decode";
 
 
 export default function SignUpUsers () {
@@ -89,12 +89,21 @@ export default function SignUpUsers () {
       //update state on successfull insertion 
       //so that redirect happens
       console.log('inside front end - signUpUsers.js - consloe log res...want to set token', res.data)
-      console.log(`previous value of toke ${{token}}`);
-      handleToken(res.data)
-      console.log('updated value of toke', {token});
-      //
-      if (token) {
-        console.log('token exist');
+
+      try {
+        localStorage.setItem('token', res.data)
+      } catch(e) {
+        
+      }
+
+
+      //check token exists
+      const myUserToken = localStorage.getItem('token')
+      if (myUserToken) {
+
+        console.log('token exist', myUserToken);
+        var decoded = jwt_decode(myUserToken)
+        console.log('Our TOKEN, deconstructed - jwt_decode', decoded)
 
       } else {
         

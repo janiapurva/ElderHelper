@@ -18,11 +18,14 @@ const jwt = require('jsonwebtoken');
   }
 
 
-  const generateToken = (id) => {
+  const generateToken = (id,full_name) => {
     // console.log('inside gen token')
    
     const token = jwt.sign(
-      {userId: id},
+      {
+        userId: id,
+        Name: full_name
+      },
       process.env.SECRET, { expiresIn: '7d' }
     );
     // console.log('token', token)
