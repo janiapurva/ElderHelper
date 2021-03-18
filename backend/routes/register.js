@@ -42,42 +42,28 @@ module.exports = ({ addUser }) => {
         // console.log("register.js - checking response after registration - users", users);
         // console.log('IN REG.JS')
         // console.log('register.js want user id', (users))
-        // let token;
+        let token;
 
         try {
-          
           token = generateToken(users.id, users.full_name);
-        //  console.log('token - register.js', token)
-          res.send(token)
-
-       
+          //  console.log('token - register.js', token)
+          res.send(token);
         } catch (err) {
-
           console.log(err);
-        
         }
-
-        
-
-
-
       })
-      .catch((err) =>{
-
-        if (err.routine === '_bt_check_unique') {
-        
-          return res.status(400).send({ 'message': 'User with that EMAIL already exist' })
-           
+      .catch((err) => {
+        if (err.routine === "_bt_check_unique") {
+          return res
+            .status(400)
+            .send({ message: "User with that EMAIL already exist" });
         }
-      
-        return res.status(400).send(err);
 
+        return res.status(400).send(err);
       });
 
     //
   });
 
   return router;
-
-
 };

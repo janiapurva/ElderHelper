@@ -2,6 +2,7 @@
 
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -37,4 +38,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+.card{
+  padding-top: 2em; 
+}
+
+.popupButton{
+  margin-top: 5px;
+  margin-right: 20px;
 }

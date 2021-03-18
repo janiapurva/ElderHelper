@@ -13,15 +13,22 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-  const getUserByEmailandPassWord = (email_address, password) => {
+  const getUserByEmail = (email_address, password) => {
     const query = {
-      text: `SELECT * FROM users_elders WHERE email_address = $1 and password = $2;`,
-      values: [email_address, password],
+      text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
+      values: [email_address],
     };
 
     return db
       .query(query)
-      .then((result) => result.rows[0])
+      .then((result) => {
+
+
+        // console.log('results from query', result.rows )
+        return result.rows[0]
+
+        
+      })
       .catch((err) => err);
   };
 
@@ -77,7 +84,7 @@ module.exports = (db) => {
 
   return {
     getUsers,
-    getUserByEmailandPassWord,
+    getUserByEmail,
     addUser,
     getUsersPosts,
   };

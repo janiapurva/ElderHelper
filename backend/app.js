@@ -9,7 +9,7 @@ const { Auth } = require('./db/middleware/Auth');
 
 //get the routes
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 
 //get routes in this file 
 var usersRouter = require('./routes/users');
@@ -17,7 +17,6 @@ var usersRouter = require('./routes/users');
 //get routes in this file 
 var usersLogin = require('./routes/login');
 
-var usersLoginTest = require('./routes/test');
 
 
 //get routes in this file 
@@ -35,14 +34,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-
-//here - not sure:
-//usersRouter contains all routes for users, and we pass dbHelpers to it because we call the queries when we hit routes.
-// i.e. when we hit /, getUsers() is called and this is getUsers     const getUsers = () => {
-    //   const query = {
-    //     text: 'SELECT * FROM users_elders',
-    // };
 
 
 app.use('/api/users', usersRouter(dbHelpers), Auth.verifyToken);
