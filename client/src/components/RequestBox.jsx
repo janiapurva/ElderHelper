@@ -4,6 +4,11 @@ import "../components/RequestBox.scss"
 import { Form,Button } from 'react-bootstrap'
 
   function RequestBox (){
+
+    const [day, setday] = useState("");
+    const [description, setdescription] = useState("");
+    const [postalCode, setPostalCode] = useState("");
+
     const { transcript, resetTranscript } = useSpeechRecognition()
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -41,7 +46,7 @@ import { Form,Button } from 'react-bootstrap'
     <Form.Label>Postal Code</Form.Label>
     <Form.Control as="textarea" rows={1} />
   </Form.Group>
-  <Button variant="outline-info">Submit</Button>
+
 
 </Form>
     

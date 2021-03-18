@@ -23,8 +23,7 @@ const jwt = require('jsonwebtoken');
    
     const token = jwt.sign(
       {
-        userId: id,
-        Name: full_name
+        userId: id
       },
       process.env.SECRET, { expiresIn: '7d' }
     );

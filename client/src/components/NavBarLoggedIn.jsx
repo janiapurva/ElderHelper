@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 
 export default function NavBarLoggedIn(props) {
+  console.log("login navabar", props.headerName.headerName)
   const history = useHistory();
 
   function logout() {
@@ -13,9 +14,9 @@ export default function NavBarLoggedIn(props) {
     localStorage.removeItem("token");    
   }
 
-  const myLocalToken = localStorage.getItem("decodedToken");
+  // const myLocalToken = localStorage.getItem("decodedToken");
   
-  console.log('navbarLoggedin', myLocalToken)
+  // console.log('navbarLoggedin', myLocalToken)
   
   return (
     <>
@@ -27,7 +28,8 @@ export default function NavBarLoggedIn(props) {
           <Nav.Link href="#pricing">NewRequest</Nav.Link>
         </Nav>
         <Form inline>
-          <div className="nav-link">{props.Name}</div>
+          <div className="nav-link">{props.headerName.headerName}</div>
+          {/* {props.headerName.} */}
           <Button type="button" onClick={logout} variant="outline-info">
             Logout
           </Button>

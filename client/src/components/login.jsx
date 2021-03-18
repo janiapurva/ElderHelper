@@ -7,15 +7,14 @@ import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
 
 export default function Login(props) {
-  
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [successfulForm, setSuccessfulForm] = useState(false);
-  const [deconstructedToken, setDeconstructedToken] = useState(null);
-  
+  // const [deconstructedToken, setDeconstructedToken] = useState(null);
+
   // const [token, setToken] = useState(null);
-  const {token, setToken} = props
-  console.log('props LOGINS jsX', props)
+  const { token, setToken } = props;
+  console.log("props LOGINS jsX", props);
 
   const handleEmailChange = (evt) => {
     evt.preventDefault();
@@ -29,12 +28,9 @@ export default function Login(props) {
     setPass(evt.target.value);
   };
 
-  const handleDeconstructedToken = (data) => {
-
-    setDeconstructedToken(data);
-  
-  };
-
+  // const handleDeconstructedToken = (data) => {
+  //   setDeconstructedToken(data);
+  // };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -42,34 +38,21 @@ export default function Login(props) {
       email_address: email,
       password: pass,
     };
-    
 
     axios
       .post("http://localhost:8000/login", { checkUser })
       .then((res) => {
         try {
-          console.log( 'res.data', res.data)  
+          console.log("res.data", res.data);
           localStorage.setItem("token", res.data);
         } catch (e) {
           console.error(e);
         }
 
         const myUserToken = localStorage.getItem("token");
-     
 
         if (myUserToken) {
-
           var decodedToken = jwt_decode(myUserToken);
-
-          //setToken(decodedToken);
-          console.log("Our TOKEN, deconstructed - LOGIN jwt_decode", decodedToken);
-
-          localStorage.setItem("Deconstructed token", decodedToken);
-          
-          handleDeconstructedToken(decodedToken);
-
-          console.log('localStorage.setItem', localStorage.getItem('Deconstructed token')['Name'])  
-
         } else {
           console.log("token DOESNT  exist");
         }
@@ -79,9 +62,6 @@ export default function Login(props) {
       .catch((err) => {
         console.error("login error LOGIN JSX: ", err);
       });
-
-
-
   };
 
   if (successfulForm) {
@@ -90,7 +70,7 @@ export default function Login(props) {
 
   return (
     <div>
-      <MasterNavbar token={deconstructedToken} />
+      <MasterNavbar token={token} />
 
       <form onSubmit={handleSubmit}>
         <h3>Login</h3>

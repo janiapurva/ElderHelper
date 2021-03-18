@@ -45,9 +45,17 @@ module.exports = ({ addUser }) => {
         let token;
 
         try {
-          token = generateToken(users.id, users.full_name);
+          token = generateToken(users.id );
+
+          const full_name = users.full_name;
+
+          const user_id = users.id;
+
+          
           //  console.log('token - register.js', token)
-          res.send(token);
+          //console.log('REGISTER.js', res.send(token,full_name ));
+          res.send({token, full_name, user_id });
+
         } catch (err) {
           console.log(err);
         }
