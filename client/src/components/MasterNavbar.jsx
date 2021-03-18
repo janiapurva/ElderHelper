@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 
 
 export default function MasterNavbar(props) {
-
+console.log(props)
   const myUserToken = localStorage.getItem("token");
 
   if (!myUserToken) {

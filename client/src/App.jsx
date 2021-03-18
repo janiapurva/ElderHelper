@@ -10,7 +10,9 @@ import Login from "./components/login";
 import Register from "./components/register";
 import homeUsers from "./components/homeUsers";
 import MasterNavbar from "./components/MasterNavbar";
-
+import VolunteerLogin from "./components/VolunteerLogin"
+import VolunteerRegister from "./components/VolunteerRegister"
+import HomeVolunteers from"./components/homeVolunteers"
 function App() {
   const [token, setToken] = useState(null);
 
@@ -22,6 +24,9 @@ function App() {
           <Route path="/sign-in" component={Login} />
           <Route path="/sign-up" component={Register} />
           <Route path="/homeUsers" component={homeUsers} />
+          <Route path="/volunteer-sign-in" component={VolunteerLogin} />
+          <Route path="/volunteer-sign-up" component={VolunteerRegister} />
+          <Route path="/homeVolunteerUsers" component={HomeVolunteers} />
         </Switch>
       </div>
     </Router>
