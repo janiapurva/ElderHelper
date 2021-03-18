@@ -4,16 +4,20 @@ import NavBarLoggedOut from "./NavBarLoggedOut";
 import jwt_decode from "jwt-decode";
 
 
+
+
 export default function MasterNavbar(props) {
 
-  
+  const myUserToken = localStorage.getItem("token");
 
-  if(!props){
-    return <NavBarLoggedOut/>;
+  if (!myUserToken) {
+    return <NavBarLoggedOut />;
+  } else {
+    return <NavBarLoggedIn headerName={props} />;
   }
 
-  return <NavBarLoggedIn headerName={props} />;  
 
-  
 
 }
+  
+

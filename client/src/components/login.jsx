@@ -3,18 +3,22 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
 import PropTypes from "prop-types";
 import jwt_decode from "jwt-decode";
-
 import MasterNavbar from "./MasterNavbar";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [successfulForm, setSuccessfulForm] = useState(false);
-  // const [deconstructedToken, setDeconstructedToken] = useState(null);
+  const [headerName, setheaderName] = useState();
+  const [headerId, setheaderId] = useState();
+    
+  const handleHeaderIDChange = (data) => {
+    setheaderId(data);
+  };
 
-  // const [token, setToken] = useState(null);
-  const { token, setToken } = props;
-  console.log("props LOGINS jsX", props);
+  const handleHeaderNameChange = (data) => {
+    setheaderName(data);
+  };
 
   const handleEmailChange = (evt) => {
     evt.preventDefault();
@@ -28,9 +32,6 @@ export default function Login(props) {
     setPass(evt.target.value);
   };
 
-  // const handleDeconstructedToken = (data) => {
-  //   setDeconstructedToken(data);
-  // };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -42,17 +43,24 @@ export default function Login(props) {
     axios
       .post("http://localhost:8000/login", { checkUser })
       .then((res) => {
+        console.log(
+          "inside front end - signUpUsers.js - consloe log res...want to set token",
+          res.data
+        );
+
+        //set headerName with full_name from backend..
+        handleHeaderNameChange(res.data.full_name);
+        handleHeaderIDChange(res.data.user_id);
+
+        //store token in local storage
         try {
-          console.log("res.data", res.data);
-          localStorage.setItem("token", res.data);
-        } catch (e) {
-          console.error(e);
-        }
+          localStorage.setItem("token", JSON.stringify(res.data));
+        } catch (e) {}
 
         const myUserToken = localStorage.getItem("token");
 
         if (myUserToken) {
-          var decodedToken = jwt_decode(myUserToken);
+          console.log("token exist", myUserToken);
         } else {
           console.log("token DOESNT  exist");
         }
@@ -70,7 +78,7 @@ export default function Login(props) {
 
   return (
     <div>
-      <MasterNavbar token={token} />
+      <MasterNavbar headerName={headerName} />
 
       <form onSubmit={handleSubmit}>
         <h3>Login</h3>

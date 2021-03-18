@@ -35,12 +35,19 @@ module.exports = ({ getUserByEmail }) => {
         let token;
         if (comparePassword(req.body.checkUser.password, userStoredPw)) {
 
-          console.log('hi - compariosson is succesful')
-          //passwords match
-          //console.log("passwords match");
-          token = generateToken(users.id, users.full_name);
-           console.log('token - login.js', token)
-          res.send(token);
+          token = generateToken(users.id );
+
+          const full_name = users.full_name;
+
+          const user_id = users.id;
+
+          
+          //  console.log('token - register.js', token)
+          //console.log('REGISTER.js', res.send(token,full_name ));
+          res.send({token, full_name, user_id });
+
+
+
         } else {
           console.log("probably error");
         }

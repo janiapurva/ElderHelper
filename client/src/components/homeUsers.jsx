@@ -17,8 +17,19 @@ export default function HomeUsers() {
 
     const data = JSON.parse(localStorage.getItem("token"));
     console.log('data',data)
-    setToken(data.full_name);
-    console.log('data',data.full_name)
+    
+    if (!data){
+
+      setToken(null);
+
+    } else {
+
+      setToken(data.full_name);
+      console.log('data',data.full_name)
+      
+
+    }
+
 
 
 
