@@ -29,14 +29,7 @@ export default function DropDown (){
         <Modal.Body>
           <RequestBox/>
           </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Submit Request
-          </Button>
-        </Modal.Footer>
+        
       </Modal>
     </>
   )

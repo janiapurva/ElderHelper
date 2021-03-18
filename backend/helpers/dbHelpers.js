@@ -68,25 +68,50 @@ module.exports = (db) => {
       });
   };
 
-  const getUsersPosts = () => {
+  const addRequest = (
+    posted_by,
+    date_of_request,
+    task_description,
+    task_postal_code,
+    date_posted,
+    fullilled_by_volunter,
+    status
+  ) => {
+    //console.log(`adding user`)
     const query = {
-      text: `SELECT users.id as user_id, first_name, last_name, email, posts.id as post_id, title, content
-      FROM users
-      INNER JOIN posts
-      ON users.id = posts.user_id`,
+      text: `INSERT INTO requests (posted_by, date_of_request, task_description, task_postal_code, date_posted, fullilled_by_volunter, status) VALUES ($1, $2, $3, $4, $5,$6,$7) RETURNING *`,
+      values: [
+        posted_by,
+        date_of_request,
+        task_description,
+        task_postal_code,
+        date_posted,
+        fullilled_by_volunter,
+        status
+      ],
     };
 
     return db
       .query(query)
-      .then((result) => result.rows)
-      .catch((err) => err);
+      .then((result) => {
+        // console.log('id',result.rows[0].id)
+        console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
+        return result.rows[0]
+      })
+      .catch((err) => {
+        console.log(`err on adduser: ${err}`)
+        return err
+      });
   };
 
+
+
+  
   return {
     getUsers,
     getUserByEmail,
     addUser,
-    getUsersPosts,
+    addRequest
   };
   
 };

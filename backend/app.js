@@ -17,10 +17,12 @@ var usersRouter = require('./routes/users');
 //get routes in this file 
 var usersLogin = require('./routes/login');
 
-
-
 //get routes in this file 
 var usersRegister = require('./routes/register');
+
+// routes to make  new request
+var newRequest = require('./routes/newRequest');
+
 
 const db = require('./db');
 
@@ -39,6 +41,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/users', usersRouter(dbHelpers), Auth.verifyToken);
 app.use('/register', usersRegister(dbHelpers), Auth.verifyToken);
 app.use('/login', usersLogin(dbHelpers), Auth.verifyToken);
+app.use('/newRequest', newRequest(dbHelpers), Auth.verifyToken);
+
+
 
 
 app.listen(PORT, () => {
