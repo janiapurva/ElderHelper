@@ -2,7 +2,7 @@ const router = require("express").Router();
 const dbHelper = require("../helpers/dbHelpers");
 //const { addRequest } = require("../helpers/dbHelpers");
 
-const { addRequest } = require("../helpers/dbHelpers")
+const { addRequest } = require("../helpers/dbHelpers");
 // const { generateToken } = require("../helpers/passwordHelpers");
 
 //
@@ -16,9 +16,6 @@ module.exports = ({ addRequest }) => {
         .status(400)
         .send({ message: "Error, need a request descritpion!" });
     }
-    console.log("form ok");
-
-    // //console.log("MY HASHED PW LINE 21", userhashPassword);
 
     // //destructure values from form field.
     // NOTE: posted_by(RequestBox.jsx - 38) and fullilled_by_volunter (RequestBox.jsx - 66) is hardcoded, needs to be updated by the current volunteer who picked up the request
@@ -43,24 +40,15 @@ module.exports = ({ addRequest }) => {
       status
     )
       .then((users) => {
-        console.log("register.js - checking response after newquest - users", users);
-        console.log('succ request insert - IN newReq.JS')
-        //sending users back to front entd....
-        // console.log('register.js want user id', (users))
-        
+        res.send(users);
       })
       .catch((err) => {
         if (err) {
-          return res
-            .status(400)
-            .send({ message: "ERROR" });
+          return res.status(400).send({ message: "ERROR" });
         }
 
         return res.status(400).send(err);
       });
-
-    //
   });
-
   return router;
 };

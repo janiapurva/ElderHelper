@@ -9,12 +9,14 @@ import { Form, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import Modal from "react-bootstrap/Modal";
 import "react-datepicker/dist/react-datepicker.css";
+import { Redirect } from "react-router";
 
-export function RequestBox() {
+export default function RequestBox() {
   // const [day, setday] = useState("");
   const [description, setdescription] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [startDate, setStartDate] = useState(new Date());
+  const [successfulForm, setSuccessfulForm] = useState("");
 
   const { transcript, resetTranscript } = useSpeechRecognition();
 
@@ -34,28 +36,38 @@ export function RequestBox() {
 
     console.log("Hi - in req submit");
 
-    //get user ID from state 
+    //get user ID from state
     const userIdFromState = 1;
 
     //format Request post date (timestamp):
     var reqDateRequired = new Date();
     var requiredDateString =
-    reqDateRequired.getUTCFullYear() + "/" +
-    ("0" + (reqDateRequired.getUTCMonth()+1)).slice(-2) + "/" +
-    ("0" + reqDateRequired.getUTCDate()).slice(-2) + " " +
-    ("0" + reqDateRequired.getUTCHours()).slice(-2) + ":" +
-    ("0" + reqDateRequired.getUTCMinutes()).slice(-2) + ":" +
-    ("0" + reqDateRequired.getUTCSeconds()).slice(-2);
-    
+      reqDateRequired.getUTCFullYear() +
+      "/" +
+      ("0" + (reqDateRequired.getUTCMonth() + 1)).slice(-2) +
+      "/" +
+      ("0" + reqDateRequired.getUTCDate()).slice(-2) +
+      " " +
+      ("0" + reqDateRequired.getUTCHours()).slice(-2) +
+      ":" +
+      ("0" + reqDateRequired.getUTCMinutes()).slice(-2) +
+      ":" +
+      ("0" + reqDateRequired.getUTCSeconds()).slice(-2);
+
     //format Request post date (timestamp):
     var reqDatePosted = new Date();
     var postedDateString =
-    reqDatePosted.getUTCFullYear() + "/" +
-    ("0" + (reqDatePosted.getUTCMonth()+1)).slice(-2) + "/" +
-    ("0" + reqDatePosted.getUTCDate()).slice(-2) + " " +
-    ("0" + reqDatePosted.getUTCHours()).slice(-2) + ":" +
-    ("0" + reqDatePosted.getUTCMinutes()).slice(-2) + ":" +
-    ("0" + reqDatePosted.getUTCSeconds()).slice(-2);
+      reqDatePosted.getUTCFullYear() +
+      "/" +
+      ("0" + (reqDatePosted.getUTCMonth() + 1)).slice(-2) +
+      "/" +
+      ("0" + reqDatePosted.getUTCDate()).slice(-2) +
+      " " +
+      ("0" + reqDatePosted.getUTCHours()).slice(-2) +
+      ":" +
+      ("0" + reqDatePosted.getUTCMinutes()).slice(-2) +
+      ":" +
+      ("0" + reqDatePosted.getUTCSeconds()).slice(-2);
 
     const newRequestObj = {
       posted_by: userIdFromState, //user_id we need from auth response
@@ -71,16 +83,19 @@ export function RequestBox() {
 
     axios
       .post("http://localhost:8000/newRequest", { newRequestObj })
-    .then((res) => {
+      .then((res) => {
+        setSuccessfulForm(true);
+      })
+      .catch((err) => {
+        console.log("Error ReqBox 54", err);
+      });
 
-      console.log('inside newReq post request')
-
-
-    })
-    .catch((err) => {console.log('Error ReqBox 54', err )})  
-
-
+    // return <Redirect to="/homeUsers" />;
   };
+
+  if (successfulForm) {
+    return <Redirect to="/homeUsers" />;
+  }
 
   return (
     <Form className="requestBox" onSubmit={handleSubmit}>
@@ -112,9 +127,19 @@ export function RequestBox() {
           {/* <p>{transcript}</p> */}
         </div>
         {/* <Form.Control as="textarea" rows={3} value={transcript} /> */}
-        <Form.Control as="textarea" value={description} onChange={handleDescription} rows={3} />
+        <Form.Control
+          as="textarea"
+          value={description}
+          onChange={handleDescription}
+          rows={3}
+        />
         <Form.Label>Postal Code</Form.Label>
-        <Form.Control as="textarea" value={postalCode} onChange={handlePostalCode} rows={1} />
+        <Form.Control
+          as="textarea"
+          value={postalCode}
+          onChange={handlePostalCode}
+          rows={1}
+        />
         <Button variant="success" type="submit">
           Submit
         </Button>{" "}
@@ -122,4 +147,4 @@ export function RequestBox() {
     </Form>
   );
 }
-export default RequestBox;
+// export default RequestBox;

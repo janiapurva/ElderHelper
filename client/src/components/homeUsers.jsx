@@ -4,37 +4,20 @@ import MasterNavbar from "./MasterNavbar";
 import PopupButton from "./PopupButton";
 import PopupContact from "./PopupContact";
 
-
-
-
-
 export default function HomeUsers() {
-
   const [token, setToken] = useState(null);
 
-
-  useEffect(()=>{
-
+  useEffect(() => {
     const data = JSON.parse(localStorage.getItem("token"));
-    console.log('data',data)
-    
-    if (!data){
+    console.log("data", data);
 
+    if (!data) {
       setToken(null);
-
     } else {
-
       setToken(data.full_name);
-      console.log('data',data.full_name)
-      
-
+      console.log("data", data.full_name);
     }
-
-
-
-
-  }, [])
-
+  }, []);
 
   return (
     <div>

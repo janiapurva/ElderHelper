@@ -95,8 +95,9 @@ module.exports = (db) => {
       .query(query)
       .then((result) => {
         // console.log('id',result.rows[0].id)
-        console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
-        return result.rows[0]
+        //what do I want to do after a successfull submission
+        // console.log(`isnide success ful promist from query res from add user /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
+        return result
       })
       .catch((err) => {
         console.log(`err on adduser: ${err}`)
