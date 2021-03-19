@@ -51,6 +51,9 @@ export default function VolunteerDisplay(props) {
 
   const makeRequestList = listItem.map((response) => {
 
+    console.log(response)
+
+
 
       return (
         <VolunteerDisplayList
@@ -58,7 +61,7 @@ export default function VolunteerDisplay(props) {
           posted_by={response.posted_by}
           date_of_request={response.date_of_request}
           task_description={response.task_description}
-          postal_code={response.postal_code}
+          task_postal_code={response.task_postal_code}
           date_posted={response.date_posted}
         />
       );

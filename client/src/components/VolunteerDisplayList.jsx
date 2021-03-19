@@ -29,8 +29,8 @@ export default function VolunteerDisplayList(props) {
           <td>{props.posted_by}</td>
           <td>{props.date_of_request}</td>
           <td>{props.task_description}</td>
-          <th>{props.date_posted}</th>
-          <th>Sept 10 2001</th>
+          <th>{props.task_postal_code}</th>
+          <th>{props.date_posted}</th>          
           <Button variant="outline-success">Accept</Button>{" "}
         </tr>
       </tbody>
