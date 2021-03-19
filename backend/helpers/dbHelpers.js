@@ -27,7 +27,11 @@ module.exports = (db) => {
     };
     return db
       .query(query)
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log('result from query dbhelpers', result);  
+        return result.rows
+
+      })
       .catch((err) => console.log("line 33 dbhelpers", err));
   };
 
@@ -66,6 +70,7 @@ module.exports = (db) => {
         return err;
       });
   };
+
   const getUserByEmail = (email_address, password) => {
     const query = {
       text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
@@ -153,6 +158,7 @@ module.exports = (db) => {
     getVolunteersUsers,
     addUser,
     addRequest,
-    getRequests
+    getRequests,
+    addVolunteerUser
   };
 };

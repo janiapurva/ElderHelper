@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const dbHelper = require("../helpers/dbHelpers");
+
 const { hashPasswordFn } = require("../helpers/passwordHelpers");
 const { generateToken } = require("../helpers/passwordHelpers");
 

@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+
+
 export default function VolunteerDisplayList(props) {
   
+  console.log('props VolDispList ', props)
   
   
   
@@ -11,7 +14,7 @@ export default function VolunteerDisplayList(props) {
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>#</th>
+          <th>Request #</th>
           <th>Posted by</th>
           <th>Date Requested</th>
           <th>Description</th>
@@ -23,10 +26,10 @@ export default function VolunteerDisplayList(props) {
       <tbody>
         <tr>
           <td>1</td>
-          <td>props.fullname</td>
-          <td>props.date_posted/</td>
-          <td>props.task_description</td>
-          <th>n3W 7O5</th>
+          <td>{props.posted_by}</td>
+          <td>{props.date_of_request}</td>
+          <td>{props.task_description}</td>
+          <th>{props.date_posted}</th>
           <th>Sept 10 2001</th>
           <Button variant="outline-success">Accept</Button>{" "}
         </tr>

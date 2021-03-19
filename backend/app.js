@@ -24,7 +24,7 @@ var newRequest = require('./routes/newRequest');
 var usersRegister = require("./routes/register");
 var volunteerRegister = require("./routes/volunteerRegister");
 var volunteerLogin = require("./routes/volunteerLogin");
-const requests = require("./routes/requests")
+var requests = require("./routes/requests")
 const db = require('./db');
 
 const dbHelpers = require("./helpers/dbHelpers")(db);
@@ -43,9 +43,9 @@ app.use('/api/users', usersRouter(dbHelpers), Auth.verifyToken);
 app.use('/register', usersRegister(dbHelpers), Auth.verifyToken);
 app.use('/login', usersLogin(dbHelpers), Auth.verifyToken);
 app.use('/newRequest', newRequest(dbHelpers), Auth.verifyToken);
-app.use("/volunteerRegister", volunteerRegister(dbHelpers), Auth.verifyToken);
-app.use("/volunteerLogin", volunteerLogin(dbHelpers), Auth.verifyToken);
-app.use("/requests", requests(dbHelpers), Auth.verifyToken);
+app.use('/volunteerRegister', volunteerRegister(dbHelpers), Auth.verifyToken);
+app.use('/volunteerLogin', volunteerLogin(dbHelpers), Auth.verifyToken);
+app.use('/requests', requests(dbHelpers), Auth.verifyToken);
 
 
 
