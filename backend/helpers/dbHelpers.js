@@ -21,8 +21,6 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-
-
   const getRequests = () => {
     const query = {
       text: "SELECT * FROM requests;",
@@ -30,10 +28,8 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => console.log(result))
-      .catch((err) => console.log('line 33 dbhelpers', err));
+      .catch((err) => console.log("line 33 dbhelpers", err));
   };
-
-
 
   const addUser = (
     fullName,
@@ -75,6 +71,7 @@ module.exports = (db) => {
       text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
       values: [email_address],
     };
+  };
 
   const addRequest = (
     posted_by,
@@ -95,7 +92,7 @@ module.exports = (db) => {
         task_postal_code,
         date_posted,
         fullilled_by_volunter,
-        status
+        status,
       ],
     };
 
@@ -105,11 +102,11 @@ module.exports = (db) => {
         // console.log('id',result.rows[0].id)
         //what do I want to do after a successfull submission
         // console.log(`isnide success ful promist from query res from add user /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
-        return result
+        return result;
       })
       .catch((err) => {
-        console.log(`err on adduser: ${err}`)
-        return err
+        console.log(`err on adduser: ${err}`);
+        return err;
       });
   };
   const addVolunteerUser = (
@@ -150,15 +147,12 @@ module.exports = (db) => {
       });
   };
 
-
-
-  
   return {
-    getVolunteerByEmail,
     getUserByEmail,
     getUsers,
     getVolunteersUsers,
     addUser,
-    addRequest
+    addRequest,
+    getRequests
   };
 };
