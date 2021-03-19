@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 
 export default function NavBarLoggedIn(props) {
+  
   console.log("login navabar", props.headerName.headerName)
   const history = useHistory();
 

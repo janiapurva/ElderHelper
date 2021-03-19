@@ -1,35 +1,35 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+let express = require("express");
+let path = require("path");
+let cookieParser = require("cookie-parser");
+let logger = require("morgan");
 const PORT = process.env.PORT || 8000;
-var cors = require("cors");
+let cors = require("cors");
 const { Auth } = require("./db/middleware/Auth");
 
 //get the routes
 
-// var indexRouter = require('./routes/index');
+// let indexRouter = require('./routes/index');
 
 //get routes in this file 
-var usersRouter = require('./routes/users');
+let usersRouter = require('./routes/users');
 
 //get routes in this file 
-var usersLogin = require('./routes/login');
+let usersLogin = require('./routes/login');
 
-//get routes in this file 
-var usersRegister = require('./routes/register');
+
 
 // routes to make  new request
-var newRequest = require('./routes/newRequest');
-var usersRegister = require("./routes/register");
-var volunteerRegister = require("./routes/volunteerRegister");
-var volunteerLogin = require("./routes/volunteerLogin");
-var requests = require("./routes/requests")
+let newRequest = require('./routes/newRequest');
+let usersRegister = require("./routes/register");
+let volunteerRegister = require("./routes/volunteerRegister");
+let volunteerLogin = require("./routes/volunteerLogin");
+let requests = require("./routes/requests")
+let userPastRequests = require("./routes/userPastRequests")
 const db = require('./db');
 
 const dbHelpers = require("./helpers/dbHelpers")(db);
 
-var app = express();
+let app = express();
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -46,6 +46,7 @@ app.use('/newRequest', newRequest(dbHelpers), Auth.verifyToken);
 app.use('/volunteerRegister', volunteerRegister(dbHelpers), Auth.verifyToken);
 app.use('/volunteerLogin', volunteerLogin(dbHelpers), Auth.verifyToken);
 app.use('/requests', requests(dbHelpers), Auth.verifyToken);
+app.use('/userPastRequests', userPastRequests(dbHelpers), Auth.verifyToken);
 
 
 

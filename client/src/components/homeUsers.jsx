@@ -3,6 +3,9 @@ import NavBar from "./NavBarLoggedOut";
 import MasterNavbar from "./MasterNavbar";
 import PopupButton from "./PopupButton";
 import PopupContact from "./PopupContact";
+import UserRequestItem from "./UserRequestItem";
+
+
 
 export default function HomeUsers() {
   const [token, setToken] = useState(null);
@@ -28,6 +31,8 @@ export default function HomeUsers() {
       <MasterNavbar headerName={token} />
       <PopupButton sessionID={sessionId} />
       <PopupContact />
+      <UserRequestItem sessionID={sessionId}/>
+      
     </div>
   );
 }

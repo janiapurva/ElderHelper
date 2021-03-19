@@ -9,7 +9,7 @@ module.exports = (db) => {
       .then((result) => console.log(result.rows))
       .catch((err) => err);
   };
-
+/////////////////////////////////////////////////
   const getVolunteersUsers = () => {
     const query = {
       text: "SELECT * FROM users_volunteers",
@@ -20,7 +20,7 @@ module.exports = (db) => {
       .then((result) => console.log(result.rows))
       .catch((err) => err);
   };
-
+/////////////////////////////////////////////////
   const getRequests = () => {
     const query = {
       text: "SELECT * FROM requests;",
@@ -34,7 +34,22 @@ module.exports = (db) => {
       })
       .catch((err) => console.log("line 33 dbhelpers", err));
   };
+/////////////////////////////////////////////////
+  const getUserPastRequests = (id) => {
+    const query = {
+      text: "SELECT * FROM requests WHERE posted_by = $1;", values: [id],
+    };
+    return db
+      .query(query)
+      .then((result) => {
+        //console.log('result from query dbhelpers', result.rows);  
+        return result.rows
+        
 
+      })
+      .catch((err) => console.log("line 33 dbhelpers", err));
+  };
+/////////////////////////////////////////////////
   const addUser = (
     fullName,
     age,
@@ -71,6 +86,8 @@ module.exports = (db) => {
       });
   };
 
+//////////////////////////////////////////////////////
+
   const getUserByEmail = (email_address, password) => {
     const query = {
       text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
@@ -78,6 +95,7 @@ module.exports = (db) => {
     };
   };
 
+/////////////////////////////////////////////////
   const addRequest = (
     posted_by,
     date_of_request,
@@ -114,6 +132,9 @@ module.exports = (db) => {
         return err;
       });
   };
+
+/////////////////////////////////////////////////
+
   const addVolunteerUser = (
     fullName,
     age,
@@ -159,6 +180,7 @@ module.exports = (db) => {
     addUser,
     addRequest,
     getRequests,
-    addVolunteerUser
+    addVolunteerUser,
+    getUserPastRequests
   };
 };
