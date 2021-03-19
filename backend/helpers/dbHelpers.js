@@ -21,6 +21,20 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+
+
+  const getRequests = () => {
+    const query = {
+      text: "SELECT * FROM requests;",
+    };
+    return db
+      .query(query)
+      .then((result) => console.log(result))
+      .catch((err) => console.log('line 33 dbhelpers', err));
+  };
+
+
+
   const addUser = (
     fullName,
     age,
@@ -129,5 +143,6 @@ module.exports = (db) => {
     getVolunteersUsers,
     addUser,
     addVolunteerUser,
+    getRequests
   };
 };

@@ -3,7 +3,7 @@ import NavBar from "./NavBarLoggedOut";
 import MasterNavbar from "./MasterNavbar";
 import PopupButton from "./PopupButton";
 import PopupContact from "./PopupContact";
-
+import VolunteerDisplay from "./VolunteerDisplay";
 
 
 
@@ -16,7 +16,7 @@ export default function HomeVolunteers() {
   useEffect(()=>{
 
     const data = JSON.parse(localStorage.getItem("token"));
-    console.log('data',data)
+    
     
     if (!data){
 
@@ -25,7 +25,7 @@ export default function HomeVolunteers() {
     } else {
 
       setToken(data.full_name);
-      console.log('data',data.full_name)
+      
       
 
     }
@@ -39,8 +39,8 @@ export default function HomeVolunteers() {
   return (
     <div>
       <MasterNavbar headerName={token} />
-      <PopupButton />
-      <PopupContact />
+      <VolunteerDisplay/>
+      
     </div>
   );
 }
