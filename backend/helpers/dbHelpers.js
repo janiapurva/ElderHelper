@@ -76,27 +76,41 @@ module.exports = (db) => {
       values: [email_address],
     };
 
-    return db
-      .query(query)
-      .then((result) => {
-        // console.log('results from query', result.rows )
-        return result.rows[0];
-      })
-      .catch((err) => err);
-  };
-  const getVolunteerByEmail = (email_address, password) => {
+  const addRequest = (
+    posted_by,
+    date_of_request,
+    task_description,
+    task_postal_code,
+    date_posted,
+    fullilled_by_volunter,
+    status
+  ) => {
+    //console.log(`adding user`)
     const query = {
-      text: `SELECT * FROM users_volunteers WHERE email_address LIKE $1;`,
-      values: [email_address],
+      text: `INSERT INTO requests (posted_by, date_of_request, task_description, task_postal_code, date_posted, fullilled_by_volunter, status) VALUES ($1, $2, $3, $4, $5,$6,$7) RETURNING *`,
+      values: [
+        posted_by,
+        date_of_request,
+        task_description,
+        task_postal_code,
+        date_posted,
+        fullilled_by_volunter,
+        status
+      ],
     };
 
     return db
       .query(query)
       .then((result) => {
-        // console.log('results from query', result.rows )
-        return result.rows[0];
+        // console.log('id',result.rows[0].id)
+        //what do I want to do after a successfull submission
+        // console.log(`isnide success ful promist from query res from add user /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
+        return result
       })
-      .catch((err) => err);
+      .catch((err) => {
+        console.log(`err on adduser: ${err}`)
+        return err
+      });
   };
   const addVolunteerUser = (
     fullName,
@@ -136,13 +150,15 @@ module.exports = (db) => {
       });
   };
 
+
+
+  
   return {
     getVolunteerByEmail,
     getUserByEmail,
     getUsers,
     getVolunteersUsers,
     addUser,
-    addVolunteerUser,
-    getRequests
+    addRequest
   };
 };

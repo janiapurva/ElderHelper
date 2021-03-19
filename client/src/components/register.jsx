@@ -71,10 +71,10 @@ export default function SignUpUsers(props) {
       .then((res) => {
         //update state on successfull insertion
         //so that redirect happens
-        console.log(
-          "inside front end - signUpUsers.js - consloe log res...want to set token",
-          res.data
-        );
+        // console.log(
+        //   "inside front end - signUpUsers.js - consloe log res...want to set token",
+        //   res.data
+        // );
 
         //set headerName with full_name from backend..
         handleHeaderNameChange(res.data.full_name);

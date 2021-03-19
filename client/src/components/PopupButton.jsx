@@ -1,24 +1,18 @@
 import React, { useState } from "react";
 
-import Modal from 'react-bootstrap/Modal';
-import RequestBox from './RequestBox'
-import { Button } from 'react-bootstrap'
+import Modal from "react-bootstrap/Modal";
+import RequestBox from "./RequestBox";
+import { Button } from "react-bootstrap";
 
-
-
-export default function DropDown (){
-
+export default function DropDown() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
 
-
-
-  return(
-<>
-      <Button variant="primary" onClick={handleShow} className = "popupButton">
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow} className="popupButton">
         Make a New Request
       </Button>
 
@@ -27,17 +21,9 @@ export default function DropDown (){
           <Modal.Title>Make a Request</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <RequestBox/>
-          </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Submit Request
-          </Button>
-        </Modal.Footer>
+          <RequestBox />
+        </Modal.Body>
       </Modal>
     </>
-  )
+  );
 }
