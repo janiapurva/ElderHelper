@@ -11,7 +11,9 @@ import Modal from "react-bootstrap/Modal";
 import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from "react-router";
 
-export default function RequestBox() {
+export default function RequestBox(props) {
+
+
   // const [day, setday] = useState("");
   const [description, setdescription] = useState("");
   const [postalCode, setPostalCode] = useState("");
@@ -34,10 +36,10 @@ export default function RequestBox() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    console.log("Hi - in req submit");
-
+    //console.log("Hi - in req submit");
+    // console.log('props.user_id - RequestBox.jsx', props.sessionID)
     //get user ID from state
-    const userIdFromState = 1;
+    const userIdFromState = props.sessionID;
 
     //format Request post date (timestamp):
     var reqDateRequired = new Date();

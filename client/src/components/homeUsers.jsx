@@ -6,23 +6,27 @@ import PopupContact from "./PopupContact";
 
 export default function HomeUsers() {
   const [token, setToken] = useState(null);
+  const [sessionId, setSessionId] = useState(null)
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("token"));
-    console.log("data", data);
+    // console.log("data", data);
 
     if (!data) {
       setToken(null);
     } else {
       setToken(data.full_name);
-      console.log("data", data.full_name);
+      
+      setSessionId(data.user_id);
+
+      // console.log("data", data.full_name);
     }
   }, []);
 
   return (
     <div>
       <MasterNavbar headerName={token} />
-      <PopupButton />
+      <PopupButton sessionID={sessionId} />
       <PopupContact />
     </div>
   );

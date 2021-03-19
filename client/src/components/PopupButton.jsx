@@ -4,7 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import RequestBox from "./RequestBox";
 import { Button } from "react-bootstrap";
 
-export default function DropDown() {
+export default function DropDown(props) {
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -21,7 +22,7 @@ export default function DropDown() {
           <Modal.Title>Make a Request</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <RequestBox />
+          <RequestBox sessionID={props.sessionID} />
         </Modal.Body>
       </Modal>
     </>
