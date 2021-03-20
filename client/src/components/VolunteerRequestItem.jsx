@@ -13,7 +13,7 @@ export default function VolunteerRequestItem(props) {
    const sessionIDTOUSE = sessionID.sessionID
    console.log("sessionIDTOUSE - VOLEreqitem line14", sessionIDTOUSE);
 
-
+{/* <p>{makeRequestList}</p> */}
 
   useEffect(() => {
 
@@ -34,28 +34,34 @@ export default function VolunteerRequestItem(props) {
   }, [sessionIDTOUSE]);
 
 
-    const makeRequestList = listItem.map((response) => {
-      console.log('response.requestID', response.id)
-      return (
-      < VolunteerRequestList
-        key={response.id}
-        requestID={response.id}
-        posted_by={response.posted_by}
-        date_of_request={response.date_of_request}
-        task_description={response.task_description}
-        task_postal_code={response.task_postal_code}
-        date_posted={response.date_posted}
-        fullilled_by_volunter={response.fullilled_by_volunter}
-        status={response.status}
-        sessionIDTOUSE={sessionIDTOUSE}
+  //   const makeRequestList = listItem.map((response) => {
+  //     console.log('response.requestID', response.id)
+  //     return (
+  //     < VolunteerRequestList
+  //       key={response.id}
+  //       requestID={response.id}
+  //       posted_by={response.posted_by}
+  //       date_of_request={response.date_of_request}
+  //       task_description={response.task_description}
+  //       task_postal_code={response.task_postal_code}
+  //       date_posted={response.date_posted}
+  //       fullilled_by_volunter={response.fullilled_by_volunter}
+  //       status={response.status}
+  //       sessionIDTOUSE={sessionIDTOUSE}
         
-      />
-    );
-    //}
-  });
+  //     />
+  //   );
+  //   //}
+  // });
 
   return (
-    <p>{makeRequestList}</p>
+    // <p>{makeRequestList}</p>
     //<div> HI </div>
+    < VolunteerRequestList
+    listItem={listItem}
+    sessionID={sessionIDTOUSE}
+     />
+
+
   );
 }
