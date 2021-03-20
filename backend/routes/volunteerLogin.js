@@ -29,24 +29,25 @@ module.exports = ({ getVolunteerByEmail }) => {
     //pass the values from form to addUser which inserts new user to DB
     getVolunteerByEmail(email_address)
       .then((users) => {
+        //console.log('hi in .then AFTER getVolunteerByEmail')
         //users pw from db
-        const userStoredPw = users.password;
+        const userStoredPw = users[0].password;
         //need to now compare values from user entered pw with
-        console.log('hi 123245678978998797')
+        //console.log('hi 123245678978998797', userStoredPw)
 
         let token;
         
         if (comparePassword(req.body.checkUser.password, userStoredPw)) {
-          console.log('hi in succ password compare')
-          token = generateToken(users.id );
+          //console.log('hi in succ password compare', users[0])
+          token = generateToken(users[0].id);
 
-          const full_name = users.full_name;
+          const full_name = users[0].full_name;
 
-          const user_id = users.id;
-          console.log('45 user_id', user_id)
+          const user_id = users[0].id;
+          //console.log('45 user_id', user_id)
           
           //  console.log('token - register.js', token)
-          console.log('VOLLOGIN.js - LINE48', (token,full_name, user_id ));
+          //console.log('VOLLOGIN.js - LINE48', (token,full_name, user_id ));
           res.send({token, full_name, user_id });
 
 
@@ -58,11 +59,11 @@ module.exports = ({ getVolunteerByEmail }) => {
      
      
       })
-      .catch((err) =>
-        res.json({
-          error: err.message,
-        })
-      );
+      // .catch((err) =>
+      //   res.json({
+      //     error: err.message,
+      //   })
+      // );
 
     //
   });

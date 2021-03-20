@@ -4,10 +4,10 @@ const router = express.Router();
 module.exports = ({ getPendingRequests }) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
-    console.log("hello - inside get volunteer requests");
+    //console.log("hello - inside get volunteer requests");
     getPendingRequests()
       .then((results) => {
-        console.log("volunteer requests - users - 11", results);
+        //console.log("volunteer requests - users - 11", results);
         //results contains re
         res.json(results);
       })
@@ -17,6 +17,9 @@ module.exports = ({ getPendingRequests }) => {
         })
       );
   });
+
+
+
 
   return router;
 };

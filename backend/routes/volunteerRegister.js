@@ -60,15 +60,15 @@ module.exports = ({ addVolunteerUser }) => {
           console.log(err);
         }
       })
-      .catch((err) => {
-        if (err.routine === "_bt_check_unique") {
-          return res
-            .status(400)
-            .send({ message: "User with that EMAIL already exist" });
-        }
+      // .catch((err) => {
+      //   if (err.routine === "_bt_check_unique") {
+      //     return res
+      //       .status(400)
+      //       .send({ message: "User with that EMAIL already exist" });
+      //   }
 
-        return res.status(400).send(err);
-      });
+      //   return res.status(400).send(err);
+      // });
 
     //
   });

@@ -7,7 +7,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {return(result.rows)})
-      .catch((err) => err);
+      // .catch((err) => err);
   };
 /////////////////////////////////////////////////
   const getVolunteersUsers = () => {
@@ -18,7 +18,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {return(result.rows)})
-      .catch((err) => err);
+      // .catch((err) => err);
   };
 /////////////////////////////////////////////////
 const getRequests = () => {
@@ -28,11 +28,11 @@ const getRequests = () => {
   return db
     .query(query)
     .then((result) => {
-      console.log('result from  getRequests query dbhelpers', result.rows);  
+      // console.log('result from  getRequests query dbhelpers', result.rows);  
       return result.rows
 
     })
-    .catch((err) => console.log("line 33 dbhelpers", err));
+    // .catch((err) => console.log("line 33 dbhelpers", err));
 };  
 /////////////////////////////////////////////////
 //Add this function to get pending requests to show on homeVolunteers
@@ -43,7 +43,7 @@ const getPendingRequests = () => {
     return db
       .query(query)
       .then((result) => {
-        console.log('result from  getRequests query dbhelpers', result.rows);  
+        // console.log('result from  getRequests query dbhelpers', result.rows);  
         return result.rows
 
       })
@@ -130,7 +130,7 @@ const getVolunteerByEmail = (email_address) => {
     .query(query)
     .then((result) => {
       console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);  
-      return result.rows[0]
+      return result.rows
       
 
     })
@@ -211,11 +211,53 @@ const getVolunteerByEmail = (email_address) => {
         // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
         return result.rows[0];
       })
-      .catch((err) => {
-        console.log(`err on adduser: ${err}`);
-        return err;
-      });
+      // .catch((err) => {
+      //   console.log(`err on adduser: ${err}`);
+      //   return err;
+      // });
   };
+
+/////////////////////////////////////////////////
+const updateRequest = (
+
+  requestID,
+  posted_by,
+  date_of_request,
+  task_description,
+  task_postal_code,
+  date_posted,
+  fullilled_by_volunter,
+  status
+) => {
+  //console.log(`adding user`)
+  const query = {
+    text: `UPDATE requests SET posted_by = $1, date_of_request = $2, task_description = $3, task_postal_code = $4, date_posted = $5, fullilled_by_volunter = $6, status=$7 WHERE requests.id = ${requestID}  RETURNING *`,
+    values: [
+      posted_by,
+      date_of_request,
+      task_description,
+      task_postal_code,
+      date_posted,
+      fullilled_by_volunter,
+      status
+    ],
+  };
+
+  return db
+    .query(query)
+    .then((result) => {
+      // console.log('id',result.rows[0].id)
+      //what do I want to do after a successfull submission
+      // console.log(`isnide success ful promist from query res from add user /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
+      return result;
+    })
+    .catch((err) => {
+      console.log(`err on adduser: ${err}`);
+      return err;
+    });
+};
+
+/////////////////////////////////////////////////
 
   return {
     getUserByEmail,
@@ -227,6 +269,7 @@ const getVolunteerByEmail = (email_address) => {
     addVolunteerUser,
     getUserPastRequests,
     getVolunteerByEmail,
-    getPendingRequests
+    getPendingRequests,
+    updateRequest
   };
 };

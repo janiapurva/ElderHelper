@@ -33,38 +33,50 @@ export default function VolunteerRequestList(props) {
     evt.preventDefault();
     console.log("inside accept request");
 
-    const volIdFromState = props.sessionIDTOUSE;
-    console.log("volIdFromState", volIdFromState);
+    const volIdFromState = props.sessionID;
 
-    const userIDFromReq = props.posted_by;
-    const date_of_request = props.date_of_request;
-    const task_description = props.task_description;
-    const task_postal_code = props.task_postal_code;
-    const date_posted = props.date_posted;
-    const status = "Accepted";
+
+    const requestID = props.listItem[0].id
+    const userIDFromReq = props.listItem[0].posted_by;
+    console.log("----voleIDFromReq---", volIdFromState);
+    const date_of_request = props.listItem[0].date_of_request;
+    const task_description = props.listItem[0].task_description;
+    const task_postal_code = props.listItem[0].task_postal_code;
+    const date_posted = props.listItem[0].date_posted;
+    const status = "accepted";
 
     const updateRequestObjVolunteerAccept = {
+      requestID:requestID,
       posted_by: userIDFromReq, //user_id we need from auth response
       date_of_request: date_of_request, // from form
       task_description: task_description, //
       task_postal_code: task_postal_code,
       date_posted: date_posted,
       fullilled_by_volunter: volIdFromState,
-      status: "Accepted",
+      status: status,
     };
 
-    // console.log('update object to send back to db', updateRequestObjVolunteer)
+
+
+    console.log('update object to send back to db', updateRequestObjVolunteerAccept)
+
+    // useEffect((),[])
 
     axios
       .post("http://localhost:8000/updateRequest", {
         updateRequestObjVolunteerAccept,
       })
       .then((res) => {
+        console.log("inside .then success update ");
+
         setSuccessfulForm(true);
       })
       .catch((err) => {
         console.log("Error ReqBox 54", err);
       });
+
+
+
   };
 
   return (
@@ -86,7 +98,7 @@ export default function VolunteerRequestList(props) {
 
         {props.listItem.map((response) => (
           <RequestTableData
-           key={response.id}
+            key={response.id}
             requestID={response.id}
             posted_by={response.posted_by}
             date_of_request={response.date_of_request}

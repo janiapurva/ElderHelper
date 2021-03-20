@@ -20,7 +20,7 @@ export default function HomeVolunteers() {
     } else {
       setToken(data.full_name);
       setSessionId(data.user_id);
-      // console.log('data - homeVolunteers.jsx',data)
+      console.log('data - homeVolunteers.jsx',data)
     }
 
     setTimeout(() => {

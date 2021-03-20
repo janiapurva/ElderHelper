@@ -52,7 +52,8 @@ module.exports = ({ getUserByEmail }) => {
 
 
 
-        } else {
+        }
+         else {
           console.log("probably error");
         }
       })
