@@ -40,17 +40,15 @@ export default function VolunteerDisplay(props) {
         console.log("error - volunteerDijsplay.jsx -29", err);
       });
   }, []);
-console.log('show me the stuff',listItem)
-console.log(listItem)
-
+  console.log("show me the stuff", listItem);
+  console.log(listItem);
 
   //
   // console.log('this is',requests)
 
   // console.log('this is state.listItem',state.listItem)
-
+console.log('check this out',listItem)
   const makeRequestList = listItem.map((response) => {
-
     return (
       <div>
         <VolunteerDisplayList
@@ -62,10 +60,11 @@ console.log(listItem)
           date_posted={response.date_posted}
         />
 
-        <LeafletMap 
+        {/* <LeafletMap 
         requesters ={listItem}
         
-        />
+        /> */}
+
       </div>
     );
     //}
@@ -81,8 +80,7 @@ console.log(listItem)
   return (
     <p>
       {makeRequestList}
-      {/* <LeafletMap task_postal_code ={listItem}/> */}
-      {/* {getpostalcode} */}
+      <LeafletMap />
     </p>
   );
 }

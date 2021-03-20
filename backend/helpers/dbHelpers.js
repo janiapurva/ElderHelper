@@ -6,7 +6,10 @@ module.exports = (db) => {
 
     return db
       .query(query)
-      .then((result) => console.log(result.rows))
+      .then((result) => {
+        console.log(result.rows);
+        return result.rows;
+      })
       .catch((err) => err);
   };
 
@@ -17,7 +20,10 @@ module.exports = (db) => {
 
     return db
       .query(query)
-      .then((result) => console.log(result.rows))
+      .then((result) => {
+        console.log(result.rows);
+        return result.rows;
+      })
       .catch((err) => err);
   };
 
@@ -79,6 +85,34 @@ module.exports = (db) => {
       text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
       values: [email_address],
     };
+    return db
+      .query(query)
+      .then((result) => {
+        // console.log('id',result.rows[0].id)
+        // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log(`err on adduser: ${err}`);
+        return err;
+      });
+  };
+  const getVolunteerByEmail = (email_address, password) => {
+    const query = {
+      text: `SELECT * FROM users_volunteers WHERE email_address LIKE $1;`,
+      values: [email_address],
+    };
+    return db
+      .query(query)
+      .then((result) => {
+        // console.log('id',result.rows[0].id)
+        // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log(`err on adduser: ${err}`);
+        return err;
+      });
   };
 
   const addRequest = (
@@ -171,5 +205,6 @@ module.exports = (db) => {
     addRequest,
     getRequests,
     addVolunteerUser,
+    getVolunteerByEmail
   };
 };
