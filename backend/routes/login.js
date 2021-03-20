@@ -32,7 +32,7 @@ module.exports = ({ getUserByEmail }) => {
         //users pw from db
         console.log('insdie .then getUserByEmail')
         
-        const userStoredPw = users; // NOT WORKING!!!!!!!
+        const userStoredPw = users.password; // NOT WORKING!!!!!!!
         //need to now compare values from user entered pw with
         console.log('hi', req.body.checkUser.password, userStoredPw, email_address)
 

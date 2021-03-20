@@ -97,7 +97,7 @@ module.exports = (db) => {
     .query(query)
     .then((result) => {
       console.log('result from  getUserByEmail query dbhelpers  ',email_address, result);  
-      return result.rows
+      return result.rows[0]
       
 
     })
@@ -115,7 +115,7 @@ const getVolunteerByEmail = (email_address) => {
     .query(query)
     .then((result) => {
       console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);  
-      return result.rows
+      return result.rows[0]
       
 
     })
