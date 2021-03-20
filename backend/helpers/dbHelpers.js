@@ -28,9 +28,8 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log('result from query dbhelpers', result);  
-        return result.rows
-
+        console.log("result from query dbhelpers", result);
+        return result.rows;
       })
       .catch((err) => console.log("line 33 dbhelpers", err));
   };
@@ -42,11 +41,13 @@ module.exports = (db) => {
     password,
     phoneNumber,
     postalCode,
+    lat,
+    long,
     afiliations
   ) => {
     //console.log(`adding user`)
     const query = {
-      text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code, belongs_to) VALUES ($1, $2, $3, $4, $5,$6,$7) RETURNING *`,
+      text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code, lat, long, belongs_to) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
       values: [
         fullName,
         age,
@@ -54,6 +55,8 @@ module.exports = (db) => {
         password,
         phoneNumber,
         postalCode,
+        lat,
+        long,
         afiliations,
       ],
     };
@@ -83,18 +86,22 @@ module.exports = (db) => {
     date_of_request,
     task_description,
     task_postal_code,
+    lat,
+    long,
     date_posted,
     fullilled_by_volunter,
     status
   ) => {
     //console.log(`adding user`)
     const query = {
-      text: `INSERT INTO requests (posted_by, date_of_request, task_description, task_postal_code, date_posted, fullilled_by_volunter, status) VALUES ($1, $2, $3, $4, $5,$6,$7) RETURNING *`,
+      text: `INSERT INTO requests (posted_by, date_of_request, task_description, task_postal_code, lat, long, date_posted, fullilled_by_volunter, status) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9) RETURNING *`,
       values: [
         posted_by,
         date_of_request,
         task_description,
         task_postal_code,
+        lat,
+        long,
         date_posted,
         fullilled_by_volunter,
         status,
@@ -121,12 +128,14 @@ module.exports = (db) => {
     password,
     phoneNumber,
     postalCode,
+    lat,
+    long,
     available,
     specialSkills
   ) => {
     //console.log(`adding user`)
     const query = {
-      text: `INSERT INTO users_volunteers (full_name, age, email_address, password, phone_number, postal_code, available, special_skills) VALUES ($1, $2, $3, $4, $5,$6,$7, $8) RETURNING *`,
+      text: `INSERT INTO users_volunteers (full_name, age, email_address, password, phone_number, postal_code, lat, long, available, special_skills) VALUES ($1, $2, $3, $4, $5,$6,$7, $8, $9,$10) RETURNING *`,
       values: [
         fullName,
         age,
@@ -134,6 +143,8 @@ module.exports = (db) => {
         password,
         phoneNumber,
         postalCode,
+        lat,
+        long,
         available,
         specialSkills,
       ],
@@ -159,6 +170,6 @@ module.exports = (db) => {
     addUser,
     addRequest,
     getRequests,
-    addVolunteerUser
+    addVolunteerUser,
   };
 };

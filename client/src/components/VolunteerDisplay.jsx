@@ -3,11 +3,9 @@ import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import VolunteerDisplayList from "./VolunteerDisplayList";
-
+import LeafletMap from "./LeafletMap";
 export default function VolunteerDisplay(props) {
-
-
-  const [ listItem, setListItem ] = useState([]);
+  const [listItem, setListItem] = useState([]);
   //console.log("this is response line 14", state.listItem["0"]);
 
   // setRequests(state => ({
@@ -28,7 +26,7 @@ export default function VolunteerDisplay(props) {
   // });
 
   useEffect(() => {
-    console.log('inside use')
+    console.log("inside use");
 
     axios
       .get("http://localhost:8000/requests")
@@ -42,20 +40,19 @@ export default function VolunteerDisplay(props) {
         console.log("error - volunteerDijsplay.jsx -29", err);
       });
   }, []);
+console.log('show me the stuff',listItem)
+console.log(listItem)
+
 
   //
   // console.log('this is',requests)
-
 
   // console.log('this is state.listItem',state.listItem)
 
   const makeRequestList = listItem.map((response) => {
 
-    console.log(response)
-
-
-
-      return (
+    return (
+      <div>
         <VolunteerDisplayList
           key={response.id}
           posted_by={response.posted_by}
@@ -64,14 +61,28 @@ export default function VolunteerDisplay(props) {
           task_postal_code={response.task_postal_code}
           date_posted={response.date_posted}
         />
-      );
+
+        <LeafletMap 
+        requesters ={listItem}
+        
+        />
+      </div>
+    );
     //}
   });
-
-  
-
+  // const getpostalcode = listItem.map((response) => {
+  //   return (
+  //     <div>
+  //       <LeafletMap task_postal_code={response.task_postal_code}
+  //       task_description={response.task_description} />
+  //     </div>
+  //   );
+  // });
   return (
-    <p>{makeRequestList}</p>
-    // <div> HI </div>
+    <p>
+      {makeRequestList}
+      {/* <LeafletMap task_postal_code ={listItem}/> */}
+      {/* {getpostalcode} */}
+    </p>
   );
 }

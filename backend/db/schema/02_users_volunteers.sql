@@ -8,6 +8,8 @@ CREATE TABLE "users_volunteers" (
   "password" varchar,
   "phone_number" varchar UNIQUE,
   "postal_code" varchar,
+  "lat" VARCHAR,
+  "long" VARCHAR,
   "available" boolean,
   "special_skills" varchar,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP  
