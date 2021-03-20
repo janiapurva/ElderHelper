@@ -33,11 +33,11 @@ module.exports = ({ getUserByEmail }) => {
         
         const userStoredPw = users.password;
         //need to now compare values from user entered pw with
-        //console.log('hi')
+        console.log('hi', req.body.checkUser.password, userStoredPw, email_address)
 
         let token;
         if (comparePassword(req.body.checkUser.password, userStoredPw)) {
-
+          console.log('hi in succ password compare')
           token = generateToken(users.id );
 
           const full_name = users.full_name;

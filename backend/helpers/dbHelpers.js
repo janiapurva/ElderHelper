@@ -96,7 +96,7 @@ module.exports = (db) => {
     return db
     .query(query)
     .then((result) => {
-      console.log('result from  getUserByEmail query dbhelpers  ', result.rows);  
+      console.log('result from  getUserByEmail query dbhelpers  ',email_address, result);  
       return result.rows
       
 

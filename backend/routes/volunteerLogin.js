@@ -42,7 +42,7 @@ module.exports = ({ getVolunteerByEmail }) => {
           const full_name = users.full_name;
 
           const user_id = users.id;
-
+          console.log('45 user_id', user_id)
           
           //  console.log('token - register.js', token)
           console.log('VOLLOGIN.js - LINE48', (token,full_name, user_id ));
@@ -53,6 +53,9 @@ module.exports = ({ getVolunteerByEmail }) => {
         } else {
           console.log("probably error");
         }
+     
+     
+     
       })
       .catch((err) =>
         res.json({
