@@ -2,40 +2,37 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import VolunteerRequestItem from "./VolunteerRequestItem";
 
 export default function VolunteerRequestList(props) {
-  const [listItem, setListItem] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/requests")
-
-      .then((res) => {
-        
-        setListItem(res.data);
-      })
-      .catch((err) => {
-        console.log("error - volunteerDijsplay.jsx -29", err);
-      });
-  }, []);
-
-  const makeRequestList = listItem.map((response) => {
-    return (
-      <VolunteerRequestItem
-        key={response.id}
-        posted_by={response.posted_by}
-        date_of_request={response.date_of_request}
-        task_description={response.task_description}
-        task_postal_code={response.task_postal_code}
-        date_posted={response.date_posted}
-      />
-    );
-    //}
-  });
+  console.log("props VolDispList ", props);
 
   return (
-    <p>{makeRequestList}</p>
-    // <div> HI </div>
+    <Table striped bordered hover variant="dark">
+      <thead>
+        <tr>
+          <th>Request #</th>
+          <th>Posted by</th>
+          <th>Date Requested</th>
+          <th>Description</th>
+          <th>Postal Code</th>
+          <th>Date Posted</th>
+          <th>Volunteer ID</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+          <td>{props.requestID}</td>
+          <td>{props.posted_by}</td>
+          <td>{props.date_of_request}</td>
+          <td>{props.task_description}</td>
+          <th>{props.task_postal_code}</th>
+          <th>{props.date_posted}</th>
+          <th>{props.fullilled_by_volunter}</th>
+          <th>{props.status}</th>
+        </tr>
+      </tbody>
+    </Table>
   );
 }

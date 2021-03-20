@@ -28,7 +28,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        //console.log('result from query dbhelpers', result);  
+        console.log('result from  getRequests query dbhelpers', result.rows);  
         return result.rows
 
       })

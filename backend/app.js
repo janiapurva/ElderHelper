@@ -24,6 +24,7 @@ let usersRegister = require("./routes/register");
 let volunteerRegister = require("./routes/volunteerRegister");
 let volunteerLogin = require("./routes/volunteerLogin");
 let requests = require("./routes/requests")
+let volunteerRequests = require("./routes/volunteerRequests")
 let userPastRequests = require("./routes/userPastRequests")
 const db = require('./db');
 
@@ -47,6 +48,7 @@ app.use('/volunteerRegister', volunteerRegister(dbHelpers), Auth.verifyToken);
 app.use('/volunteerLogin', volunteerLogin(dbHelpers), Auth.verifyToken);
 app.use('/requests', requests(dbHelpers), Auth.verifyToken);
 app.use('/userPastRequests', userPastRequests(dbHelpers), Auth.verifyToken);
+app.use('/volunteerRequests', volunteerRequests(dbHelpers), Auth.verifyToken);
 
 
 
