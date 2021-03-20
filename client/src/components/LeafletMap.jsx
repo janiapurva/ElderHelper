@@ -25,6 +25,7 @@ export default function LeafletMap(props) {
   return (
     <div id="mapid">
       <MapContainer
+        abc={123}
         center={[43.779699, -79.44734]}
         zoom={13}
         scrollWheelZoom={true}
