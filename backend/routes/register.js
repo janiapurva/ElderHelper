@@ -6,7 +6,7 @@ const { generateToken } = require("../helpers/passwordHelpers");
 module.exports = ({ addUser }) => {
   router.post("/", (req, res) => {
     //gets password
-    //console.log(req.body.newUser.password)
+    console.log('LOGIN.js',req.body.newUser.password)
 
     if (!req.body.newUser.email_address || !req.body.newUser.password) {
       return res

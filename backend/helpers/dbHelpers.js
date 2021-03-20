@@ -28,7 +28,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log('result from query dbhelpers', result);  
+        //console.log('result from query dbhelpers', result);  
         return result.rows
 
       })
@@ -88,12 +88,41 @@ module.exports = (db) => {
 
 //////////////////////////////////////////////////////
 
-  const getUserByEmail = (email_address, password) => {
+  const getUserByEmail = (email_address) => {
     const query = {
       text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
-      values: [email_address],
+      values: [email_address]
     };
+    return db
+    .query(query)
+    .then((result) => {
+      console.log('result from  getUserByEmail query dbhelpers  ', result.rows);  
+      return result.rows
+      
+
+    })
+    .catch((err) => console.log("line 33 dbhelpers", err));
   };
+
+/////////////////////////////////////////////////
+
+const getVolunteerByEmail = (email_address) => {
+  const query = {
+    text: `SELECT * FROM users_volunteers WHERE email_address LIKE $1;`,
+    values: [email_address]
+  };
+  return db
+    .query(query)
+    .then((result) => {
+      console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);  
+      return result.rows
+      
+
+    })
+    .catch((err) => console.log("line 33 dbhelpers", err));
+};
+
+
 
 /////////////////////////////////////////////////
   const addRequest = (
@@ -181,6 +210,7 @@ module.exports = (db) => {
     addRequest,
     getRequests,
     addVolunteerUser,
-    getUserPastRequests
+    getUserPastRequests,
+    getVolunteerByEmail
   };
 };

@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = ({getRequests}) => {
   /* GET users listing. */
   router.get('/', (req, res) => {
-    console.log('hello')  
+    //console.log('hello')  
     getRequests()
           .then((results) => {
             
