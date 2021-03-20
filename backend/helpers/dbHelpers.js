@@ -21,9 +21,24 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 /////////////////////////////////////////////////
-  const getRequests = () => {
+const getRequests = () => {
+  const query = {
+    text: "SELECT * FROM requests;",
+  };
+  return db
+    .query(query)
+    .then((result) => {
+      console.log('result from  getRequests query dbhelpers', result.rows);  
+      return result.rows
+
+    })
+    .catch((err) => console.log("line 33 dbhelpers", err));
+};  
+/////////////////////////////////////////////////
+//Add this function to get pending requests to show on homeVolunteers
+const getPendingRequests = () => {
     const query = {
-      text: "SELECT * FROM requests;",
+      text: "SELECT * FROM requests WHERE status = 'pending';",
     };
     return db
       .query(query)
@@ -211,6 +226,7 @@ const getVolunteerByEmail = (email_address) => {
     getRequests,
     addVolunteerUser,
     getUserPastRequests,
-    getVolunteerByEmail
+    getVolunteerByEmail,
+    getPendingRequests
   };
 };

@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-
-module.exports = ({ getRequests }) => {
+//gets pending requests to show when volunteers login
+module.exports = ({ getPendingRequests }) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
     console.log("hello - inside get volunteer requests");
-    getRequests()
+    getPendingRequests()
       .then((results) => {
         console.log("volunteer requests - users - 11", results);
         //results contains re

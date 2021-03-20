@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
   } 
 
   const comparePassword = (password, hashPassword) => {
+    
     console.log('passWordHelper.jsx comparePassword',password, hashPassword)
 
 
