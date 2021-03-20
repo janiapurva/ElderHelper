@@ -35,6 +35,7 @@ module.exports = ({ getVolunteerByEmail }) => {
         console.log('hi 123245678978998797')
 
         let token;
+        
         if (comparePassword(req.body.checkUser.password, userStoredPw)) {
           console.log('hi in succ password compare')
           token = generateToken(users.id );

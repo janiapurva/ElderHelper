@@ -3,7 +3,7 @@ import NavBar from "./NavBarLoggedOut";
 import MasterNavbar from "./MasterNavbar";
 import PopupButton from "./PopupButton";
 import PopupContact from "./PopupContact";
-import VolunteerDisplay from "./VolunteerDisplay";
+import VolunteerRequestList from"./VolunteerRequestList"
 
 export default function HomeVolunteers() {
   const [token, setToken] = useState(null);
@@ -29,7 +29,7 @@ export default function HomeVolunteers() {
   return (
     <div>
       <MasterNavbar headerName={token} />
-      <VolunteerDisplay sessionID={sessionId} />
+      <VolunteerRequestList sessionID={sessionId} />
     </div>
   );
 }

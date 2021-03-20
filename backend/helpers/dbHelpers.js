@@ -6,7 +6,7 @@ module.exports = (db) => {
 
     return db
       .query(query)
-      .then((result) => console.log(result.rows))
+      .then((result) => {return(result.rows)})
       .catch((err) => err);
   };
 /////////////////////////////////////////////////
@@ -17,7 +17,7 @@ module.exports = (db) => {
 
     return db
       .query(query)
-      .then((result) => console.log(result.rows))
+      .then((result) => {return(result.rows)})
       .catch((err) => err);
   };
 /////////////////////////////////////////////////

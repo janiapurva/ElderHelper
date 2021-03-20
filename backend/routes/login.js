@@ -17,21 +17,22 @@ module.exports = ({ getUserByEmail }) => {
         .send({ message: "Either email or Password is missing!" });
     }
 
-    const hashPassword = hashPasswordFn(req.body.checkUser.password);
+    //const hashPassword = hashPasswordFn(req.body.checkUser.password);
     //console.log('HASH', hashPassword)
 
     // want to compare
 
     //destructure values from form field.
-    const { email_address } = req.body.checkUser;
-    // console.log('HASH', email_address)
+    const email_address  = req.body.checkUser.email_address;
+    console.log('HASH', email_address)//works, user entered email
 
     //pass the values from form to addUser which inserts new user to DB
     getUserByEmail(email_address)
       .then((users) => {
         //users pw from db
+        console.log('insdie .then getUserByEmail')
         
-        const userStoredPw = users.password;
+        const userStoredPw = users; // NOT WORKING!!!!!!!
         //need to now compare values from user entered pw with
         console.log('hi', req.body.checkUser.password, userStoredPw, email_address)
 

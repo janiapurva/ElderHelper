@@ -9,7 +9,7 @@ import homeUsers from "./components/homeUsers";
 import VolunteerLogin from "./components/VolunteerLogin"
 import VolunteerRegister from "./components/VolunteerRegister"
 import HomeVolunteers from"./components/homeVolunteers"
-import VolunteerDisplayList from"./components/VolunteerDisplayList"
+import VolunteerRequestList from"./components/VolunteerRequestList"
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
           <Route path="/volunteer-sign-in" component={VolunteerLogin} />
           <Route path="/volunteer-sign-up" component={VolunteerRegister} />
           <Route path="/homeVolunteerUsers" component={HomeVolunteers} />
-          <Route path="/homeVolunteerUsers" component={VolunteerDisplayList} />
+          <Route path="/homeVolunteerUsers" component={VolunteerRequestList} />
         </Switch>
       </div>
     </Router>

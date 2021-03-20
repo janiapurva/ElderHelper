@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import UserRequestDisplayList from "../components/UserRequestDisplayList";
+import UserRequestList from "./UserRequestList";
 
 export default function UserRequestItem(props) {
   const [listItem, setListItem] = useState([]);
@@ -38,7 +38,7 @@ export default function UserRequestItem(props) {
 
     const makeRequestList = listItem.map((response) => {
     return (
-      < UserRequestDisplayList
+      < UserRequestList
         key={response.id}
         posted_by={response.posted_by}
         date_of_request={response.date_of_request}

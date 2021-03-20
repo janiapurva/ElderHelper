@@ -7,8 +7,10 @@ const jwt = require('jsonwebtoken');
 
   } 
 
-  const comparePassword = (password, hashPassword,) => {
-    
+  const comparePassword = (password, hashPassword) => {
+    console.log('passWordHelper.jsx comparePassword',password, hashPassword)
+
+
     return bcrypt.compareSync(password, hashPassword);
   }
 

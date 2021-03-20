@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import VolunteerDisplayList from "./VolunteerDisplayList";
+import VolunteerRequestItem from "./VolunteerRequestItem";
 
-export default function VolunteerDisplay(props) {
+export default function VolunteerRequestList(props) {
   const [listItem, setListItem] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function VolunteerDisplay(props) {
 
   const makeRequestList = listItem.map((response) => {
     return (
-      <VolunteerDisplayList
+      <VolunteerRequestItem
         key={response.id}
         posted_by={response.posted_by}
         date_of_request={response.date_of_request}

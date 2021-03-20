@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
-export default function VolunteerDisplayList(props) {
+export default function VolunteerRequestItem(props) {
   //get sessionID to insert into table and use in button on submit
 
   const handleSubmit = (evt) => {

@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
 
-export default function UserRequestDisplayList(props) {
+export default function UserRequestList(props) {
   
   console.log('props VolDispList ', props)
   
