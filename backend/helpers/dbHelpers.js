@@ -24,7 +24,7 @@ module.exports = (db) => {
   ) => {
     //console.log(`adding user`)
     const query = {
-      text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code,lat,long, belongs_to) VALUES ($1, $2, $3, $4, $5,$6,$7,$/,$9) RETURNING *`,
+      text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code,lat,long, belongs_to) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9) RETURNING *`,
       values: [
         fullName,
         age,

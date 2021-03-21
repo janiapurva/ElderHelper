@@ -28,12 +28,9 @@ export default function VolunteerRequestItem(props) {
   }, [sessionIDTOUSE]);
 
   return (
-    // <p>{makeRequestList}</p>
-    //<div> HI </div>
     <VolunteerRequestList
       listItem={listItem}
       sessionID={sessionIDTOUSE}
-      // acceptedRequestList={acceptedRequestList}
     />
   );
 }
