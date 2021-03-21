@@ -5,42 +5,33 @@ import PopupButton from "./PopupButton";
 import PopupContact from "./PopupContact";
 import VolunteerDisplay from "./VolunteerDisplay";
 
-
-
-
 export default function HomeVolunteers() {
-
   const [token, setToken] = useState(null);
 
+  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState(null);
 
-  useEffect(()=>{
-
+  useEffect(() => {
     const data = JSON.parse(localStorage.getItem("token"));
-    
-    
-    if (!data){
+    console.log("data lat and long", data);
 
+    if (!data) {
       setToken(null);
-
     } else {
-
       setToken(data.full_name);
-      
-      
-
+      setLat(data.user_lat);
+      setLong(data.user_long);
     }
-
-
-
-
-  }, [])
-
-
+  }, []);
+  // console.log("check this out!!!!", lat, long);
+// const loadingLocation = !(lat)|| !(long) 
   return (
     <div>
       <MasterNavbar headerName={token} />
-      <VolunteerDisplay/>
-      
+
+      {lat && long && (
+        <VolunteerDisplay headerName={token} lat={lat} long={long} />
+      )}
     </div>
   );
 }

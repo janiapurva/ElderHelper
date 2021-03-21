@@ -22,11 +22,40 @@ function RequesterMarker(props) {
 }
 
 export default function LeafletMap(props) {
+  
+
+  let center = [parseFloat(props.centerlat), parseFloat(props.centerlong)];
+
+  const [elderList, setElderList] = useState([]);
+  useEffect(() => {
+    // console.log("inside use");
+
+    axios
+      .get("http://localhost:8000/api/users")
+
+      .then((res) => {
+        console.log("line 35 leaflet", res.data);
+        setElderList(res.data);
+        // console.log("this is rsponse", res);
+      })
+      .catch((err) => {
+        console.log("error leaflet line 40", err);
+      });
+  }, []);
+  // console.log("check this out", elderList);
+
+  // const trythisout = elderList.map((requester) => (
+  //   <RequesterMarker
+  //     position={[parseFloat(requester.lat), parseFloat(requester.long)]}
+  //     description={requester.full_name}
+  //   />
+  // ));
+
   return (
     <div id="mapid">
       <MapContainer
         abc={123}
-        center={[43.779699, -79.44734]}
+        center={center}
         zoom={13}
         scrollWheelZoom={true}
       >
@@ -34,8 +63,8 @@ export default function LeafletMap(props) {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[43.779699, -79.44734]}>
-          <Popup>this is you</Popup>
+        <Marker position={center}>
+          <Popup> this is you {props.centername}</Popup>
         </Marker>
         {/* <Marker position={[45.779699, -79.44734]}>
           <Popup>this is you</Popup>
@@ -51,6 +80,15 @@ export default function LeafletMap(props) {
           position={[45.779699, -79.44734]}
           description={"toronto"}
         />
+
+        {elderList.map((requester) => (
+          <RequesterMarker
+            position={[parseFloat(requester.lat), parseFloat(requester.long)]}
+            description={requester.full_name}
+          />
+        ))}
+        {/* {trythisout} */}
+
         {/* {props.requesters.map((requester) => (
           <Marker position={[parseFloat(requester.lat), parseFloat(requester.long)]}>
             <Popup>{requester.task_description}</Popup>

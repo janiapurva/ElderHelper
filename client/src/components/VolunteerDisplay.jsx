@@ -24,30 +24,19 @@ export default function VolunteerDisplay(props) {
   //   setData(res.data);
   //   // console.log("this is rsponse", res);
   // });
-
+  // console.log("in volunteer display", props);
   useEffect(() => {
-    console.log("inside use");
-
     axios
       .get("http://localhost:8000/requests")
 
       .then((res) => {
-        console.log("message 40 VDx", res.data);
         setListItem(res.data);
-        // console.log("this is rsponse", res);
       })
       .catch((err) => {
         console.log("error - volunteerDijsplay.jsx -29", err);
       });
   }, []);
-  console.log("show me the stuff", listItem);
-  console.log(listItem);
 
-  //
-  // console.log('this is',requests)
-
-  // console.log('this is state.listItem',state.listItem)
-console.log('check this out',listItem)
   const makeRequestList = listItem.map((response) => {
     return (
       <div>
@@ -58,13 +47,15 @@ console.log('check this out',listItem)
           task_description={response.task_description}
           task_postal_code={response.task_postal_code}
           date_posted={response.date_posted}
+          fullilled_by_volunterfullilled_by_volunter={
+            response.fullilled_by_volunterfullilled_by_volunter
+          }
         />
 
         {/* <LeafletMap 
         requesters ={listItem}
         
         /> */}
-
       </div>
     );
     //}
@@ -77,10 +68,16 @@ console.log('check this out',listItem)
   //     </div>
   //   );
   // });
+  
   return (
     <p>
       {makeRequestList}
-      <LeafletMap />
+      <LeafletMap
+        centername={props.headerName}
+        centerlat={props.lat}
+        centerlong={props.long}
+        volunteerPosition={props.latlong}
+      />
     </p>
   );
 }

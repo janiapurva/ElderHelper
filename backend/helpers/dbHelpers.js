@@ -7,7 +7,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log(result.rows);
+        // console.log(result.rows);
         return result.rows;
       })
       .catch((err) => err);
@@ -21,7 +21,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log(result.rows);
+        // console.log(result.rows);
         return result.rows;
       })
       .catch((err) => err);
@@ -34,7 +34,7 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log("result from query dbhelpers", result);
+        // console.log("result from query dbhelpers", result);
         return result.rows;
       })
       .catch((err) => console.log("line 33 dbhelpers", err));
