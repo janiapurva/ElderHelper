@@ -9,6 +9,8 @@ CREATE TABLE "users_elders" (
   "password" varchar,
   "phone_number" varchar,
   "postal_code" varchar,
+  "lat" VARCHAR,
+  "long" VARCHAR,
   "belongs_to" varchar,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

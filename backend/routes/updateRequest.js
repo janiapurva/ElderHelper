@@ -6,21 +6,15 @@ module.exports = ({ updateRequest }) => {
   router.post("/", (req, res) => {
     //console.log("hello - inside volunteer accept requests", req.body);
 
-    console.log('req.body.AAAA',req.body.updateRequestObjVolunteerAccept)
+    // console.log('req.body.AAAA',req.body.updateRequestObjVolunteerAccept)
 
     const {
       fullilled_by_volunter,
       status,
-      requestID
+      requestID,
     } = req.body.updateRequestObjVolunteerAccept;
 
-    
-
-    updateRequest(
-      fullilled_by_volunter,
-      status,
-      requestID
-    )
+    updateRequest(fullilled_by_volunter, status, requestID)
       .then((results) => {
         console.log(
           "volunteer requests - update status to accept .THEN",
@@ -32,12 +26,7 @@ module.exports = ({ updateRequest }) => {
         //THIS IS WHERE WE ARE AT
         //record has been updated in table with correct user and volunteer id
 
-        //need another component to shows accepted/completed requests 
-
-        
-
-
-
+        //need another component to shows accepted/completed requests
       })
       .catch((err) =>
         res.json({

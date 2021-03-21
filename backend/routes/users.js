@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+///THIS IS FROM FRANCIS, NOT OUR WORK AND WE DONT USE IT
+
 module.exports = ({
     getUsers,
     getUserByEmail,
