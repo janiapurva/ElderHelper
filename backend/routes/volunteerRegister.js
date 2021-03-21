@@ -64,12 +64,12 @@ module.exports = ({ addVolunteerUser }) => {
                 const full_name = users.full_name;
 
                 const user_id = users.id;
-                const user_lat= users.lat
-                const user_long= users.long
+                const user_lat = users.lat;
+                const user_long = users.long;
 
                 //  console.log('token - register.js', token)
                 //console.log('REGISTER.js', res.send(token,full_name ));
-                res.send({token, full_name, user_id, user_lat, user_long});
+                res.send({ token, full_name, user_id, user_lat, user_long });
               } catch (err) {
                 console.log(err);
               }

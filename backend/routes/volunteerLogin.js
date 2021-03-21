@@ -6,7 +6,6 @@ const {
 } = require("../helpers/passwordHelpers");
 
 module.exports = ({ getVolunteerByEmail }) => {
-  
   router.post("/", (req, res) => {
     // console.log('isnide login post req', req.body)
 
@@ -34,23 +33,19 @@ module.exports = ({ getVolunteerByEmail }) => {
 
         let token;
         if (comparePassword(req.body.checkUser.password, userStoredPw)) {
-
-          token = generateToken(users.id );
+          token = generateToken(users.id);
 
           const full_name = users.full_name;
 
           const user_id = users.id;
-          const user_lat= users.lat
-          const user_long= users.long
+          const user_lat = users.lat;
+          const user_long = users.long;
 
-          console.log('users volunteer long46', users)
+          console.log("users volunteer long46", users);
           //  console.log('token - register.js', token)
           //console.log('REGISTER.js', res.send(token,full_name ));
-          res.send({token, full_name, user_id, user_lat, user_long});
-          console.log('line50 volunteerlogin',users)
-
-
-
+          res.send({ token, full_name, user_id, user_lat, user_long });
+          console.log("line50 volunteerlogin", users);
         } else {
           console.log("probably error");
         }

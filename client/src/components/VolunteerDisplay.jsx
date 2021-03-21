@@ -7,25 +7,7 @@ import LeafletMap from "./LeafletMap";
 import RequestMap from "./RequestMap";
 export default function VolunteerDisplay(props) {
   const [listItem, setListItem] = useState([]);
-  //console.log("this is response line 14", state.listItem["0"]);
 
-  // setRequests(state => ({
-  //   request: {
-  //     ...state.requests,
-  //     listItem:res
-  //   },
-  // }))
-
-  // setRequests(newRequests) {
-  //   setRequests({ requests.listItem: [...requests, newRequests]})
-  // }
-
-  // axios.post("http://localhost:8000/requests").then((res) => {
-  //   console.log("message", res);
-  //   setData(res.data);
-  //   // console.log("this is rsponse", res);
-  // });
-  // console.log("in volunteer display", props);
   useEffect(() => {
     axios
       .get("http://localhost:8000/requests")
