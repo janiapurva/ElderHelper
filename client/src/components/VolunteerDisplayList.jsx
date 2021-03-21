@@ -14,6 +14,8 @@ export default function VolunteerDisplayList(props) {
           <th>Description</th>
           <th>Postal Code</th>
           <th>Date Posted</th>
+          <th>lat</th>
+          <th>long</th>
           <th>FullFilled by</th>
           <th>Accept</th>
         </tr>
@@ -26,6 +28,8 @@ export default function VolunteerDisplayList(props) {
           <td>{props.task_description}</td>
           <th>{props.task_postal_code}</th>
           <th>{props.date_posted}</th>
+          <th>{props.lat}</th>
+          <th>{props.long}</th>
           <th>{props.fullilled_by_volunterfullilled_by_volunter}</th>
           <Button variant="outline-success">Accept</Button>{" "}
         </tr>

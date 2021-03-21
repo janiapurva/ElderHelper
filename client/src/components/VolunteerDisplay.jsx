@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import VolunteerDisplayList from "./VolunteerDisplayList";
 import LeafletMap from "./LeafletMap";
+import RequestMap from "./RequestMap";
 export default function VolunteerDisplay(props) {
   const [listItem, setListItem] = useState([]);
   //console.log("this is response line 14", state.listItem["0"]);
@@ -31,13 +32,17 @@ export default function VolunteerDisplay(props) {
 
       .then((res) => {
         setListItem(res.data);
+        console.log("hi from line 34", res);
       })
       .catch((err) => {
         console.log("error - volunteerDijsplay.jsx -29", err);
       });
   }, []);
+  console.log("show me the money", listItem);
+  console.log("this message");
 
   const makeRequestList = listItem.map((response) => {
+    console.log("this is response", response);
     return (
       <div>
         <VolunteerDisplayList
@@ -46,6 +51,8 @@ export default function VolunteerDisplay(props) {
           date_of_request={response.date_of_request}
           task_description={response.task_description}
           task_postal_code={response.task_postal_code}
+          lat={response.lat}
+          long={response.long}
           date_posted={response.date_posted}
           fullilled_by_volunterfullilled_by_volunter={
             response.fullilled_by_volunterfullilled_by_volunter
@@ -68,7 +75,7 @@ export default function VolunteerDisplay(props) {
   //     </div>
   //   );
   // });
-  
+
   return (
     <p>
       {makeRequestList}
@@ -76,7 +83,11 @@ export default function VolunteerDisplay(props) {
         centername={props.headerName}
         centerlat={props.lat}
         centerlong={props.long}
-        volunteerPosition={props.latlong}
+      />
+      <RequestMap
+        centername={props.headerName}
+        centerlat={props.lat}
+        centerlong={props.long}
       />
     </p>
   );

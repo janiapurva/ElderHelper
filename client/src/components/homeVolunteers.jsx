@@ -23,6 +23,9 @@ export default function HomeVolunteers() {
       setLong(data.user_long);
     }
   }, []);
+  console.log('home volunteer',lat)
+  console.log('long',long)
+
   // console.log("check this out!!!!", lat, long);
 // const loadingLocation = !(lat)|| !(long) 
   return (
