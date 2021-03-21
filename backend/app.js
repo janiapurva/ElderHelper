@@ -10,23 +10,20 @@ const { Auth } = require("./db/middleware/Auth");
 
 // let indexRouter = require('./routes/index');
 
-//get routes in this file 
+//USER (i.e. elder i.e. person asking for help)
 let usersRouter = require('./routes/users');
-
-//get routes in this file 
 let usersLogin = require('./routes/login');
-
-
-
-// routes to make  new request
 let newRequest = require('./routes/newRequest');
 let usersRegister = require("./routes/register");
+let userPastRequests = require("./routes/userPastRequests")
+
+//Volunteer (i.e. person providing assistance)
 let volunteerRegister = require("./routes/volunteerRegister");
 let volunteerLogin = require("./routes/volunteerLogin");
 let requests = require("./routes/requests")
 let volunteerRequests = require("./routes/volunteerRequests")
-let userPastRequests = require("./routes/userPastRequests")
 let updateRequestVolunteerAccept = require("./routes/updateRequest")
+let volunteerAcceptedRequests = require("./routes/volunteerAcceptedRequests")
 const db = require('./db');
 
 const dbHelpers = require("./helpers/dbHelpers")(db);
@@ -52,6 +49,7 @@ app.use('/userPastRequests', userPastRequests(dbHelpers), Auth.verifyToken);
 app.use('/volunteerRequests', volunteerRequests(dbHelpers), Auth.verifyToken);
 app.use('/updateRequest', updateRequestVolunteerAccept(dbHelpers), Auth.verifyToken);
 
+app.use('/volunteerAcceptedRequests', volunteerAcceptedRequests(dbHelpers), Auth.verifyToken);
 
 
 

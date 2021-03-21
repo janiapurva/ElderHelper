@@ -50,6 +50,21 @@ const getPendingRequests = () => {
       .catch((err) => console.log("line 33 dbhelpers", err));
   };
 /////////////////////////////////////////////////
+//Add this function to get pending requests to show on homeVolunteers
+const getAcceptedRequestsForVolunteer = (id) => {
+  const query = {
+    text: "SELECT * FROM requests WHERE status = 'accepted' and fullilled_by_volunter = $1;", values: [id],
+  };
+  return db
+    .query(query)
+    .then((result) => {
+      console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);  
+      return result.rows
+
+    })
+    .catch((err) => console.log("line 33 dbhelpers", err));
+};
+/////////////////////////////////////////////////
   const getUserPastRequests = (id) => {
     const query = {
       text: "SELECT * FROM requests WHERE posted_by = $1;", values: [id],
@@ -263,6 +278,7 @@ const updateRequest = (
     getUserPastRequests,
     getVolunteerByEmail,
     getPendingRequests,
-    updateRequest
+    updateRequest,
+    getAcceptedRequestsForVolunteer
   };
 };

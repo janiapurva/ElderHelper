@@ -118,7 +118,7 @@ export default function SignUpUsers(props) {
             name="fullName"
             onChange={handleFullNameChange}
             className="form-control"
-            placeholder="Enter email"
+            placeholder="Enter name"
           />
         </div>
 

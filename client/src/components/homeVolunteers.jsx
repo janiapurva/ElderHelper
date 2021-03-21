@@ -3,7 +3,7 @@ import NavBar from "./NavBarLoggedOut";
 import MasterNavbar from "./MasterNavbar";
 import PopupButton from "./PopupButton";
 import PopupContact from "./PopupContact";
-import VolunteerRequestList from "./VolunteerRequestList";
+import VolunteerAcceptedRequestItem from "./VolunteerAcceptedRequestItem";
 import VolunteerRequestItem from "./VolunteerRequestItem";
 
 export default function HomeVolunteers() {
@@ -20,12 +20,12 @@ export default function HomeVolunteers() {
     } else {
       setToken(data.full_name);
       setSessionId(data.user_id);
-      console.log('data - homeVolunteers.jsx',data)
+      //console.log('data - homeVolunteers.jsx',data)
     }
 
     setTimeout(() => {
 
-      console.log("sessionID after setting + timeout - homeVolunteers.jsx", sessionId);
+      //console.log("sessionID after setting + timeout - homeVolunteers.jsx", sessionId);
     }, 5000);
 
   }, [sessionId, token]);
@@ -34,6 +34,7 @@ export default function HomeVolunteers() {
       <div>
         <MasterNavbar headerName={token} />
         <VolunteerRequestItem sessionID={sessionId} />
+        <VolunteerAcceptedRequestItem sessionID={sessionId} />
       </div>
     );
 

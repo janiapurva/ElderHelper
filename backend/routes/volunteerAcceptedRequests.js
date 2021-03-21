@@ -1,14 +1,19 @@
 const express = require("express");
 const router = express.Router();
 //gets pending requests to show when volunteers login
-module.exports = ({ getPendingRequests, getAcceptedRequestsForVolunteer }) => {
+module.exports = ({ getAcceptedRequestsForVolunteer }) => {
+
+
+
   /* GET users listing. */
-  router.get("/", (req, res) => {
-    console.log("hello - inside get volunteer requests", req.body);
-    getPendingRequests()
-    // getAcceptedRequestsForVolunteer()
+  router.post("/", (req, res) => {
+    const id = req.body.sessionID
+    // console.log('PLEASEEEE', req.body.sessionID)
+
+    //console.log("hello - inside get volunteer requests");
+    getAcceptedRequestsForVolunteer(id)
       .then((results) => {
-        //console.log("volunteer requests - users - 11", results);
+        console.log("INSIDE .THEN after getting accepted reqests", results);
         //results contains re
         res.json(results);
       })

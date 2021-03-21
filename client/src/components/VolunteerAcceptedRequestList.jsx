@@ -5,15 +5,16 @@ import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 
 function RequestTablei(props) {
-  //console.log("props VolDispList ", props);
+  console.log("props line 8 from volunteer accepted list ", props);
 
   const [successfulForm, setSuccessfulForm] = useState("");
+  
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     //console.log("inside accept request");
 
-    let updateOfStatus = "accepted";
+    let updateOfStatus = "complete";
 
     const geti = () => {
       let returnObj = {};
@@ -26,32 +27,18 @@ function RequestTablei(props) {
           requestID: props.requestID,
         };
       }
-      //console.log("returnObj", returnObj);
+      console.log("returnObj", returnObj);
       return returnObj;
     };
 
     let updateRequestObjVolunteerAccept = geti();
 
-    // console.log(
-    //   "update object to send back to db",
-    //   updateRequestObjVolunteerAccept
-    // );
+    console.log(
+      "update object to send back to db",
+      updateRequestObjVolunteerAccept
+    );
 
-    // useEffect((),[])
 
-    axios
-      .post("http://localhost:8000/updateRequest", {
-        updateRequestObjVolunteerAccept,
-      })
-      .then((res) => {
-        //console.log("inside .then success update ");
-        //NOW WHAT - START HERE
-
-        setSuccessfulForm(true);
-      })
-      .catch((err) => {
-        console.log("Error ReqBox 54", err);
-      });
   };
 
   return (
@@ -66,7 +53,7 @@ function RequestTablei(props) {
         <td>{props.fullilled_by_volunter}</td>
         <td>{props.status}</td>
         <Button onClick={handleSubmit} variant="success" type="submit">
-          Accept
+          Completed
         </Button>{" "}
       </tr>
     </tbody>
@@ -75,9 +62,11 @@ function RequestTablei(props) {
 
 export default function VolunteerRequestList(props) {
   return (
+    // <p> HI </p>
+
     <Table striped bordered hover variant="dark">
       <thead>
-        <h4>Open Requests</h4>
+        <h4>Accepted and Completed Requests</h4>
         <tr>
           <th>Request #</th>
           <th>Posted by</th>
@@ -91,7 +80,7 @@ export default function VolunteerRequestList(props) {
         </tr>
       </thead>
 
-      {props.listItem.map((response) => (
+      {props.acceptedRequestList.map((response) => (
         <RequestTablei
           key={response.id}
           requestID={response.id}

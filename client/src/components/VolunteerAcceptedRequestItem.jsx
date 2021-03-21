@@ -2,25 +2,38 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import VolunteerRequestList from "./VolunteerRequestList";
+import VolunteerAcceptedRequestList from "./VolunteerAcceptedRequestList";
 
 export default function VolunteerRequestItem(props) {
   const [listItem, setListItem] = useState([]);
-  //console.log('Hello', props.sessionID)
+  console.log('Hello inside VOLReqItemAccptedReq ', props.sessionID)
   const sessionID = { sessionID: props.sessionID };
   //console.log("sessionID - userreqitem line11", sessionID);
   const sessionIDTOUSE = sessionID.sessionID;
   //console.log("sessionIDTOUSE - VOLEreqitem line14", sessionIDTOUSE);
-  const sessionIDForAcceptedReqs = { sessionID: props.sessionID };
-  const [acceptedRequestList, SetacceptedRequestList] = useState([]);
+  const [acceptedRequestList, SetacceptedRequestList] =useState([])
+  
+  /* <p>{makeRequestList}</p> */
+  // }
+  // let returnObjForAcceptedVolRequests = {
+  //   sessionIDTOUSE:sessionIDTOUSE
+  // };
+  
+  console.log('VOLACC - returnObjForAcceptedVolRequests', {sessionIDTOUSE})
+ 
 
+
+  //Volubteer accepted requests
   useEffect(() => {
     axios
-      .get("http://localhost:8000/volunteerRequests")
+      .post("http://localhost:8000/volunteerAcceptedRequests", {
+        sessionID: props.sessionID
+      })
       .then((res) => {
         console.log("inside VOLReqItem after succsu call - line 31", res);
 
-        setListItem(res.data);
+        SetacceptedRequestList(res.data);
+        console.log('acceptedRequestList', acceptedRequestList)
       })
       .catch((err) => {
         console.log("error - userReqItem.jsx -36", err);
@@ -29,11 +42,7 @@ export default function VolunteerRequestItem(props) {
 
   return (
     // <p>{makeRequestList}</p>
-    //<div> HI </div>
-    <VolunteerRequestList
-      listItem={listItem}
-      sessionID={sessionIDTOUSE}
-      // acceptedRequestList={acceptedRequestList}
-    />
+    // <div> HI </div>
+    <VolunteerAcceptedRequestList acceptedRequestList={acceptedRequestList} sessionID={sessionIDTOUSE} />
   );
 }
