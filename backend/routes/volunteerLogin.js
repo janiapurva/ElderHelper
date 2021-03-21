@@ -47,6 +47,7 @@ module.exports = ({ getVolunteerByEmail }) => {
           //  console.log('token - register.js', token)
           //console.log('REGISTER.js', res.send(token,full_name ));
           res.send({token, full_name, user_id, user_lat, user_long});
+          console.log('line50 volunteerlogin',users)
 
 
 
