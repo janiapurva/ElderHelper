@@ -23,7 +23,7 @@ module.exports = ({ getVolunteerByEmail }) => {
   
     //destructure values from form field.
     const email_address = req.body.checkUser.email_address;
-    console.log(email_address)
+    //console.log(email_address)
 
 
     //pass the values from form to addUser which inserts new user to DB

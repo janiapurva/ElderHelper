@@ -10,6 +10,7 @@ import VolunteerLogin from "./components/VolunteerLogin"
 import VolunteerRegister from "./components/VolunteerRegister"
 import HomeVolunteers from"./components/homeVolunteers"
 import VolunteerRequestList from"./components/VolunteerRequestList"
+import LandingPage from './components/LandingPage'
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={homeUsers} />
+          <Route exact path="/" component={LandingPage} />
           <Route path="/sign-in" component={Login} />
           <Route path="/sign-up" component={Register} />
           <Route path="/homeUsers" component={homeUsers} />

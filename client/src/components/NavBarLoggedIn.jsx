@@ -11,7 +11,7 @@ export default function NavBarLoggedIn(props) {
   const history = useHistory();
 
   function logout() {
-    history.push("/sign-in");
+    history.push("/");
     localStorage.removeItem("token");    
   }
 

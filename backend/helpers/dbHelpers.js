@@ -129,7 +129,7 @@ const getVolunteerByEmail = (email_address) => {
   return db
     .query(query)
     .then((result) => {
-      console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);  
+      //console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);  
       return result.rows
       
 
@@ -219,28 +219,21 @@ const getVolunteerByEmail = (email_address) => {
 
 /////////////////////////////////////////////////
 const updateRequest = (
-
-  requestID,
-  posted_by,
-  date_of_request,
-  task_description,
-  task_postal_code,
-  date_posted,
+  ////////////////// STOP CTRL + Z NOW /////////////////////
   fullilled_by_volunter,
-  status
+  status,
+  requestID
 ) => {
-  //console.log(`adding user`)
+  console.log(`adding user`)
+
+
   const query = {
-    text: `UPDATE requests SET posted_by = $1, date_of_request = $2, task_description = $3, task_postal_code = $4, date_posted = $5, fullilled_by_volunter = $6, status=$7 WHERE requests.id = ${requestID}  RETURNING *`,
+    text: `UPDATE requests SET fullilled_by_volunter = $1, status=$2 WHERE requests.id = $3  RETURNING *`,
     values: [
-      posted_by,
-      date_of_request,
-      task_description,
-      task_postal_code,
-      date_posted,
       fullilled_by_volunter,
-      status
-    ],
+      status,
+      requestID
+    ]
   };
 
   return db
@@ -248,11 +241,11 @@ const updateRequest = (
     .then((result) => {
       // console.log('id',result.rows[0].id)
       //what do I want to do after a successfull submission
-      // console.log(`isnide success ful promist from query res from add user /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
+       console.log(`UPDATE STATUS /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
       return result;
     })
     .catch((err) => {
-      console.log(`err on adduser: ${err}`);
+      console.log(`err on update status to accept: ${err}`);
       return err;
     });
 };

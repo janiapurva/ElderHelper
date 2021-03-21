@@ -4,28 +4,22 @@ const router = express.Router();
 module.exports = ({ updateRequest }) => {
   /* post to update request after volunteer accept listing. */
   router.post("/", (req, res) => {
-    console.log("hello - inside volunteer accept requests", req.body);
+    //console.log("hello - inside volunteer accept requests", req.body);
+
+    console.log('req.body.AAAA',req.body.updateRequestObjVolunteerAccept)
 
     const {
-      requestID,
-      posted_by,
-      date_of_request,
-      task_description,
-      task_postal_code,
-      date_posted,
       fullilled_by_volunter,
       status,
+      requestID
     } = req.body.updateRequestObjVolunteerAccept;
 
+    
+
     updateRequest(
-      requestID,
-      posted_by,
-      date_of_request,
-      task_description,
-      task_postal_code,
-      date_posted,
       fullilled_by_volunter,
-      status
+      status,
+      requestID
     )
       .then((results) => {
         console.log(
@@ -34,6 +28,16 @@ module.exports = ({ updateRequest }) => {
         );
         //results contains re
         res.json(results);
+
+        //THIS IS WHERE WE ARE AT
+        //record has been updated in table with correct user and volunteer id
+
+        //need another component to shows accepted/completed requests 
+
+        
+
+
+
       })
       .catch((err) =>
         res.json({

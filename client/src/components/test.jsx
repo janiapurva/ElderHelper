@@ -1,86 +1,91 @@
-import React, { useState } from "react";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
-import "../components/RequestBox.scss";
-import { Form, Button } from "react-bootstrap";
+function RequestTableData(props) {
+  return (
+    <tbody>
+      <tr>
+        <td>{props.requestID}</td>
+        <td>{props.posted_by}</td>
+        <td>{props.date_of_request}</td>
+        <td>{props.task_description}</td>
+        <td>{props.task_postal_code}</td>
+        <td>{props.date_posted}</td>
+        <td>{props.fullilled_by_volunter}</td>
+        <td>{props.status}</td>
+        <Button variant="success" type="submit">
+          Accept
+        </Button>{" "}
+      </tr>
+    </tbody>
+  );
+}
 
-import DatePicker from "react-datepicker";
+export default function VolunteerRequestList(props) {
+  console.log("props VolDispList ", props);
 
-import "react-datepicker/dist/react-datepicker.css";
+  const [successfulForm, setSuccessfulForm] = useState("");
 
-function RequestBox() {
-  const [day, setday] = useState("");
-  const [description, setdescription] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  
-  const { transcript, resetTranscript } = useSpeechRecognition();
-
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return null;
-  }
-
-  const onSubmit = (evt) => {
-    
+  const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log("inside accept request");
 
-    console.log(
-      day,
-      description,
-      postalCode
-    )
+    const volIdFromState = props.sessionID;
 
+    const getData = () => {
+      for (let i of props.listItem) {
+        // console.log('props.listItem[]iiiiiiiiiiiiii', i.id)
 
+        const returnObj = {
+          requestID: i.id,
+          userIDFromReq: i.posted_by,
+          date_of_request: i.date_of_request,
+          task_description: i.task_description,
+          task_postal_code: i.task_postal_code,
+          date_posted: i.date_posted,
+          status: "Accepted",
+        };
 
-    // const newRequest = {      
-    //   posted_by: id,//user_id we need from auth response
+        return returnObj;
+      }
+    };
+
+    let updateRequestObjVolunteerAccept = getData()
+
+    // const requestID = props.listItem[0].id
+    // const userIDFromReq = props.listItem[0].posted_by;
+    // console.log("----voleIDFromReq---", volIdFromState);
+    // const date_of_request = props.listItem[0].date_of_request;
+    // const task_description = props.listItem[0].task_description;
+    // const task_postal_code = props.listItem[0].task_postal_code;
+    // const date_posted = props.listItem[0].date_posted;
+    // const status = "accepted";
+
+    // const updateRequestObjVolunteerAccept = {
+    //   requestID:requestID,
+    //   posted_by: userIDFromReq, //user_id we need from auth response
     //   date_of_request: date_of_request, // from form
     //   task_description: task_description, //
     //   task_postal_code: task_postal_code,
-    //   date_posted: Date.now(),
-    //   status: 'pending'
+    //   date_posted: date_posted,
+    //   fullilled_by_volunter: volIdFromState,
+    //   status: status,
     // };
 
+    console.log(
+      "update object to send back to db",
+      updateRequestObjVolunteerAccept
+    );
 
-  }
+    // useEffect((),[])
 
-  return (
-    <Form className="requestBox">
-      <Form.Group
-        controlId="exampleForm.ControlInput1"
-        className="requestBox"
-      ></Form.Group>
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Date of Request</Form.Label>
-      </Form.Group>
-      <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            showTimeSelect
-            dateFormat="Pp"
-          />
-      <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Request Description</Form.Label>
-        <div>
-          <Button
-            variant="outline-success"
-            onClick={SpeechRecognition.startListening}
-          >
-            Start
-          </Button>{" "}
-          <Button variant="outline-dark" onClick={resetTranscript}>
-            Reset
-          </Button>{" "}
-          {/* <p>{transcript}</p> */}
-        </div>
-        <Form.Control as="textarea" rows={3} value={setdescription(transcript)} />
-        <Form.Label>Postal Code</Form.Label>
-        <Form.Control as="textarea" rows={1} value={setPostalCode(transcript)} />
-      </Form.Group>
+    axios
+      .post("http://localhost:8000/updateRequest", {
+        updateRequestObjVolunteerAccept,
+      })
+      .then((res) => {
+        console.log("inside .then success update ");
 
-      
-    </Form>
-  );
-}
-export default RequestBox;
+        setSuccessfulForm(true);
+      })
+      .catch((err) => {
+        console.log("Error ReqBox 54", err);
+      });
+  };
