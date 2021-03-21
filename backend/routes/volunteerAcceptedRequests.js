@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 //gets pending requests to show when volunteers login
-module.exports = ({ getAcceptedRequestsForVolunteer }) => {
+module.exports = ({ getAcceptedAndCompletedRequestsForVolunteer }) => {
 
 
 
@@ -11,7 +11,7 @@ module.exports = ({ getAcceptedRequestsForVolunteer }) => {
     // console.log('PLEASEEEE', req.body.sessionID)
 
     //console.log("hello - inside get volunteer requests");
-    getAcceptedRequestsForVolunteer(id)
+    getAcceptedAndCompletedRequestsForVolunteer(id)
       .then((results) => {
         console.log("INSIDE .THEN after getting accepted reqests", results);
         //results contains re

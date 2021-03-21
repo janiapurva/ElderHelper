@@ -51,14 +51,14 @@ const getPendingRequests = () => {
   };
 /////////////////////////////////////////////////
 //Add this function to get pending requests to show on homeVolunteers
-const getAcceptedRequestsForVolunteer = (id) => {
+const getAcceptedAndCompletedRequestsForVolunteer = (id) => {
   const query = {
-    text: "SELECT * FROM requests WHERE status = 'accepted' and fullilled_by_volunter = $1;", values: [id],
+    text: "SELECT * FROM requests WHERE status in ('accepted','complete') and fullilled_by_volunter = $1;", values: [id],
   };
   return db
     .query(query)
     .then((result) => {
-      console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);  
+      // console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);  
       return result.rows
 
     })
@@ -239,7 +239,7 @@ const updateRequest = (
   status,
   requestID
 ) => {
-  console.log(`adding user`)
+  console.log(`UPDATING STATUS TO COMPLETE`)
 
 
   const query = {
@@ -256,7 +256,7 @@ const updateRequest = (
     .then((result) => {
       // console.log('id',result.rows[0].id)
       //what do I want to do after a successfull submission
-       console.log(`UPDATE STATUS /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
+       console.log(`UPDATE STATUS COMEPLTE /WHAT DO YOU WANT TO RETURN: ${result.rows}`)
       return result;
     })
     .catch((err) => {
@@ -279,6 +279,6 @@ const updateRequest = (
     getVolunteerByEmail,
     getPendingRequests,
     updateRequest,
-    getAcceptedRequestsForVolunteer
+    getAcceptedAndCompletedRequestsForVolunteer
   };
 };
