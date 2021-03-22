@@ -143,17 +143,26 @@ module.exports = (db) => {
   };
 
   //TABLE --- requests ---
-
-  const getRequests = () => {
+  // Basically getUserRequests -- needs to get an id
+  const getRequests = (id) => {
     const query = {
-      text: "SELECT * FROM requests;",
+      text: `SELECT 
+        r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
+        FROM requests r 
+        LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
+        LEFT JOIN users_elders ue ON r.posted_by = ue.id  
+        WHERE status IN ('accepted', 'complete') and r.id = $1;`,
+      values: [id],
     };
-    return db.query(query).then((result) => {
-      // console.log('result from  getRequests query dbhelpers', result.rows);
-      return result.rows;
-    });
-    // .catch((err) => console.log("line 33 dbhelpers", err));
+    return db
+      .query(query)
+      .then((result) => {
+        // console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);
+        return result.rows;
+      })
+      .catch((err) => console.log("line 33 dbhelpers", err));
   };
+
   /////////////////////////////////////////////////
   //Add this function to get pending requests to show on homeVolunteers
   const getPendingRequests = () => {
@@ -177,8 +186,7 @@ module.exports = (db) => {
   //Add this function to get pending requests to show on homeVolunteers
   const getAcceptedAndCompletedRequestsForVolunteer = (id) => {
     const query = {
-      text:
-        `SELECT 
+      text: `SELECT 
         r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
         FROM requests r 
         LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
@@ -197,7 +205,12 @@ module.exports = (db) => {
   /////////////////////////////////////////////////
   const getUserPastRequests = (id) => {
     const query = {
-      text: "SELECT * FROM requests WHERE posted_by = $1;",
+      text: `SELECT 
+        r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
+        FROM requests r 
+        LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
+        LEFT JOIN users_elders ue ON r.posted_by = ue.id  
+        WHERE posted_by = $1;`,
       values: [id],
     };
     return db

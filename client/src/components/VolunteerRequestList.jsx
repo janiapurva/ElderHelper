@@ -90,7 +90,7 @@ export default function VolunteerRequestList(props) {
           {/* <th>lat</th>
           <th>long</th> */}
 
-          <th>Volunteer ID</th>
+          <th>Volunteer</th>
           <th>Status</th>
           <th>Accept Request</th>
         </tr>

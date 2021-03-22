@@ -32,7 +32,7 @@ export default function LeafletMap(props) {
    // console.log("inside use");
  
    axios
-     .get("http://localhost:8000/api/users")
+     .get("http://localhost:8000/users")
  
      .then((res) => {
        console.log("line 35 leaflet", res.data);
