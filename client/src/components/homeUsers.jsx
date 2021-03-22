@@ -30,7 +30,7 @@ export default function HomeUsers() {
     <div>
       <MasterNavbar headerName={token} />
       <PopupButton sessionID={sessionId} />
-      <PopupContact />
+      <PopupContact sessionID={sessionId} />
       <UserRequestItem sessionID={sessionId}/>
       
     </div>

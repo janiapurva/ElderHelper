@@ -283,9 +283,9 @@ module.exports = (db) => {
       .then((result) => {
         // console.log('id',result.rows[0].id)
         //what do I want to do after a successfull submission
-        console.log(
-          `UPDATE STATUS COMEPLTE /WHAT DO YOU WANT TO RETURN: ${result.rows}`
-        );
+        // console.log(
+        //   `UPDATE STATUS COMEPLTE /WHAT DO YOU WANT TO RETURN: ${result.rows}`
+        // );
         return result;
       })
       .catch((err) => {
@@ -294,6 +294,21 @@ module.exports = (db) => {
       });
   };
 
+  /////////////////////////////////////////////////
+
+  const getUsersRelatives = (id) => {
+    console.log('inside get user relatives')
+
+    const query = {
+      text: "SELECT * FROM users_relatives WHERE elder_id = $1",
+      values: [id],
+    };
+
+    return db.query(query).then((result) => {
+      return result.rows;
+    });
+    // .catch((err) => err);
+  };
   /////////////////////////////////////////////////
 
   return {
@@ -309,5 +324,6 @@ module.exports = (db) => {
     getPendingRequests,
     updateRequest,
     getAcceptedAndCompletedRequestsForVolunteer,
+    getUsersRelatives
   };
 };

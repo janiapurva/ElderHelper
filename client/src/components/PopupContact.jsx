@@ -7,7 +7,9 @@ import ContactCard from "./ContactCard"
 
 
 
-export default function PopupContact (){
+export default function PopupContact (props){
+
+
 
   const [show, setShow] = useState(false);
 
@@ -28,7 +30,7 @@ export default function PopupContact (){
           <Modal.Title>My contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ContactCard/>
+          <ContactCard sessionID={props.sessionID} />
           </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

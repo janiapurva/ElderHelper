@@ -4,8 +4,8 @@ const router = express.Router();
 module.exports = ({ getRequests }) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
-    //console.log('hello')
-    getRequests()
+    console.log('hello', )
+    getRequests(id)
       .then((results) => {
         //console.log('users - 11', users)
         //results contains re
