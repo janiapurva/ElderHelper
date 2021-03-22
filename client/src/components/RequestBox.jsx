@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -12,13 +12,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from "react-router";
 
 export default function RequestBox(props) {
-
-
   // const [day, setday] = useState("");
-  const [description, setdescription] = useState("");
+  
+  let [description, setdescription] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [successfulForm, setSuccessfulForm] = useState("");
+  const [speech , setSpeech] = useState();
 
   const { transcript, resetTranscript } = useSpeechRecognition();
 
@@ -27,7 +27,20 @@ export default function RequestBox(props) {
   const handleDescription = (evt) => setdescription(evt.target.value);
   const handlePostalCode = (evt) => setPostalCode(evt.target.value);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow(!show);
+
+//TO ACTIVATE SPEECH DESK
+  // description = transcript
+  
+
+
+useEffect(() => {
+  setdescription(transcript)
+  
+}, [transcript])
+
+
+
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
@@ -35,6 +48,7 @@ export default function RequestBox(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    props.setHeader("Request Submitted")
 
     //console.log("Hi - in req submit");
     // console.log('props.user_id - RequestBox.jsx', props.sessionID)
@@ -81,7 +95,6 @@ export default function RequestBox(props) {
       status: "pending",
     };
 
-    // console.log('newRequest - REQBOXs', newRequest)
 
     axios
       .post("http://localhost:8000/newRequest", { newRequestObj })
@@ -131,7 +144,8 @@ export default function RequestBox(props) {
         {/* <Form.Control as="textarea" rows={3} value={transcript} /> */}
         <Form.Control
           as="textarea"
-          value={description}
+          value={description} 
+          // value={transcript}
           onChange={handleDescription}
           rows={3}
         />
@@ -142,7 +156,7 @@ export default function RequestBox(props) {
           onChange={handlePostalCode}
           rows={1}
         />
-        <Button variant="success" type="submit">
+        <Button variant="success" type="submit" onClick={handleClose}>
           Submit
         </Button>{" "}
       </Form.Group>
