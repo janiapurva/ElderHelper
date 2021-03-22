@@ -54,20 +54,22 @@ module.exports = (db) => {
   //////////////////////////////////////////////////////
   const getUserByEmail = (email_address) => {
     const query = {
-      text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
+      text: `SELECT * FROM users_elders WHERE email_address = $1;`,
       values: [email_address],
     };
-    return db
-      .query(query)
-      .then((result) => {
-        console.log(
-          "result from  getUserByEmail query dbhelpers  ",
-          email_address,
-          result
-        );
+    return db.query(query).then((result) => {
+      // console.log(
+      //   "result from  getUserByEmail query dbhelpers  ",
+      //   email_address,
+      //   result
+      // );
+      if (result.rows.length < 0) {
+        console.log("ERROR, emaild does not exist");
+      } else {
         return result.rows[0];
-      })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      }
+    });
+    //.catch((err) => console.log("line 33 dbhelpers", err));
   };
 
   //TABLE --- users_volunteers ---
@@ -297,7 +299,7 @@ module.exports = (db) => {
   /////////////////////////////////////////////////
 
   const getUsersRelatives = (id) => {
-    console.log('inside get user relatives')
+    console.log("inside get user relatives");
 
     const query = {
       text: "SELECT * FROM users_relatives WHERE elder_id = $1",
@@ -324,6 +326,6 @@ module.exports = (db) => {
     getPendingRequests,
     updateRequest,
     getAcceptedAndCompletedRequestsForVolunteer,
-    getUsersRelatives
+    getUsersRelatives,
   };
 };
