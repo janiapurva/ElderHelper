@@ -158,7 +158,12 @@ module.exports = (db) => {
   //Add this function to get pending requests to show on homeVolunteers
   const getPendingRequests = () => {
     const query = {
-      text: "SELECT * FROM requests WHERE status = 'pending';",
+      text: `SELECT 
+      r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
+      FROM requests r 
+      LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
+      LEFT JOIN users_elders ue ON r.posted_by = ue.id  
+      WHERE status IN ('pending') `,
     };
     return db
       .query(query)
@@ -173,7 +178,12 @@ module.exports = (db) => {
   const getAcceptedAndCompletedRequestsForVolunteer = (id) => {
     const query = {
       text:
-        "SELECT * FROM requests WHERE status in ('accepted','complete') and fullilled_by_volunter = $1;",
+        `SELECT 
+        r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
+        FROM requests r 
+        LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
+        LEFT JOIN users_elders ue ON r.posted_by = ue.id  
+        WHERE status IN ('accepted', 'complete') and fullilled_by_volunter = $1;`,
       values: [id],
     };
     return db
@@ -219,7 +229,8 @@ module.exports = (db) => {
         date_of_request,
         task_description,
         task_postal_code,
-        lat,long,
+        lat,
+        long,
         date_posted,
         fullilled_by_volunter,
         status,
