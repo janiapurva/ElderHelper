@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from "react-router";
 
+
 export default function RequestBox(props) {
   // const [day, setday] = useState("");
   
@@ -48,7 +49,7 @@ useEffect(() => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.setHeader("Request Submitted")
+    props.setHeader("Request Submitted ✅")
 
     //console.log("Hi - in req submit");
     // console.log('props.user_id - RequestBox.jsx', props.sessionID)
@@ -130,6 +131,7 @@ useEffect(() => {
       <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Request Description</Form.Label>
         <div>
+        
           <Button
             variant="outline-success"
             onClick={SpeechRecognition.startListening}
