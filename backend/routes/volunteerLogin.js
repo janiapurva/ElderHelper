@@ -26,7 +26,7 @@ module.exports = ({ getVolunteerByEmail }) => {
 
     //pass the values from form to addUser which inserts new user to DB
     getVolunteerByEmail(email_address).then((users) => {
-      //console.log('hi in .then AFTER getVolunteerByEmail')
+      console.log('hi in .then AFTER getVolunteerByEmail', users)
       //users pw from db
       const userStoredPw = users[0].password;
       //need to now compare values from user entered pw with

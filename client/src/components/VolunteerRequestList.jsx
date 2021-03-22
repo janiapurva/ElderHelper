@@ -63,8 +63,8 @@ function RequestTablei(props) {
         <td>{props.task_description}</td>
         <td>{props.task_postal_code}</td>
         <td>{props.date_posted}</td>
-        <td>{props.lat}</td>
-        <td>{props.long}</td>
+        {/* <td>{props.lat}</td>
+        <td>{props.long}</td> */}
         <td>{props.fullilled_by_volunter}</td>
         <td>{props.status}</td>
         <Button onClick={handleSubmit} variant="success" type="submit">
@@ -83,14 +83,14 @@ export default function VolunteerRequestList(props) {
         <tr>
           <th>Request #</th>
           <th>Posted by</th>
-          <th>Date Requested</th>
+          <th>Date Of Request</th>
           <th>Description</th>
           <th>Postal Code</th>
           <th>Date Posted</th>
-          <th>lat</th>
-          <th>long</th>
+          {/* <th>lat</th>
+          <th>long</th> */}
 
-          <th>Volunteer ID</th>
+          <th>Volunteer</th>
           <th>Status</th>
           <th>Accept Request</th>
         </tr>
@@ -105,8 +105,8 @@ export default function VolunteerRequestList(props) {
           task_description={response.task_description}
           task_postal_code={response.task_postal_code}
           date_posted={response.date_posted}
-          lat={response.lat}
-          long={response.long}
+          // lat={response.lat}
+          // long={response.long}
           fullilled_by_volunter={response.fullilled_by_volunter}
           status={response.status}
           sessionIDTOUSE={props.sessionID}
