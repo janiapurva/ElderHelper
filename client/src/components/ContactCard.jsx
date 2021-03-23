@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import emailjs from "emailjs-com";
 import { Card, Button } from "react-bootstrap";
-// import sendmail from "../sendmail";
-// import { init, send } from "emailjs-com";
+import sendmail from "../sendmail";
+import { init, send } from "emailjs-com";
 
-// init("user_8Wn7c8byh487oHW5iiqIT");
+init("user_8Wn7c8byh487oHW5iiqIT");
 
 // var sendmail = require('../sendmail')({silent: true})
 
@@ -29,12 +29,12 @@ function ContactList(props) {
       relativeTestEmail: relativeTestEmail,
     };
 
-    // emailjs.send('service_y8qrvyb', 'template_c5mcfdw', templateParams)
-    // .then(function(response) {
-    //    console.log('SUCCESS!', response.status, response.text);
-    // }, function(error) {
-    //    console.log('FAILED...', error);
-    // });
+    emailjs.send('service_y8qrvyb', 'template_c5mcfdw', templateParams)
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
 
     console.log("inside send emailhandle Sumit AFTER sendmail");
   };

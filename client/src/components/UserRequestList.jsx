@@ -24,8 +24,8 @@ export default function UserRequestList(props) {
   return (
     <Table className="elder-table" striped bordered hover variant="dark">
       <thead>
+        <h4>Your Requests</h4>
         <tr>
-          <h4>Your Requests</h4>
           <th>Request #</th>
 
           <th>Date Requested</th>
@@ -34,6 +34,8 @@ export default function UserRequestList(props) {
           <th>Date Posted</th>
           <th>Volunteer Name</th>
           <th>Status</th>
+          <th>Rate your Volunteer</th>
+          <th>Add to Volunteer to your Contacts?</th>
         </tr>
       </thead>
       {props.listItem.map((response) => (
