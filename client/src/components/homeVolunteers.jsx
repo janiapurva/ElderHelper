@@ -39,11 +39,12 @@ export default function HomeVolunteers() {
   return (
     <>
       <MasterNavbar headerName={token} />
-      <SideBarVolunteer/>
-      <VolunteerRequestItem sessionID={sessionId} />
+      <SideBarVolunteer sessionID={sessionId}
+      centername={token} centerlat={lat} centerlong={long}/>
+      {/* <VolunteerRequestItem sessionID={sessionId} />
       <VolunteerAcceptedRequestItem sessionID={sessionId} />
       {lat && long && <LeafletMap centername={token} centerlat={lat} centerlong={long} />}
-      {lat && long && <RequestMap centername={token} centerlat={lat} centerlong={long} />}
+      {lat && long && <RequestMap centername={token} centerlat={lat} centerlong={long} />} */}
     </>
   );
 }

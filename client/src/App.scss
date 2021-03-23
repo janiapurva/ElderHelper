@@ -1,10 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
-
 .App {
   text-align: center;
   background-color: pink;
   display: flex;
+  height: 100vh;
   flex-direction: column;
 }
 
@@ -37,8 +37,10 @@
 }
 
 #mapid {
-  align-items: center;
-  width: 100%;
+  padding-top: 100px;
+  align-self: center;
+  padding-left: 100px;
+  width: 50%;
 }
 .leaflet-container {
   height: 400px;
@@ -85,21 +87,32 @@
   width: 30%;
 }
 
-.nav-logged-in{
+.nav-logged-in {
+  font-size: 20px;
+  background-color: #e5e5f7;
+  opacity: 0.3;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 17px
+    ),
+    repeating-linear-gradient(#a313d255, #a313d2);
   height: 100px;
   padding-top: 40px;
   padding-bottom: 40px;
   justify-content: space-between;
-  margin-left: 160px;
+  margin-left: 275px;
+  
+  
 }
-.logout{
+.logout {
   margin-left: 40px;
   background-color: none;
 }
 /* The sidebar menu */
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
+   /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
@@ -107,6 +120,11 @@
   background-color: #111; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 200px;
+  
+  width: 15%;
+  height: 100vh;
+  background: #312450;
+  font-size: 0.65em;
 }
 
 /* The navigation menu links */
@@ -131,12 +149,42 @@
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
-.nav-logged-out{
+.nav-logged-out {
+  background-color: #e5e5f7;
+  opacity: 0.3;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 17px
+    ),
+    repeating-linear-gradient(#a313d255, #a313d2);
   height: 100px;
   padding-top: 40px;
   padding-bottom: 40px;
   justify-content: space-between;
+}
+.table-pending {
+  margin-top: 200px;
+  padding-top: 200px;
+  align-self: center;
+  width: 70%;
+}
+.elder-table {
+  margin-top: 200px;
+  padding-top: 200px;
+  align-self: center;
+  width: 70%;
+}
+.table-completed {
+  margin-top: 200px;
+  padding-top: 200px;
+  align-self: center;
+  width: 70%;
 }

@@ -2,14 +2,30 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+function RequestTable(props) {
+  return (
+    <tbody>
+      <tr>
+        <td>{props.id}</td>
 
+        <td>{props.date_of_request}</td>
+        <td>{props.task_description}</td>
+        <th>{props.task_postal_code}</th>
+        <th>{props.date_posted}</th>
+        <th>{props.fullilled_by_volunter}</th>
+        <th>{props.status}</th>
+      </tr>
+    </tbody>
+  );
+}
 export default function UserRequestList(props) {
-  console.log("props VolDispList ", props);
+  console.log("userRequestList props", props);
 
   return (
-    <Table striped bordered hover variant="dark">
+    <Table className="elder-table" striped bordered hover variant="dark">
       <thead>
         <tr>
+          <h4>Your Requests</h4>
           <th>Request #</th>
 
           <th>Date Requested</th>
@@ -20,18 +36,18 @@ export default function UserRequestList(props) {
           <th>Status</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>{props.id}</td>
-
-          <td>{props.date_of_request}</td>
-          <td>{props.task_description}</td>
-          <th>{props.task_postal_code}</th>
-          <th>{props.date_posted}</th>
-          <th>{props.fullilled_by_volunter}</th>          
-          <th>{props.status}</th>
-        </tr>
-      </tbody>
+      {props.listItem.map((response) => (
+        <RequestTable
+          key={response.id}
+          id={response.id}
+          date_of_request={response.date_of_request}
+          task_description={response.task_description}
+          task_postal_code={response.task_postal_code}
+          date_posted={response.date_posted}
+          fullilled_by_volunter={response.fullilled_by_volunter}
+          status={response.status}
+        />
+      ))}
     </Table>
   );
 }

@@ -5,15 +5,43 @@ import PopupButton from "./PopupButton";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import VolunteerAcceptedRequestItem from "./VolunteerAcceptedRequestItem";
+import VolunteerRequestItem from "./VolunteerRequestItem";
+import LeafletMap from "./LeafletMap";
+import RequestMap from "./RequestMap";
+import HomeVolunteers from "./homeVolunteers"
 
 export default function SideBarVolunteer(props) {
   console.log("this on is in sidebar", props);
+
+  const [active, setActive] = useState("one");
+
   return (
-    <div className="sidenav">
-      <a href="#">Past Request</a>
-      <a href="#">Add a new Contact</a>
-      <a href="#">Past Request</a>
-      <a href="#">Add a new Contact</a>
-    </div>
+    <>
+      <div className="sidenav">
+        <a href="#" onClick={() => setActive("one")}>
+          Landing Page
+        </a>
+        <a href="#" onClick={() => setActive("two")}>
+          Open Requests
+        </a>
+        <a href="#" onClick={() => setActive("three")}>
+          Completed Requests
+        </a>
+        <a href="#" onClick={() => setActive("four")}>
+          Elder location Map
+        </a>
+        <a href="#" onClick={() => setActive("five")}>
+          Request Map
+        </a>
+      </div><>
+      {/* {active === "one" && <HomeVolunteers/>} */}
+      {active === "two" && <VolunteerRequestItem sessionID ={props.sessionID}/>}
+      {active === "three" && <VolunteerAcceptedRequestItem sessionID ={props.sessionID}/>}
+      {active === "four" && <LeafletMap centername={props.centername} centerlat={props.centerlat} centerlong={props.centerlong}/>}
+      {active === "five" && <RequestMap centername={props.centername} centerlat={props.centerlat} centerlong={props.centerlong}/>}
+      
+      </>
+    </>
   );
 }

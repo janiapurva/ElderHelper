@@ -8,7 +8,6 @@ function RequestTablei(props) {
   console.log("props line 8 from volunteer accepted list ", props);
 
   const [successfulForm, setSuccessfulForm] = useState("");
-  
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -32,31 +31,29 @@ function RequestTablei(props) {
     };
 
     let updateRequestObjVolunteerAccept = geti();
-    console.log("inside complete request - OBJ TO SEND BACKEND LINE35", updateRequestObjVolunteerAccept);
+    console.log(
+      "inside complete request - OBJ TO SEND BACKEND LINE35",
+      updateRequestObjVolunteerAccept
+    );
 
-   
     axios
-    .post("http://localhost:8000/updateRequest", {
-      updateRequestObjVolunteerAccept,
-    })
-    .then((res) => {
-      //console.log("inside .then success update ");
-      //NOW WHAT - START HERE
+      .post("http://localhost:8000/updateRequest", {
+        updateRequestObjVolunteerAccept,
+      })
+      .then((res) => {
+        //console.log("inside .then success update ");
+        //NOW WHAT - START HERE
 
-      setSuccessfulForm(true);
-    })
-    .catch((err) => {
-      console.log("Error ReqBox 54", err);
-    });
-
-    
+        setSuccessfulForm(true);
+      })
+      .catch((err) => {
+        console.log("Error ReqBox 54", err);
+      });
 
     console.log(
       "update object to send back to db",
       updateRequestObjVolunteerAccept
     );
-
-
   };
 
   return (
@@ -82,7 +79,7 @@ export default function VolunteerRequestList(props) {
   return (
     // <p> HI </p>
 
-    <Table striped bordered hover variant="dark">
+    <Table className="table-completed" striped bordered hover variant="dark">
       <thead>
         <h4>Accepted and Completed Requests</h4>
         <tr>
