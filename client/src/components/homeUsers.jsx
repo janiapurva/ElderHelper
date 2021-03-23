@@ -29,7 +29,7 @@ console.log('this one is on display',sessionId)
     <>
       <MasterNavbar headerName={token} />
       <SideBar sessionID={sessionId} />
-      <UserRequestItem sessionID={sessionId} />
+      {/* <UserRequestItem sessionID={sessionId} /> */}
     </>
   );
 }

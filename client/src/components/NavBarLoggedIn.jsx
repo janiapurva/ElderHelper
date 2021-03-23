@@ -21,10 +21,10 @@ export default function NavBarLoggedIn(props) {
   return (
     <header>
       <Navbar className="nav-logged-in">
-        <Navbar.Brand href="#home">ElderHelper</Navbar.Brand>
+        <Navbar.Brand className="nav-logged-in-logo">ElderHelper</Navbar.Brand>
 
         <div>
-          <b>Welcome </b> <b> {props.headerName.headerName}</b>
+          <b>  Welcome  {props.headerName.headerName} </b>
           <Button className="logout" type="button" onClick={logout}>
             Logout
           </Button>
