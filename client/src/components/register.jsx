@@ -13,7 +13,7 @@ export default function SignUpUsers(props) {
   const [pass, setPass] = useState();
   const [phone, setPhone] = useState();
   const [postal, setPostal] = useState();
-  const [belongs_to, setbelongs_to] = useState();
+  const [StreetAddress, setStreetAddress] = useState();
   const [successfulForm, setSuccessfulForm] = useState(false);
 
   const handleHeaderIDChange = (data) => {
@@ -48,8 +48,8 @@ export default function SignUpUsers(props) {
     setPostal(evt.target.value);
   };
 
-  const handlebelongs_toChange = (evt) => {
-    setbelongs_to(evt.target.value);
+  const StreetAddress_toChange = (evt) => {
+    setStreetAddress(evt.target.value);
   };
 
   const onSubmit = (evt) => {
@@ -62,7 +62,7 @@ export default function SignUpUsers(props) {
       password: pass,
       phone_number: phone,
       postal_code: postal,
-      belongs_to: belongs_to,
+      StreetAddress: StreetAddress,
     };
 
     axios
@@ -176,11 +176,11 @@ export default function SignUpUsers(props) {
         </div>
 
         <div className="form-group">
-          <label>Registered, to a Long-Term Care Facility (LTC)? Enter it below:</label>
+          <label>Street Address:</label>
           <input
-            type="afiliations"
-            name="afiliations"
-            onChange={handlebelongs_toChange}
+            type="StreetAddress"
+            name="StreetAddress"
+            onChange={StreetAddress_toChange}
             className="form-control"
             placeholder="Registered, to an LTC, enter it here!"
           />

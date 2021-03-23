@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 import { Card, Button } from "react-bootstrap";
 import sendmail from "../sendmail";
 import { init, send } from "emailjs-com";

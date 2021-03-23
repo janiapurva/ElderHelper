@@ -26,7 +26,7 @@ module.exports = ({ addUser }) => {
       email_address,
       phone_number,
       postal_code,
-      belongs_to,
+      StreetAddress,
     } = req.body.newUser;
     axios
       .get(
@@ -47,7 +47,7 @@ module.exports = ({ addUser }) => {
             postal_code,
             lat,
             long,
-            belongs_to
+            StreetAddress
           )
             .then((users) => {
               // console.log("register.js - checking response after registration - users", users);
