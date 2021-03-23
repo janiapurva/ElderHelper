@@ -24,24 +24,11 @@ export default function HomeUsers() {
       // console.log("data", data.full_name);
     }
   }, []);
-console.log('this one is on display',sessionId)
+  console.log("this one is on display", sessionId);
   return (
     <>
-    
       <MasterNavbar headerName={token} />
       <SideBar sessionID={sessionId} />
-<<<<<<< HEAD
-      {/* <UserRequestItem sessionID={sessionId} /> */}
-=======
-      {/* <PopupButton sessionID={sessionId} />
-      <PopupContact sessionID={sessionId} /> */}
-      {/* <UserRequestItem sessionID={sessionId}/> */}
-
-      
-    {/* </div>
-       */}
-      
->>>>>>> master
     </>
   );
 }

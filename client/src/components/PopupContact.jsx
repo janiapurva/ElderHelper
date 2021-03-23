@@ -1,24 +1,11 @@
 import React, { useState } from "react";
 
-<<<<<<< HEAD
 import Modal from "react-bootstrap/Modal";
 import RequestBox from "./RequestBox";
 import { Button } from "react-bootstrap";
 import ContactCard from "./ContactCard";
-=======
-import Modal from 'react-bootstrap/Modal';
-import RequestBox from './RequestBox'
-import { Button } from 'react-bootstrap'
-import ContactCard from "./ContactCard"
 
-
-
-export default function PopupContact (props){
-
-
->>>>>>> master
-
-export default function PopupContact() {
+export default function PopupContact(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -35,13 +22,8 @@ export default function PopupContact() {
           <Modal.Title>My contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-<<<<<<< HEAD
-          <ContactCard />
-        </Modal.Body>
-=======
           <ContactCard sessionID={props.sessionID} />
-          </Modal.Body>
->>>>>>> master
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
