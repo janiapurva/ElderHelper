@@ -68,7 +68,7 @@ export default function ContactCard(props) {
       .then((res) => {
         // console.log("inside contact data received to populate info:", res.data);
         //setContact after check
-        // console.log("aaaaaaaaaaaaa", res.data);
+         console.log("aaaaaaaaaaaaa", res.data);
         setContact(res.data);
       })
       .catch((err) => {
@@ -77,7 +77,7 @@ export default function ContactCard(props) {
   }, []);
 
   const listOfContact = contact.map((person) => {
-    //console.log("AAAAAAAAAAA", person);
+    console.log("AAAAAAAAAAA", person);
 
     return (
       <ContactList

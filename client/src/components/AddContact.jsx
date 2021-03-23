@@ -7,10 +7,10 @@ import Modal from "react-bootstrap/Modal";
 import RequestBox from "./RequestBox";
 import { Button } from "react-bootstrap";
 import ContactCard from "./ContactCard";
+import Alert from "react-bootstrap/Alert";
 
 export default function AddContact(props) {
-  // const history = useHistory();
-
+  const [pop, setPop] = useState(false);
   const [fullName, setfullName] = useState();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
@@ -25,11 +25,11 @@ export default function AddContact(props) {
     setPhone(evt.target.value);
   };
   const onSubmit = (evt) => {
-    props.useState("one");
+    setPop(true);
 
     evt.preventDefault();
 
-    console.log("props", props.sessionID);
+    // console.log("props", props.sessionID);
 
     const sessionID = props.sessionID;
 
@@ -54,13 +54,30 @@ export default function AddContact(props) {
           "inside front end - AddContact.js - consloe log res",
           res.data
         );
+
+        // setTimeout(() => {
+        //   console.log("inside Set timout")
+        //   return <Alert variant="success">Contact Saved ✅ !</Alert>;
+
+        // }, 2000);
       });
+
+    setTimeout(() => {
+      props.setActive("one");
+    }, 2000);
+
+    // alert("Contact Saved")
+
+    // setTimeout(() => {
+    //   props.setActive("one");
+    // }, 3000);
 
     // history.push("/homeUsers");
   };
 
   return (
     <Form className="add-contact" onSubmit={onSubmit}>
+      {pop && <Alert variant="success">Your contact Saved</Alert>}
       <Form.Group controlId="formBasicFullname">
         <Form.Label>Full Name</Form.Label>
         <Form.Control

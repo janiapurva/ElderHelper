@@ -27,6 +27,7 @@ export default function HomeUsers() {
 console.log('this one is on display',sessionId)
   return (
     <>
+    
       <MasterNavbar headerName={token} />
       <SideBar sessionID={sessionId} />
       {/* <PopupButton sessionID={sessionId} />
