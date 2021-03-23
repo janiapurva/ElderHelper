@@ -11,12 +11,12 @@ const Dictaphone = () => {
   }
 
   return (
-    <div>
+    <>
       <Button variant="outline-success" onClick={SpeechRecognition.startListening}>Start</Button> {' '}
       <Button variant="outline-danger" onClick={SpeechRecognition.stopListening}>Stop</Button>{' '}
       <Button variant="outline-dark" onClick={resetTranscript}>Reset</Button>{' '}
       <p>{transcript}</p>
-    </div>
+    </>
   )
 }
 export default Dictaphone

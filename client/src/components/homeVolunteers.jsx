@@ -7,7 +7,7 @@ import VolunteerAcceptedRequestItem from "./VolunteerAcceptedRequestItem";
 import VolunteerRequestItem from "./VolunteerRequestItem";
 import LeafletMap from "./LeafletMap";
 import RequestMap from "./RequestMap";
-
+import SideBarVolunteer from "./SideBarVolunteer"
 
 export default function HomeVolunteers() {
   const [token, setToken] = useState(null);
@@ -37,12 +37,13 @@ export default function HomeVolunteers() {
   }, [sessionId, token]);
 
   return (
-    <div>
+    <>
       <MasterNavbar headerName={token} />
+      <SideBarVolunteer/>
       <VolunteerRequestItem sessionID={sessionId} />
       <VolunteerAcceptedRequestItem sessionID={sessionId} />
       {lat && long && <LeafletMap centername={token} centerlat={lat} centerlong={long} />}
       {lat && long && <RequestMap centername={token} centerlat={lat} centerlong={long} />}
-    </div>
+    </>
   );
 }

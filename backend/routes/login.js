@@ -57,11 +57,11 @@ module.exports = ({ getUserByEmail }) => {
           console.log("probably error");
         }
       })
-      .catch((err) =>
-        res.json({
-          error: err.message,
-        })
-      );
+      // .catch((err) =>
+      //   res.json({
+      //     error: err.message,
+      //   })
+      // );
 
     //
   });

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Badge from 'react-bootstrap/Badge';
 export default function StatusButton(){
   return(
-    <div>
+    <>
   <h3>
   <Badge pill variant="success">
     Accepted
@@ -20,7 +20,7 @@ export default function StatusButton(){
   </Badge>{' '}
   </h3>
   
-</div>
+</>
 
   )
 }

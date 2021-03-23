@@ -2,60 +2,28 @@
 
 .App {
   text-align: center;
-
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card {
+  padding-top: 2em;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.card{
-  padding-top: 2em; 
-}
-
-.popupButton{
+.popupButton {
   margin-top: 5px;
   margin-right: 20px;
 }
 
-.volunteerPendingRequests{
- width: fit-content;
+.volunteerPendingRequests {
+  width: fit-content;
 
- width: 50%;
- height: 50%;
-
-
-
+  width: 50%;
+  height: 50%;
 }
 .inner {
   width: 450px;
@@ -64,7 +32,7 @@
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 #mapid {
@@ -75,6 +43,99 @@
   height: 400px;
   width: 400px;
 }
+.inner {
+  background-color: purple;
+}
+.welcome {
+  text-align: center;
+  padding-top: 100px;
+  margin-bottom: 100px;
+}
+.landing-page {
+  display: flex;
 
+  padding-top: 400px;
+  justify-content: space-between;
+}
+.inner {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: black;
+}
+.volunteer-login {
+  align-self: center;
+  padding-top: 100px;
+  width: 30%;
+}
+.volunteer-register {
+  align-self: center;
+  padding-top: 100px;
+  width: 30%;
+}
+.elder-login {
+  align-self: center;
+  padding-top: 100px;
+  width: 30%;
+}
+.elder-register {
+  align-self: center;
+  padding-top: 100px;
+  width: 30%;
+}
 
+.nav-logged-in{
+  height: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  justify-content: space-between;
+  margin-left: 160px;
+}
+.logout{
+  margin-left: 40px;
+  background-color: none;
+}
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 200px;
+}
 
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.nav-logged-out{
+  height: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  justify-content: space-between;
+}
