@@ -15,7 +15,7 @@ module.exports = ({ getUsersRelatives }) => {
     getUsersRelatives(sessionID)
       .then((users) => {
         
-        console.log('inside/then after succ query usersRelatives; users',users)
+        console.log('inside/then after succ query getUsersRelatives; users',users)
         
         res.json(users)})
       .catch((err) =>

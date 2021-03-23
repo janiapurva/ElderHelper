@@ -300,9 +300,9 @@ module.exports = (db) => {
 
   const getUsersRelatives = (id) => {
     console.log("inside get user relatives");
-    //gets relatives along with 
+    //gets relatives along with
     const query = {
-      text: `SELECT ur.full_name, ur.phone_number, ur.email_address, ue.full_name, r.task_description, r.date_of_request FROM users_relatives ur JOIN requests r on ur.elder_id = r.posted_by JOIN users_elders ue ON ue.id = ur.elder_id  WHERE elder_id = $1 AND date_of_request > CURRENT_DATE ORDER BY date_of_request desc;
+      text: `SELECT ur.full_name AS Relative, ur.phone_number, ur.email_address, ue.full_name AS Elder , r.task_description, r.date_of_request FROM users_relatives ur JOIN requests r on ur.elder_id = r.posted_by JOIN users_elders ue ON ue.id = ur.elder_id  WHERE elder_id = $1 AND date_of_request > CURRENT_DATE;
       `,
       values: [id],
     };
@@ -313,9 +313,6 @@ module.exports = (db) => {
     // .catch((err) => err);
   };
   /////////////////////////////////////////////////
-  
-
-
 
   return {
     getUserByEmail,

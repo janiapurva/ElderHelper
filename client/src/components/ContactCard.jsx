@@ -1,36 +1,42 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 import { Card, Button } from "react-bootstrap";
 import sendmail from "../sendmail";
-import{ init, send } from 'emailjs-com';
+import { init, send } from "emailjs-com";
 
 init("user_8Wn7c8byh487oHW5iiqIT");
 
 // var sendmail = require('../sendmail')({silent: true})
 
 function ContactList(props) {
-
   const handleSubmitEmail = (evt) => {
-    console.log('inside send emailhandle Sumit', props.sessionID)
+    console.log("inside send emailhandle Sumit", props.task_description);
+
+    //USE THESE FOR SMS
+    // phone_number={person.phone_number}
+    // email_address={person.email_address}
+    // relative={person.relative}
+    // task_description={person.task_description}
+    const userTestEmail = "elderhelperuser@gmail.com";
+    const relativeTestEmail = "elderhelperrelative@gmail.com";
 
     const templateParams = {
-      from_name: 'PRANAV',
-      to_name: 'Apurva',
-      task_description: '',
+      from_name: props.elder,
+      to_name: props.relative,
+      task_description: props.task_description,
+      userTestEmail: userTestEmail,
+      relativeTestEmail: relativeTestEmail,
+    };
 
-    }
-    
+    emailjs.send('service_y8qrvyb', 'template_c5mcfdw', templateParams)
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
 
-    // emailjs.send('service_y8qrvyb', 'template_c5mcfdw', templateParams)
-    // .then(function(response) {
-    //    console.log('SUCCESS!', response.status, response.text);
-    // }, function(error) {
-    //    console.log('FAILED...', error);
-    // });
-
-
-    console.log('inside send emailhandle Sumit AFTER sendmail')
+    console.log("inside send emailhandle Sumit AFTER sendmail");
   };
 
   return (
@@ -39,6 +45,7 @@ function ContactList(props) {
       <Card.Text>
         <p>{props.email_address}</p>
         <p>{props.phone_number}</p>
+        <p>{props.task_description}</p>
       </Card.Text>
       <Button onClick={handleSubmitEmail} variant="primary">
         Send Email
@@ -61,7 +68,7 @@ export default function ContactCard(props) {
       .then((res) => {
         console.log("inside contact data received to populate info:", res.data);
         //setContact after check
-        //console.log("aaaaaaaaaaaaa", res.data);
+        console.log("aaaaaaaaaaaaa", res.data);
         setContact(res.data);
       })
       .catch((err) => {
@@ -75,9 +82,12 @@ export default function ContactCard(props) {
     return (
       <ContactList
         key={person.id}
-        full_name={person.full_name}
-        email_address={person.email_address}
+        relative={person.relative}
         phone_number={person.phone_number}
+        email_address={person.email_address}
+        elder={person.elder}
+        relative={person.relative}
+        task_description={person.task_description}
       />
     );
   });
