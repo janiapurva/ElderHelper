@@ -28,7 +28,8 @@ export default function SideBar(props) {
           <UserRequestItem sessionID={props.sessionID} />
         )}
          {active === "three" && (
-          <AddContact sessionID={props.sessionID} />
+          <AddContact sessionID={props.sessionID}
+          useState= {useState} />
         )}
       </>
     </>

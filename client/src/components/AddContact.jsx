@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -7,6 +9,8 @@ import { Button } from "react-bootstrap";
 import ContactCard from "./ContactCard";
 
 export default function AddContact(props) {
+  // const history = useHistory();
+
   const [fullName, setfullName] = useState();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
@@ -21,6 +25,8 @@ export default function AddContact(props) {
     setPhone(evt.target.value);
   };
   const onSubmit = (evt) => {
+    props.useState("one");
+
     evt.preventDefault();
 
     console.log("props", props.sessionID);
@@ -41,12 +47,16 @@ export default function AddContact(props) {
     // full_name: "hi"
     // phone_number: "hi"
 
-    axios.post("http://localhost:8000/addContact", { newContact }).then((res) => {
-      console.log(
-        "inside front end - AddContact.js - consloe log res",
-        res.data
-      );
-    });
+    axios
+      .post("http://localhost:8000/usersAddContact", { newContact })
+      .then((res) => {
+        console.log(
+          "inside front end - AddContact.js - consloe log res",
+          res.data
+        );
+      });
+
+    // history.push("/homeUsers");
   };
 
   return (
