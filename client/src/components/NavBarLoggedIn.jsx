@@ -4,41 +4,32 @@ import { Redirect, useHistory } from "react-router";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import PopupButton from "./PopupButton";
 
 export default function NavBarLoggedIn(props) {
-  
-  console.log("login navabar", props.headerName.headerName)
   const history = useHistory();
 
   function logout() {
     history.push("/");
-    localStorage.removeItem("token");    
+    localStorage.removeItem("token");
   }
 
   // const myLocalToken = localStorage.getItem("decodedToken");
-  
+
   // console.log('navbarLoggedin', myLocalToken)
-  
+
   return (
-    <>
-      <Navbar bg="dark" variant="dark">
+    <header>
+      <Navbar className="nav-logged-in">
         <Navbar.Brand href="#home">ElderHelper</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Past request</Nav.Link>
-          <Nav.Link href="#pricing">NewRequest</Nav.Link>
-        </Nav>
-        <Form inline>
-          <div className="nav-link">{props.headerName.headerName}</div>
-          {/* {props.headerName.} */}
-          <Button type="button" onClick={logout} variant="outline-info">
+
+        <div>
+          <b>Welcome </b> <b> {props.headerName.headerName}</b>
+          <Button className="logout" type="button" onClick={logout}>
             Logout
           </Button>
-        </Form>
+        </div>
       </Navbar>
-      <br />
-    </>
+    </header>
   );
-
-
 }

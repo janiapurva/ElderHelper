@@ -10,7 +10,6 @@ const { addRequest } = require("../helpers/dbHelpers");
 module.exports = ({ addRequest }) => {
   router.post("/", (req, res) => {
     //gets password
-    console.log("INSIDE newReq.js Backend", req.body);
 
     if (!req.body.newRequestObj.task_description) {
       return res
@@ -34,8 +33,6 @@ module.exports = ({ addRequest }) => {
         `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&Postal=${task_postal_code}`
       )
       .then((res2) => {
-        console.log(res2);
-        console.log("argiscall", res2.data.candidates[0].location);
         let location = res2.data.candidates[0];
         if (location) {
           const { x: long, y: lat } = location.location;

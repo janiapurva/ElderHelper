@@ -77,7 +77,7 @@ function RequestTablei(props) {
 
 export default function VolunteerRequestList(props) {
   return (
-    <Table striped bordered hover variant="dark">
+    <Table className ="table-pending"striped bordered hover variant="dark">
       <thead>
         <h4>Open Requests</h4>
         <tr>

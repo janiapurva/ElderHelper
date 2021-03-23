@@ -11,7 +11,7 @@ export default function VolunteerLogin(props) {
   const [successfulForm, setSuccessfulForm] = useState(false);
   const [headerName, setheaderName] = useState();
   const [headerId, setheaderId] = useState();
-    
+
   const handleHeaderIDChange = (data) => {
     setheaderId(data);
   };
@@ -31,7 +31,6 @@ export default function VolunteerLogin(props) {
 
     setPass(evt.target.value);
   };
-
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -77,10 +76,10 @@ export default function VolunteerLogin(props) {
   }
 
   return (
-    <div>
+    <>
       <MasterNavbar headerName={headerName} />
 
-      <form onSubmit={handleSubmit}>
+      <form className="volunteer-login" onSubmit={handleSubmit}>
         <h3> Volunteer Login</h3>
 
         <div className="form-group">
@@ -114,6 +113,6 @@ export default function VolunteerLogin(props) {
           <a href="/sign-up">Looking to Register?</a>
         </p>
       </form>
-    </div>
+    </>
   );
 }

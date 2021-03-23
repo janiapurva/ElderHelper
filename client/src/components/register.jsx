@@ -80,12 +80,11 @@ export default function SignUpUsers(props) {
         handleHeaderNameChange(res.data.full_name);
         handleHeaderIDChange(res.data.user_id);
 
-
         //store token in local storage
         try {
           localStorage.setItem("token", JSON.stringify(res.data));
         } catch (e) {}
-        
+
         //check token exists
         const myUserToken = localStorage.getItem("token");
 
@@ -94,7 +93,6 @@ export default function SignUpUsers(props) {
         } else {
           console.log("token DOESNT  exist");
         }
-
 
         setSuccessfulForm(true);
       });
@@ -105,10 +103,10 @@ export default function SignUpUsers(props) {
   }
 
   return (
-    <div>
+    <>
       <MasterNavbar headerName={headerName} />
 
-      <form onSubmit={onSubmit}>
+      <form className="elder-register" onSubmit={onSubmit}>
         <h3>Sign - Users</h3>
 
         <div className="form-group">
@@ -200,6 +198,6 @@ export default function SignUpUsers(props) {
           </a>
         </p>
       </form>
-    </div>
+    </>
   );
 }

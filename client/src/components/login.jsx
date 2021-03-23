@@ -78,10 +78,10 @@ export default function Login(props) {
   }
 
   return (
-    <div>
+    <>
       <MasterNavbar headerName={headerName} />
 
-      <form onSubmit={handleSubmit}>
+      <form className="elder-login"onSubmit={handleSubmit}>
         <h3>Login</h3>
 
         <div className="form-group">
@@ -115,6 +115,6 @@ export default function Login(props) {
           <a href="/sign-up">Looking to Register?</a>
         </p>
       </form>
-    </div>
+    </>
   );
 }
