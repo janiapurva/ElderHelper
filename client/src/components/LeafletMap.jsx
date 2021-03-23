@@ -32,7 +32,7 @@ export default function LeafletMap(props) {
    // console.log("inside use");
  
    axios
-     .get("http://localhost:8000/api/users")
+     .get("http://localhost:8000/users")
  
      .then((res) => {
        console.log("line 35 leaflet", res.data);
@@ -62,7 +62,7 @@ export default function LeafletMap(props) {
        {/* <Marker position={[45.779699, -79.44734]}>
          <Popup>this is you</Popup>
        </Marker> */}
-       <RequesterMarker
+       {/* <RequesterMarker
          position={[39.779699, -80.44734]}
          description={"anything"}
        />
@@ -73,7 +73,7 @@ export default function LeafletMap(props) {
          position={[45.779699, -79.44734]}
          description={"toronto"}
        />
- 
+  */}
        {elderList.map((requester) => (
          <RequesterMarker
            position={[parseFloat(requester.lat), parseFloat(requester.long)]}

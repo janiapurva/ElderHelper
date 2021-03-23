@@ -176,7 +176,7 @@ export default function SignUpUsers(props) {
         </div>
 
         <div className="form-group">
-          <label>Afiliations</label>
+          <label>Registered, to a Long-Term Care Facility (LTC)? Enter it below:</label>
           <input
             type="afiliations"
             name="afiliations"
