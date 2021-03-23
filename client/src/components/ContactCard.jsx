@@ -57,7 +57,7 @@ function ContactList(props) {
 export default function ContactCard(props) {
   const [contact, setContact] = useState([]);
 
-  console.log("props.sessionID - contact card", props);
+  //console.log("props.sessionID - contact card", props);
 
   const sessionID = props.sessionID;
 
@@ -66,9 +66,9 @@ export default function ContactCard(props) {
     axios
       .post("http://localhost:8000/usersRelatives", { sessionID })
       .then((res) => {
-        console.log("inside contact data received to populate info:", res.data);
+        // console.log("inside contact data received to populate info:", res.data);
         //setContact after check
-        console.log("aaaaaaaaaaaaa", res.data);
+        // console.log("aaaaaaaaaaaaa", res.data);
         setContact(res.data);
       })
       .catch((err) => {
@@ -77,7 +77,7 @@ export default function ContactCard(props) {
   }, []);
 
   const listOfContact = contact.map((person) => {
-    console.log("AAAAAAAAAAA", person);
+    //console.log("AAAAAAAAAAA", person);
 
     return (
       <ContactList
@@ -92,7 +92,7 @@ export default function ContactCard(props) {
     );
   });
 
-  console.log("this is list", listOfContact);
+  //console.log("this is list", listOfContact);
 
   return (
     <Card style={{ width: "18rem" }}>
