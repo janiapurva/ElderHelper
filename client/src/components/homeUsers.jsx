@@ -31,7 +31,8 @@ console.log('this one is on display',sessionId)
       <SideBar sessionID={sessionId} />
       {/* <PopupButton sessionID={sessionId} />
       <PopupContact sessionID={sessionId} /> */}
-      <UserRequestItem sessionID={sessionId}/>
+      {/* <UserRequestItem sessionID={sessionId}/> */}
+
       
     {/* </div>
        */}

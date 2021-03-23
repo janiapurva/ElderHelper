@@ -72,6 +72,31 @@ module.exports = (db) => {
     //.catch((err) => console.log("line 33 dbhelpers", err));
   };
 
+  //////////////////////////////////////////////////////
+  const addContactsForUser = ( full_name,
+    phone_number,
+    email_address,
+    belongs_to,) => {
+    const query = {
+      text: `INSERT INTO users_relatives (full_name, phone_number, email_address,elder_id) VALUES ($1, $2, $3, $4) RETURNING *`,
+      values: [
+        full_name,
+        phone_number,
+        email_address,
+        belongs_to,
+      ],
+    };
+    return db.query(query).then((result) => {
+      console.log(
+        "result from  getUserByEmail query dbhelpers  ",
+        email_address,
+        result
+      );
+
+    });
+    //.catch((err) => console.log("line 33 dbhelpers", err));
+  };
+
   //TABLE --- users_volunteers ---
 
   /////////////////////////////////////////////////
@@ -328,5 +353,6 @@ module.exports = (db) => {
     updateRequest,
     getAcceptedAndCompletedRequestsForVolunteer,
     getUsersRelatives,
+    addContactsForUser
   };
 };
