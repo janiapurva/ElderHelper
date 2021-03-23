@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import PopupContact from "./PopupContact";
 import PopupButton from "./PopupButton";
+import AddContact from "./AddContact";
+import UserRequestItem from "./UserRequestItem";
+import Alert from "react-bootstrap/Alert";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import UserRequestItem from "./UserRequestItem";
 
 export default function SideBar(props) {
+<<<<<<< HEAD
   const [active, setActive] = useState("one");
   return (
     <>
@@ -23,6 +28,19 @@ export default function SideBar(props) {
         <a>
           <PopupContact />
         </a>
+=======
+  console.log("this on is in sidebar", props);
+  const [active, setActive] = useState("one");
+
+  
+
+  return (
+    <>
+      <div className="sidenav">
+        <PopupButton sessionID={props.sessionID} />
+        <PopupContact sessionID={props.sessionID} />
+
+>>>>>>> master
         <a href="#" onClick={() => setActive("two")}>
           Past Request
         </a>
@@ -30,7 +48,20 @@ export default function SideBar(props) {
           Add a new Contact
         </a>
       </div>
+<<<<<<< HEAD
       <>{active === "two" && <UserRequestItem sessionID={props.sessionID} />}</>
+=======
+      <>
+        {active === "two" && <UserRequestItem sessionID={props.sessionID} />}
+        {active === "three" && (
+          <AddContact
+            sessionID={props.sessionID}
+            setActive={setActive}
+            
+          />
+        )}
+      </>
+>>>>>>> master
     </>
   );
 }

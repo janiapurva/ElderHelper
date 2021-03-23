@@ -17,7 +17,7 @@ export default function RequestBox(props) {
   
   let [description, setdescription] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [requestDate, setRequestDate] = useState();
   const [successfulForm, setSuccessfulForm] = useState("");
   const [speech , setSpeech] = useState();
 
@@ -51,13 +51,13 @@ useEffect(() => {
     evt.preventDefault();
     props.setHeader("Request Submitted ✅")
 
-    //console.log("Hi - in req submit");
+    console.log("Hi - in req submit");
     // console.log('props.user_id - RequestBox.jsx', props.sessionID)
     //get user ID from state
     const userIdFromState = props.sessionID;
 
     //format Request post date (timestamp):
-    var reqDateRequired = new Date();
+    var reqDateRequired = requestDate;
     var requiredDateString =
       reqDateRequired.getUTCFullYear() +
       "/" +
@@ -123,8 +123,8 @@ useEffect(() => {
         <Form.Label>Date of Request</Form.Label>
       </Form.Group>
       <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        selected={requestDate}
+        onChange={(date) => setRequestDate(date)}
         showTimeSelect
         dateFormat="Pp"
       />

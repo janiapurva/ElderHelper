@@ -16,6 +16,8 @@ let usersLogin = require('./routes/login');
 let newRequest = require('./routes/newRequest');
 let usersRegister = require("./routes/register");
 let userPastRequests = require("./routes/userPastRequests")
+let usersRelatives = require("./routes/usersRelatives")
+let usersAddContact = require("./routes/usersAddContact")
 
 //Volunteer (i.e. person providing assistance)
 let volunteerRegister = require("./routes/volunteerRegister");
@@ -48,8 +50,11 @@ app.use('/requests', requests(dbHelpers), Auth.verifyToken);
 app.use('/userPastRequests', userPastRequests(dbHelpers), Auth.verifyToken);
 app.use('/volunteerRequests', volunteerRequests(dbHelpers), Auth.verifyToken);
 app.use('/updateRequest', updateRequestVolunteerAccept(dbHelpers), Auth.verifyToken);
-
 app.use('/volunteerAcceptedRequests', volunteerAcceptedRequests(dbHelpers), Auth.verifyToken);
+
+app.use('/usersRelatives', usersRelatives(dbHelpers), Auth.verifyToken);
+
+app.use('/usersAddContact', usersAddContact(dbHelpers), Auth.verifyToken);
 
 
 

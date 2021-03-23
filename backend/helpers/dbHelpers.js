@@ -54,20 +54,47 @@ module.exports = (db) => {
   //////////////////////////////////////////////////////
   const getUserByEmail = (email_address) => {
     const query = {
-      text: `SELECT * FROM users_elders WHERE email_address LIKE $1;`,
+      text: `SELECT * FROM users_elders WHERE email_address = $1;`,
       values: [email_address],
     };
-    return db
-      .query(query)
-      .then((result) => {
-        console.log(
-          "result from  getUserByEmail query dbhelpers  ",
-          email_address,
-          result
-        );
+    return db.query(query).then((result) => {
+      // console.log(
+      //   "result from  getUserByEmail query dbhelpers  ",
+      //   email_address,
+      //   result
+      // );
+      if (result.rows.length < 0) {
+        console.log("ERROR, emaild does not exist");
+      } else {
         return result.rows[0];
-      })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      }
+    });
+    //.catch((err) => console.log("line 33 dbhelpers", err));
+  };
+
+  //////////////////////////////////////////////////////
+  const addContactsForUser = ( full_name,
+    phone_number,
+    email_address,
+    belongs_to,) => {
+    const query = {
+      text: `INSERT INTO users_relatives (full_name, phone_number, email_address,elder_id) VALUES ($1, $2, $3, $4) RETURNING *`,
+      values: [
+        full_name,
+        phone_number,
+        email_address,
+        belongs_to,
+      ],
+    };
+    return db.query(query).then((result) => {
+      console.log(
+        "result from  getUserByEmail query dbhelpers  ",
+        email_address,
+        result
+      );
+
+    });
+    //.catch((err) => console.log("line 33 dbhelpers", err));
   };
 
   //TABLE --- users_volunteers ---
@@ -283,9 +310,9 @@ module.exports = (db) => {
       .then((result) => {
         // console.log('id',result.rows[0].id)
         //what do I want to do after a successfull submission
-        console.log(
-          `UPDATE STATUS COMEPLTE /WHAT DO YOU WANT TO RETURN: ${result.rows}`
-        );
+        // console.log(
+        //   `UPDATE STATUS COMEPLTE /WHAT DO YOU WANT TO RETURN: ${result.rows}`
+        // );
         return result;
       })
       .catch((err) => {
@@ -294,6 +321,22 @@ module.exports = (db) => {
       });
   };
 
+  /////////////////////////////////////////////////
+
+  const getUsersRelatives = (id) => {
+    console.log("inside get user relatives");
+    //gets relatives along with
+    const query = {
+      text: `SELECT ur.full_name AS Relative, ur.phone_number, ur.email_address, ue.full_name AS Elder , r.task_description, r.date_of_request FROM users_relatives ur JOIN requests r on ur.elder_id = r.posted_by JOIN users_elders ue ON ue.id = ur.elder_id  WHERE elder_id = $1 AND date_of_request > CURRENT_DATE;
+      `,
+      values: [id],
+    };
+
+    return db.query(query).then((result) => {
+      return result.rows;
+    });
+    // .catch((err) => err);
+  };
   /////////////////////////////////////////////////
 
   return {
@@ -309,5 +352,7 @@ module.exports = (db) => {
     getPendingRequests,
     updateRequest,
     getAcceptedAndCompletedRequestsForVolunteer,
+    getUsersRelatives,
+    addContactsForUser
   };
 };

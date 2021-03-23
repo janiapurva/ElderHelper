@@ -105,8 +105,6 @@ export default function VolunteerRequestList(props) {
           task_description={response.task_description}
           task_postal_code={response.task_postal_code}
           date_posted={response.date_posted}
-          // lat={response.lat}
-          // long={response.long}
           fullilled_by_volunter={response.fullilled_by_volunter}
           status={response.status}
           sessionIDTOUSE={props.sessionID}
