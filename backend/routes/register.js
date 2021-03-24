@@ -38,9 +38,8 @@ module.exports = ({ addUser }) => {
         console.log("acrgiscall", res2.data.candidates[0].location);
         let location = res2.data.candidates[0];
         if (location) {
-    
           const { x: long, y: lat } = location.location;
-    
+
           addUser(
             full_name,
             age,
@@ -53,10 +52,10 @@ module.exports = ({ addUser }) => {
             street_address
           )
             .then((users) => {
-              console.log(
+              /* console.log(
                 "register.js - checking response after registration - users",
                 users.error.name
-              );
+              ); */
               // console.log('IN REG.JS')
               // console.log('register.js want user id', (users))
 
