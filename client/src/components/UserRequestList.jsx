@@ -2,18 +2,22 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import CustomizedRatings from "./CustomizedRatings";
+
 function RequestTable(props) {
   return (
     <tbody>
       <tr>
         <td>{props.id}</td>
-
         <td>{props.date_of_request}</td>
         <td>{props.task_description}</td>
-        <th>{props.task_postal_code}</th>
-        <th>{props.date_posted}</th>
-        <th>{props.fullilled_by_volunter}</th>
-        <th>{props.status}</th>
+        <td>{props.task_postal_code}</td>
+        <td>{props.date_posted}</td>
+        <td>{props.fullilled_by_volunter}</td>
+        <td>{props.status}</td>
+        <td>
+          <CustomizedRatings id={props.id} />
+        </td>
       </tr>
     </tbody>
   );
