@@ -26,7 +26,7 @@ module.exports = ({ addVolunteerUser }) => {
       email_address,
       phone_number,
       postal_code,
-      available,
+      street_address,      
       special_skills,
     } = req.body.newUser;
     axios
@@ -35,7 +35,10 @@ module.exports = ({ addVolunteerUser }) => {
       )
       .then((res2) => {
         console.log(res2);
-        console.log("volunteerRgister - to get la,long", res2.data.candidates[0].location);
+        console.log(
+          "volunteerRgister - to get la,long",
+          res2.data.candidates[0].location
+        );
         let location = res2.data.candidates[0];
         if (location) {
           const { x: long, y: lat } = location.location;
@@ -48,7 +51,7 @@ module.exports = ({ addVolunteerUser }) => {
             postal_code,
             lat,
             long,
-            available,
+            street_address,
             special_skills
           )
             .then((users) => {
@@ -73,15 +76,11 @@ module.exports = ({ addVolunteerUser }) => {
                 console.log(err);
               }
             })
-            .catch((err) => {
-              if (err.routine === "_bt_check_unique") {
-                return res
-                  .status(400)
-                  .send({ message: "User with that EMAIL already exist" });
-              }
-
-              return res.status(400).send(err);
-            });
+            .catch((err) =>
+              res.json({
+                error: err.message,
+              })
+            );
         }
       });
 

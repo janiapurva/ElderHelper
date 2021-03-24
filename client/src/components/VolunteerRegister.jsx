@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Redirect } from "react-router";
 import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
+import Alert from "react-bootstrap/Alert";
+import { useHistory } from "react-router-dom";
 
 export default function SignUpUsers(props) {
   const [fullName, setfullName] = useState();
@@ -13,9 +15,13 @@ export default function SignUpUsers(props) {
   const [pass, setPass] = useState();
   const [phone, setPhone] = useState();
   const [postal, setPostal] = useState();
-  const [available, setAvailable] = useState();
+  const [streetAddress, setStreetAddress] = useState();
+
   const [special_skills, setSpecialSkills] = useState();
   const [successfulForm, setSuccessfulForm] = useState(false);
+  const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
+  const history = useHistory();
 
   const handleHeaderIDChange = (data) => {
     setheaderId(data);
@@ -49,8 +55,8 @@ export default function SignUpUsers(props) {
     setPostal(evt.target.value);
   };
 
-  const handleAvailableChange = (evt) => {
-    setAvailable(evt.target.value);
+  const handleStreetAddressChange = (evt) => {
+    setStreetAddress(evt.target.value);
   };
   const handleSpecialSkillsChange = (evt) => {
     setSpecialSkills(evt.target.value);
@@ -65,9 +71,20 @@ export default function SignUpUsers(props) {
       password: pass,
       phone_number: phone,
       postal_code: postal,
-      available: available,
+      street_address: streetAddress,
       special_skills: special_skills,
     };
+
+    console.log("new Vol user", newUser);
+
+    if (
+      !(fullName || age || email || pass || phone || postal || streetAddress)
+    ) {
+      setError("Input fields cannot be blank.");
+      setShow(true);
+
+      return;
+    }
 
     axios
       .post("http://localhost:8000/volunteerRegister", { newUser })
@@ -80,25 +97,34 @@ export default function SignUpUsers(props) {
           res.data
         );
 
-        //set headerName with full_name from backend..
-        handleHeaderNameChange(res.data.full_name);
-        handleHeaderIDChange(res.data.user_id);
-
-        //store token in local storage
-        try {
-          localStorage.setItem("token", JSON.stringify(res.data));
-        } catch (e) {}
-
-        //check token exists
-        const myUserToken = localStorage.getItem("token");
-
-        if (myUserToken) {
-          console.log("token exist", myUserToken);
+        if (res.data.error) {
+          console.log("error");
+          return history.push("/RegisterErrorPage");
         } else {
-          console.log("token DOESNT  exist");
-        }
+          console.log("NO error");
 
-        setSuccessfulForm(true);
+          //set headerName with full_name from backend..
+          handleHeaderNameChange(res.data.full_name);
+          handleHeaderIDChange(res.data.user_id);
+
+          //store token in local storage
+          try {
+            localStorage.setItem("token", JSON.stringify(res.data));
+          } catch (e) {}
+
+          const myUserToken = localStorage.getItem("token");
+
+          if (myUserToken) {
+            console.log("token exist", myUserToken);
+          } else {
+            console.log("token DOESNT  exist");
+          }
+
+          setSuccessfulForm(true);
+        }
+      })
+      .catch((err) => {
+        console.error("login error LOGIN JSX: ", err);
       });
   };
 
@@ -111,6 +137,12 @@ export default function SignUpUsers(props) {
       <MasterNavbar headerName={headerName} />
 
       <form className="volunteer-register" onSubmit={onSubmit}>
+        {show && (
+          <Alert className="alert" variant="danger">
+            {" "}
+            <h1>{error}</h1>
+          </Alert>
+        )}
         <h3>Sign up- Volunteer</h3>
 
         <div className="form-group">
@@ -180,15 +212,16 @@ export default function SignUpUsers(props) {
         </div>
 
         <div className="form-group">
-          <label>Available</label>
+          <label>Street Address:</label>
           <input
-            type="available"
-            name="available"
-            onChange={handleAvailableChange}
+            type="street_address"
+            name="street_address"
+            onChange={handleStreetAddressChange}
             className="form-control"
-            placeholder="available!"
+            placeholder="Street Address"
           />
         </div>
+
         <div className="form-group">
           <label>Special Skills</label>
           <input

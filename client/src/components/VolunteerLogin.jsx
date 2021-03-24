@@ -4,6 +4,8 @@ import { Redirect } from "react-router";
 import PropTypes from "prop-types";
 import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
+import Alert from "react-bootstrap/Alert";
+import { useHistory } from "react-router-dom";
 
 export default function VolunteerLogin(props) {
   const [email, setEmail] = useState("");
@@ -11,6 +13,10 @@ export default function VolunteerLogin(props) {
   const [successfulForm, setSuccessfulForm] = useState(false);
   const [headerName, setheaderName] = useState();
   const [headerId, setheaderId] = useState();
+  const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
+  const history = useHistory();
+
 
   const handleHeaderIDChange = (data) => {
     setheaderId(data);
@@ -39,32 +45,46 @@ export default function VolunteerLogin(props) {
       password: pass,
     };
 
+    if (!(email || pass)) {
+      setError("Name and password need to be provided.");
+      setShow(true);
+
+      return;
+    }
+
     axios
       .post("http://localhost:8000/volunteerLogin", { checkUser })
       .then((res) => {
         console.log(
-          "inside front end - signUpUsers.js - consloe log res...want to set token",
+          "inside front end - signUpVolutneers.js - consloe log res...want to set token",
           res.data
         );
 
-        //set headerName with full_name from backend..
-        handleHeaderNameChange(res.data.full_name);
-        handleHeaderIDChange(res.data.user_id);
-
-        //store token in local storage
-        try {
-          localStorage.setItem("token", JSON.stringify(res.data));
-        } catch (e) {}
-
-        const myUserToken = localStorage.getItem("token");
-
-        if (myUserToken) {
-          console.log("token exist", myUserToken);
+        if (res.data.error) {
+          console.log("error");
+          return history.push("/LoginErrorPage");
         } else {
-          console.log("token DOESNT  exist");
-        }
+          console.log("NO error");
 
-        setSuccessfulForm(true);
+          //set headerName with full_name from backend..
+          handleHeaderNameChange(res.data.full_name);
+          handleHeaderIDChange(res.data.user_id);
+
+          //store token in local storage
+          try {
+            localStorage.setItem("token", JSON.stringify(res.data));
+          } catch (e) {}
+
+          const myUserToken = localStorage.getItem("token");
+
+          if (myUserToken) {
+            console.log("token exist", myUserToken);
+          } else {
+            console.log("token DOESNT  exist");
+          }
+
+          setSuccessfulForm(true);
+        }
       })
       .catch((err) => {
         console.error("login error LOGIN JSX: ", err);
@@ -80,6 +100,12 @@ export default function VolunteerLogin(props) {
       <MasterNavbar headerName={headerName} />
 
       <form className="volunteer-login" onSubmit={handleSubmit}>
+        {show && (
+          <Alert className="alert" variant="danger">
+            {" "}
+            <h1>{error}</h1>
+          </Alert>
+        )}
         <h3> Volunteer Login</h3>
 
         <div className="form-group">

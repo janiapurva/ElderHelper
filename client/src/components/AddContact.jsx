@@ -77,7 +77,7 @@ export default function AddContact(props) {
 
   return (
     <Form className="add-contact" onSubmit={onSubmit}>
-      {pop && <Alert variant="success">Your contact Saved</Alert>}
+      {pop && <Alert variant="success">Contact Saved!</Alert>}
       <Form.Group controlId="formBasicFullname">
         <Form.Label>Full Name</Form.Label>
         <Form.Control

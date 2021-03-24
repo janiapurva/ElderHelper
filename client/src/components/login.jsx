@@ -1,17 +1,22 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
+import Alert from "react-bootstrap/Alert";
 
 export default function Login(props) {
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [successfulForm, setSuccessfulForm] = useState(false);
   const [headerName, setheaderName] = useState();
   const [headerId, setheaderId] = useState();
-    
+  const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
+
   const handleHeaderIDChange = (data) => {
     setheaderId(data);
   };
@@ -32,14 +37,20 @@ export default function Login(props) {
     setPass(evt.target.value);
   };
 
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    
+
     const checkUser = {
       email_address: email,
       password: pass,
     };
+
+    if (!(email || pass)) {
+      setError("Name and password need to be provided.");
+      setShow(true);
+
+      return;
+    }
 
     axios
       .post("http://localhost:8000/login", { checkUser })
@@ -49,24 +60,31 @@ export default function Login(props) {
           res.data
         );
 
-        //set headerName with full_name from backend..
-        handleHeaderNameChange(res.data.full_name);
-        handleHeaderIDChange(res.data.user_id);
-
-        //store token in local storage
-        try {
-          localStorage.setItem("token", JSON.stringify(res.data));
-        } catch (e) {}
-
-        const myUserToken = localStorage.getItem("token");
-
-        if (myUserToken) {
-          console.log("token exist", myUserToken);
+        if (res.data.error) {
+          console.log("error");
+          return history.push("/LoginErrorPage");
         } else {
-          console.log("token DOESNT  exist");
-        }
+          console.log("NO error");
 
-        setSuccessfulForm(true);
+          //set headerName with full_name from backend..
+          handleHeaderNameChange(res.data.full_name);
+          handleHeaderIDChange(res.data.user_id);
+
+          //store token in local storage
+          try {
+            localStorage.setItem("token", JSON.stringify(res.data));
+          } catch (e) {}
+
+          const myUserToken = localStorage.getItem("token");
+
+          if (myUserToken) {
+            console.log("token exist", myUserToken);
+          } else {
+            console.log("token DOESNT  exist");
+          }
+
+          setSuccessfulForm(true);
+        }
       })
       .catch((err) => {
         console.error("login error LOGIN JSX: ", err);
@@ -81,7 +99,13 @@ export default function Login(props) {
     <>
       <MasterNavbar headerName={headerName} />
 
-      <form className="elder-login"onSubmit={handleSubmit}>
+      <form className="elder-login" onSubmit={handleSubmit}>
+      {show && (
+          <Alert className="alert" variant="danger">
+            {" "}
+            <h1>{error}</h1>
+          </Alert>
+        )}
         <h3>Login</h3>
 
         <div className="form-group">

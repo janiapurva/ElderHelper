@@ -20,11 +20,11 @@ module.exports = (db) => {
     postalCode,
     lat,
     long,
-    afiliations
+    street_address
   ) => {
     //console.log(`adding user`)
     const query = {
-      text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code,lat,long, belongs_to) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9) RETURNING *`,
+      text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code,lat,long, street_address) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9) RETURNING *`,
       values: [
         fullName,
         age,
@@ -34,7 +34,7 @@ module.exports = (db) => {
         postalCode,
         lat,
         long,
-        afiliations,
+        street_address,
       ],
     };
 
@@ -45,10 +45,10 @@ module.exports = (db) => {
         // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
         return result.rows[0];
       })
-      .catch((err) => {
-        console.log(`err on adduser: ${err}`);
-        return err;
-      });
+      // .catch((err) => {
+      //   console.log(`err on adduser: ${err}`);
+      //   return err;
+      // });
   };
 
   //////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ module.exports = (db) => {
         //console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);
         return result.rows;
       })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      // .catch((err) => console.log("line 33 dbhelpers", err));
   };
 
   /////////////////////////////////////////////////
@@ -138,12 +138,12 @@ module.exports = (db) => {
     postalCode,
     lat,
     long,
-    available,
+    street_address,
     specialSkills
   ) => {
     //console.log(`adding user`)
     const query = {
-      text: `INSERT INTO users_volunteers (full_name, age, email_address, password, phone_number, postal_code,lat,long, available, special_skills) VALUES ($1, $2, $3, $4, $5,$6,$7, $8, $9,$10) RETURNING *`,
+      text: `INSERT INTO users_volunteers (full_name, age, email_address, password, phone_number, postal_code,lat,long, street_address, special_skills) VALUES ($1, $2, $3, $4, $5,$6,$7, $8, $9,$10) RETURNING *`,
       values: [
         fullName,
         age,
@@ -153,7 +153,7 @@ module.exports = (db) => {
         postalCode,
         lat,
         long,
-        available,
+        street_address,
         specialSkills,
       ],
     };
@@ -170,25 +170,25 @@ module.exports = (db) => {
   };
 
   //TABLE --- requests ---
-  // Basically getUserRequests -- needs to get an id
-  const getRequests = (id) => {
-    const query = {
-      text: `SELECT 
-        r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
-        FROM requests r 
-        LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
-        LEFT JOIN users_elders ue ON r.posted_by = ue.id  
-        WHERE status IN ('accepted', 'complete') and r.id = $1;`,
-      values: [id],
-    };
-    return db
-      .query(query)
-      .then((result) => {
-        // console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);
-        return result.rows;
-      })
-      .catch((err) => console.log("line 33 dbhelpers", err));
-  };
+  // // Basically getUserRequests -- needs to get an id
+  // const getRequests = (id) => {
+  //   const query = {
+  //     text: `SELECT 
+  //       r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
+  //       FROM requests r 
+  //       LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
+  //       LEFT JOIN users_elders ue ON r.posted_by = ue.id  
+  //       WHERE status IN ('accepted', 'complete') and r.id = $1;`,
+  //     values: [id],
+  //   };
+  //   return db
+  //     .query(query)
+  //     .then((result) => {
+  //       // console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);
+  //       return result.rows;
+  //     })
+  //     .catch((err) => console.log("line 33 dbhelpers", err));
+  // };
 
   /////////////////////////////////////////////////
   //Add this function to get pending requests to show on homeVolunteers
@@ -345,7 +345,7 @@ module.exports = (db) => {
     getVolunteersUsers,
     addUser,
     addRequest,
-    getRequests,
+   // getRequests,
     addVolunteerUser,
     getUserPastRequests,
     getVolunteerByEmail,

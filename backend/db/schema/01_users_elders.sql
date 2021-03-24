@@ -11,6 +11,6 @@ CREATE TABLE "users_elders" (
   "postal_code" varchar,
   "lat" VARCHAR,
   "long" VARCHAR,
-  "StreetAddress" varchar,
+  "street_address" varchar,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

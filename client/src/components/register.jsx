@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import { Redirect } from "react-router";
 import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
+import { useHistory } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 
 export default function SignUpUsers(props) {
+  let history = useHistory();
   const [fullName, setfullName] = useState();
   const [headerName, setheaderName] = useState();
   const [headerId, setheaderId] = useState();
@@ -13,8 +16,10 @@ export default function SignUpUsers(props) {
   const [pass, setPass] = useState();
   const [phone, setPhone] = useState();
   const [postal, setPostal] = useState();
-  const [StreetAddress, setStreetAddress] = useState();
+  const [streetAddress, setStreetAddress] = useState();
   const [successfulForm, setSuccessfulForm] = useState(false);
+  const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
 
   const handleHeaderIDChange = (data) => {
     setheaderId(data);
@@ -52,7 +57,7 @@ export default function SignUpUsers(props) {
     setStreetAddress(evt.target.value);
   };
 
-  const onSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
 
     const newUser = {
@@ -62,8 +67,17 @@ export default function SignUpUsers(props) {
       password: pass,
       phone_number: phone,
       postal_code: postal,
-      StreetAddress: StreetAddress,
+      street_address: streetAddress,
     };
+
+    if (
+      !(fullName || age || email || pass || phone || postal || streetAddress)
+    ) {
+      setError("Input field cannot be blank.");
+      setShow(true);
+
+      return;
+    }
 
     axios
       .post("http://localhost:8000/register", { newUser })
@@ -71,30 +85,36 @@ export default function SignUpUsers(props) {
       .then((res) => {
         //update state on successfull insertion
         //so that redirect happens
-        // console.log(
-        //   "inside front end - signUpUsers.js - consloe log res...want to set token",
-        //   res.data
-        // );
+        console.log(
+          "inside front end - register.jsx - consloe log res...want to set token",
+          res.data
+        );
 
-        //set headerName with full_name from backend..
-        handleHeaderNameChange(res.data.full_name);
-        handleHeaderIDChange(res.data.user_id);
-
-        //store token in local storage
-        try {
-          localStorage.setItem("token", JSON.stringify(res.data));
-        } catch (e) {}
-
-        //check token exists
-        const myUserToken = localStorage.getItem("token");
-
-        if (myUserToken) {
-          console.log("token exist", myUserToken);
+        if (res.data.error) {
+          console.log("error");
+          return history.push("/RegisterErrorPage");
         } else {
-          console.log("token DOESNT  exist");
-        }
+          console.log("NO error");
 
-        setSuccessfulForm(true);
+          //set headerName with full_name from backend..
+          handleHeaderNameChange(res.data.full_name);
+          handleHeaderIDChange(res.data.user_id);
+
+          //store token in local storage
+          try {
+            localStorage.setItem("token", JSON.stringify(res.data));
+          } catch (e) {}
+
+          const myUserToken = localStorage.getItem("token");
+
+          if (myUserToken) {
+            console.log("token exist", myUserToken);
+          } else {
+            console.log("token DOESNT  exist");
+          }
+
+          setSuccessfulForm(true);
+        }
       });
   };
 
@@ -106,8 +126,14 @@ export default function SignUpUsers(props) {
     <>
       <MasterNavbar headerName={headerName} />
 
-      <form className="elder-register" onSubmit={onSubmit}>
-        <h3>Sign - Users</h3>
+      <form className="elder-login" onSubmit={handleSubmit}>
+        {show && (
+          <Alert className="alert" variant="danger">
+            {" "}
+            <h1>{error}</h1>
+          </Alert>
+        )}
+        <h3>Register - Users</h3>
 
         <div className="form-group">
           <label>Full Name</label>
@@ -156,7 +182,7 @@ export default function SignUpUsers(props) {
         <div className="form-group">
           <label>Phone Number</label>
           <input
-            type="phoneNumber"
+            type="tel"
             name="phoneNumber"
             onChange={handlePhoneChange}
             className="form-control"
@@ -178,11 +204,11 @@ export default function SignUpUsers(props) {
         <div className="form-group">
           <label>Street Address:</label>
           <input
-            type="StreetAddress"
-            name="StreetAddress"
+            type="street_address"
+            name="street_address"
             onChange={StreetAddress_toChange}
             className="form-control"
-            placeholder="Registered, to an LTC, enter it here!"
+            placeholder="Street Address"
           />
         </div>
 

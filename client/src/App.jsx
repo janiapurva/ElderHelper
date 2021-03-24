@@ -11,6 +11,8 @@ import VolunteerRegister from "./components/VolunteerRegister"
 import HomeVolunteers from"./components/homeVolunteers"
 import VolunteerRequestList from"./components/VolunteerRequestList"
 import LandingPage from './components/LandingPage'
+import LoginErrorPage from './components/LoginErrorPage'
+import RegisterErrorPage from './components/RegisterErrorPage'
 
 
 function App() {
@@ -28,6 +30,9 @@ function App() {
           <Route path="/volunteer-sign-up" component={VolunteerRegister} />
           <Route path="/homeVolunteerUsers" component={HomeVolunteers} />
           <Route path="/homeVolunteerUsers" component={VolunteerRequestList} />
+          <Route path="/LoginErrorPage" component={LoginErrorPage} />
+          <Route path="/RegisterErrorPage" component={RegisterErrorPage} />
+
         </Switch>
       </div>
     </Router>

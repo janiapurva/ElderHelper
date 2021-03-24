@@ -9,7 +9,7 @@ import VolunteerAcceptedRequestItem from "./VolunteerAcceptedRequestItem";
 import VolunteerRequestItem from "./VolunteerRequestItem";
 import LeafletMap from "./LeafletMap";
 import RequestMap from "./RequestMap";
-import HomeVolunteers from "./homeVolunteers";
+import HomeLandingVolunteers from "./HomeLandingVolunteers";
 
 export default function SideBarVolunteer(props) {
   console.log("this on is in sidebar", props);
@@ -41,7 +41,7 @@ export default function SideBarVolunteer(props) {
         </a>
       </div>
       <>
-        {/* {active === "one" && <HomeVolunteers/>} */}
+        {active === "one" && <HomeLandingVolunteers sessionID={props.sessionID}/>}
         {active === "two" && (
           <VolunteerRequestItem sessionID={props.sessionID} />
         )}

@@ -5,6 +5,7 @@ import PopupButton from "./PopupButton";
 import AddContact from "./AddContact";
 import UserRequestItem from "./UserRequestItem";
 import Alert from "react-bootstrap/Alert";
+import HomeLandingUsers from "./HomeLandingUsers";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ export default function SideBar(props) {
           <PopupButton sessionID={props.sessionID} />
         </a>
         <a>
-          <PopupContact sessionID={props.sessionID}/>
+          <PopupContact sessionID={props.sessionID} />
         </a>
         <a href="#" onClick={() => setActive("two")}>
           Past Request
@@ -34,13 +35,10 @@ export default function SideBar(props) {
         </a>
       </div>
       <>
+        {active === "one" && <HomeLandingUsers sessionID={props.sessionID}/>}
         {active === "two" && <UserRequestItem sessionID={props.sessionID} />}
         {active === "three" && (
-          <AddContact
-            sessionID={props.sessionID}
-            setActive={setActive}
-            
-          />
+          <AddContact sessionID={props.sessionID} setActive={setActive} />
         )}
       </>
     </>

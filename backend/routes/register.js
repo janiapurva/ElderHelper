@@ -7,7 +7,7 @@ const { generateToken } = require("../helpers/passwordHelpers");
 module.exports = ({ addUser }) => {
   router.post("/", (req, res) => {
     //gets password
-    console.log("LOGIN.js", req.body.newUser.password);
+    console.log("REGISTER.js", req.body.newUser.password);
 
     if (!req.body.newUser.email_address || !req.body.newUser.password) {
       return res
@@ -26,8 +26,9 @@ module.exports = ({ addUser }) => {
       email_address,
       phone_number,
       postal_code,
-      StreetAddress,
+      street_address,
     } = req.body.newUser;
+
     axios
       .get(
         `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&Postal=${postal_code}`
@@ -37,7 +38,9 @@ module.exports = ({ addUser }) => {
         console.log("acrgiscall", res2.data.candidates[0].location);
         let location = res2.data.candidates[0];
         if (location) {
+    
           const { x: long, y: lat } = location.location;
+    
           addUser(
             full_name,
             age,
@@ -47,41 +50,48 @@ module.exports = ({ addUser }) => {
             postal_code,
             lat,
             long,
-            StreetAddress
+            street_address
           )
             .then((users) => {
-              // console.log("register.js - checking response after registration - users", users);
+              console.log(
+                "register.js - checking response after registration - users",
+                users.error.name
+              );
               // console.log('IN REG.JS')
               // console.log('register.js want user id', (users))
-              let token;
 
-              try {
-                token = generateToken(users.id);
+              if (users.error) {
+                console.log("error ON REGISTER");
+              } else {
+                let token;
 
-                const full_name = users.full_name;
+                try {
+                  token = generateToken(users.id);
 
-                const user_id = users.id;
+                  const full_name = users.full_name;
 
-                //  console.log('token - register.js', token)
-                //console.log('REGISTER.js', res.send(token,full_name ));
-                res.send({ token, full_name, user_id });
-              } catch (err) {
-                console.log(err);
+                  const user_id = users.id;
+
+                  //  console.log('token - register.js', token)
+                  //console.log('REGISTER.js', res.send(token,full_name ));
+                  res.send({ token, full_name, user_id });
+                } catch (err) {
+                  console.log(err);
+                }
               }
             })
-            .catch((err) => {
-              if (err.routine === "_bt_check_unique") {
-                return res
-                  .status(400)
-                  .send({ message: "User with that EMAIL already exist" });
-              }
-
-              return res.status(400).send(err);
-            });
+            .catch((err) =>
+              res.json({
+                error: err.message,
+              })
+            );
         }
       })
       .catch((err) => {
         console.log(err);
+        res.json({
+          error: err.message,
+        });
       });
 
     // //pass the values from form to addUser which inserts new user to DB

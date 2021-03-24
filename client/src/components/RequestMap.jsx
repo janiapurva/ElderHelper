@@ -30,7 +30,7 @@ export default function RequestMap(props) {
    // console.log("inside use");
  
    axios
-     .get("http://localhost:8000/requests")
+     .get("http://localhost:8000/volunteerRequests")
  
      .then((res) => {
        console.log("line 35 leaflet", res.data);

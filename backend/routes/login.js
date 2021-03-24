@@ -32,7 +32,7 @@ module.exports = ({ getUserByEmail }) => {
         //users pw from db
         console.log('insdie .then getUserByEmail', users)
         
-        const userStoredPw = users.password; // NOT WORKING!!!!!!!
+        const userStoredPw = users.password; 
         //need to now compare values from user entered pw with
         console.log('hi', req.body.checkUser.password, userStoredPw, email_address)
 
@@ -55,13 +55,16 @@ module.exports = ({ getUserByEmail }) => {
         }
          else {
           console.log("probably error");
+          res.json({
+            error: err.message,
+          })
         }
       })
-      // .catch((err) =>
-      //   res.json({
-      //     error: err.message,
-      //   })
-      // );
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
 
     //
   });
