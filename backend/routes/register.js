@@ -53,10 +53,10 @@ module.exports = ({ addUser }) => {
             street_address
           )
             .then((users) => {
-              console.log(
-                "register.js - checking response after registration - users",
-                users.error.name
-              );
+              // console.log(
+              //   "register.js - checking response after registration - users",
+              //   users.error.name
+              // );
               // console.log('IN REG.JS')
               // console.log('register.js want user id', (users))
 

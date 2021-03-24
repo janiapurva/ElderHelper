@@ -78,7 +78,7 @@ module.exports = ({ addVolunteerUser }) => {
             })
             .catch((err) =>
               res.json({
-                error: err.message,
+                error
               })
             );
         }

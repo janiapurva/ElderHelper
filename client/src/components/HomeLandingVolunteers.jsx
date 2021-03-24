@@ -3,7 +3,7 @@ import NavBarLoggedIn from "./NavBarLoggedIn";
 import NavBarLoggedOut from "./NavBarLoggedOut";
 import jwt_decode from "jwt-decode";
 
-export default function HomeVolunteers(props) {
+export default function HomeLandingVolunteers(props) {
   // console.log(props)
   const myUserToken = localStorage.getItem("token");
 
