@@ -45,12 +45,16 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "latest",
+    "@material-ui/icons": "latest",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "emailjs-com": "^2.6.4",
     "jwt-decode": "^3.1.2",
     "react-datepicker": "^3.6.0",
     "react-speech-recognition": "^3.7.0",
     "react-test-renderer": "^16.9.0",
-    "sendmail": "^1.6.1"
+    "sendmail": "^1.6.1",
+    "prop-types": "latest"
   }
 }

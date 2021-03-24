@@ -5,7 +5,7 @@ CREATE TABLE "users_volunteers" (
   "age" int,
   "email_address" varchar UNIQUE,
   "password" varchar,
-  "phone_number" varchar UNIQUE,
+  "phone_number" varchar ,
   "postal_code" varchar,
   "lat" VARCHAR,
   "long" VARCHAR,
