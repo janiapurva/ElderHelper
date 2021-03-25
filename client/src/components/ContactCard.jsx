@@ -4,26 +4,20 @@ import emailjs from "emailjs-com";
 import { Card, Button } from "react-bootstrap";
 import sendmail from "../sendmail";
 import { init, send } from "emailjs-com";
-import Alert from "react-bootstrap/Alert";
 
 init("user_8Wn7c8byh487oHW5iiqIT");
 
 // var sendmail = require('../sendmail')({silent: true})
 
 function ContactList(props) {
-  const [pop, setPop] = useState(false);
-  const handlePop = () => setPop(true);
-
 
   const handleSubmitEmail = (evt) => {
     console.log("inside send emailhandle Sumit", props.task_description);
-    handlePop()
-    setTimeout(() => {
-      props.handleClose()
-
-      
-      // props.setActive("one");
-    }, 2000);
+    props.handlePop()
+    props.handleClose()
+    // setTimeout(() => {
+    //   props.setActive("one");
+    // }, 2000);
 
     //USE THESE FOR SMS
     // phone_number={person.phone_number}
@@ -52,9 +46,6 @@ function ContactList(props) {
   };
 
   return (
-    <div>
-            {pop && <Alert variant="success">Email Reminder Sent!</Alert>}
-
     <Card.Body>
       <Card.Title>{props.relative}</Card.Title>
       <Card.Text>
@@ -66,7 +57,6 @@ function ContactList(props) {
         Send Email
       </Button>
     </Card.Body>
-    </div>
   );
 }
 
@@ -104,7 +94,7 @@ export default function ContactCard(props) {
         elder={person.elder}
         relative={person.relative}
         task_description={person.task_description}
-        // handlePop={props.handlePop}
+        handlePop={props.handlePop}
         setActive={props.setActive}
         handleClose={props.handleClose}
       />

@@ -171,24 +171,19 @@ module.exports = (db) => {
 
   //TABLE --- requests ---
   // // Basically getUserRequests -- needs to get an id
-  // const getRequests = (id) => {
-  //   const query = {
-  //     text: `SELECT 
-  //       r.id, ue.full_name as posted_by, r.date_of_request, r.task_description, r.task_postal_code, r.lat, r.long,r.date_posted, uv.full_name as fullilled_by_volunter, r.status 
-  //       FROM requests r 
-  //       LEFT JOIN users_volunteers uv ON r.fullilled_by_volunter=uv.id 
-  //       LEFT JOIN users_elders ue ON r.posted_by = ue.id  
-  //       WHERE status IN ('accepted', 'complete') and r.id = $1;`,
-  //     values: [id],
-  //   };
-  //   return db
-  //     .query(query)
-  //     .then((result) => {
-  //       // console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);
-  //       return result.rows;
-  //     })
-  //     .catch((err) => console.log("line 33 dbhelpers", err));
-  // };
+  const getCountRequests = (id) => {
+    const query = {
+      text: `SELECT COUNT(*) FROM requests WHERE posted_by = $1;;`,
+      values: [id],
+    };
+    return db
+      .query(query)
+      .then((result) => {
+        console.log('result from  getCountRequests AAABBBCC', result.rows);
+        return result.rows;
+      })
+      .catch((err) => console.log("line 33 dbhelpers", err));
+  };
 
   /////////////////////////////////////////////////
   //Add this function to get pending requests to show on homeVolunteers
@@ -345,7 +340,7 @@ module.exports = (db) => {
     getVolunteersUsers,
     addUser,
     addRequest,
-   // getRequests,
+    getCountRequests,
     addVolunteerUser,
     getUserPastRequests,
     getVolunteerByEmail,
