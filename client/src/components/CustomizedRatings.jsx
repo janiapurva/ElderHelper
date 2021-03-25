@@ -82,12 +82,17 @@ export default function CustomizedRatings(props) {
             setRating(value)
             console.log('value', value);
 
-            const updateRatingObj = {}
+
 
             //axios post to store value; 
 
             axios
-            .post("http://localhost:8000/newRating", { updateRatingObj  })
+            .post("http://localhost:8000/newRating", { value  })
+            .then(()=>{
+
+
+              
+            })
 
 
           

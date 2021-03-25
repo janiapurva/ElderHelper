@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function HomeLandingUsers(props) {
   console.log("props in HomeLandingUsers", props.sessionID);
-  const [countOfUserReqeusts,setcountOfUserReqeusts] = useState();
+  const [countOfUserReqeusts, setcountOfUserReqeusts] = useState();
 
   const sessionID = props.sessionID;
 
@@ -17,10 +17,6 @@ export default function HomeLandingUsers(props) {
         res.data[0].count
       );
       setcountOfUserReqeusts(res.data[0].count);
-
-
-
-
     });
   }, [sessionID]);
 

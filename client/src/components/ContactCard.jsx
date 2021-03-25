@@ -5,7 +5,7 @@ import { Card, Button } from "react-bootstrap";
 import sendmail from "../sendmail";
 import { init, send } from "emailjs-com";
 
-init("user_8Wn7c8byh487oHW5iiqIT");
+init("user_ORHKXu6tXES8JF25Fe5D2");
 
 // var sendmail = require('../sendmail')({silent: true})
 
@@ -35,7 +35,7 @@ function ContactList(props) {
       relativeTestEmail: relativeTestEmail,
     };
 
-    emailjs.send('service_y8qrvyb', 'template_c5mcfdw', templateParams)
+    emailjs.send('service_99jdjmc', 'template_424a282', templateParams)
     .then(function(response) {
        console.log('SUCCESS!', response.status, response.text);
     }, function(error) {

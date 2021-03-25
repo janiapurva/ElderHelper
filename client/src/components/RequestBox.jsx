@@ -59,32 +59,32 @@ useEffect(() => {
     //format Request post date (timestamp):
     var reqDateRequired = requestDate;
     var requiredDateString =
-      reqDateRequired.getUTCFullYear() +
+      reqDateRequired.getFullYear() +
       "/" +
-      ("0" + (reqDateRequired.getUTCMonth() + 1)).slice(-2) +
+      ("0" + (reqDateRequired.getMonth() + 1)).slice(-2) +
       "/" +
-      ("0" + reqDateRequired.getUTCDate()).slice(-2) +
+      ("0" + reqDateRequired.getDate()).slice(-2) +
       " " +
-      ("0" + reqDateRequired.getUTCHours()).slice(-2) +
+      ("0" + reqDateRequired.getHours()).slice(-2) +
       ":" +
-      ("0" + reqDateRequired.getUTCMinutes()).slice(-2) +
+      ("0" + reqDateRequired.getMinutes()).slice(-2) +
       ":" +
-      ("0" + reqDateRequired.getUTCSeconds()).slice(-2);
+      ("0" + reqDateRequired.getSeconds()).slice(-2);
 
     //format Request post date (timestamp):
     var reqDatePosted = new Date();
     var postedDateString =
-      reqDatePosted.getUTCFullYear() +
+      reqDatePosted.getFullYear() +
       "/" +
-      ("0" + (reqDatePosted.getUTCMonth() + 1)).slice(-2) +
+      ("0" + (reqDatePosted.getMonth() + 1)).slice(-2) +
       "/" +
-      ("0" + reqDatePosted.getUTCDate()).slice(-2) +
+      ("0" + reqDatePosted.getDate()).slice(-2) +
       " " +
-      ("0" + reqDatePosted.getUTCHours()).slice(-2) +
+      ("0" + reqDatePosted.getHours()).slice(-2) +
       ":" +
-      ("0" + reqDatePosted.getUTCMinutes()).slice(-2) +
+      ("0" + reqDatePosted.getMinutes()).slice(-2) +
       ":" +
-      ("0" + reqDatePosted.getUTCSeconds()).slice(-2);
+      ("0" + reqDatePosted.getSeconds()).slice(-2);
 
     const newRequestObj = {
       posted_by: userIdFromState, //user_id we need from auth response
@@ -95,6 +95,8 @@ useEffect(() => {
       fullilled_by_volunter: 1,
       status: "pending",
     };
+
+    console.log('newRequestObj', newRequestObj)
 
 
     axios

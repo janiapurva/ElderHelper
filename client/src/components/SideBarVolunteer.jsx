@@ -35,7 +35,7 @@ export default function SideBarVolunteer(props) {
           Open Requests
         </a>
         <a href="#" onClick={() => setActive("three")}>
-          Completed Requests
+          Accepted and Completed Requests
         </a>
         <a href="#" onClick={() => setActive("four")}>
           Elder location Map
