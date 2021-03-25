@@ -28,7 +28,8 @@ export default function HomeUsers() {
   return (
     <>
       <MasterNavbar headerName={token} />
-      <SideBar sessionID={sessionId} />
+      <SideBar sessionID={sessionId}
+      headerName={token} />
     </>
   );
 }

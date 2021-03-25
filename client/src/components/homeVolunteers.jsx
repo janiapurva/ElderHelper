@@ -40,6 +40,7 @@ export default function HomeVolunteers() {
     <>
       <MasterNavbar headerName={token} />
       <SideBarVolunteer sessionID={sessionId}
+      headerName={token}
       centername={token} centerlat={lat} centerlong={long}/>
       {/* <VolunteerRequestItem sessionID={sessionId} />
       <VolunteerAcceptedRequestItem sessionID={sessionId} />

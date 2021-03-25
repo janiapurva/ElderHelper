@@ -16,7 +16,8 @@ function RequesterMarker(props) {
        },
      }}
    >
-     <Popup>{props.description}</Popup>
+     <Popup>Name: {props.name} <br/>
+       Request: {props.description}</Popup>
    </Marker>
  );
 }
@@ -49,7 +50,7 @@ export default function RequestMap(props) {
  //     description={requester.full_name}
  //   />
  // ));
-console.log(requestList)
+console.log('map through this',requestList)
  return (
    <div id="mapid">
      <MapContainer
@@ -63,7 +64,8 @@ console.log(requestList)
          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
        />
        <Marker position={center}>
-         <Popup> this is you {props.centername}</Popup>
+         <Popup> Hello! {props.centername} <br/>
+         Check out these requests near you</Popup>
        </Marker>
        {/* <Marker position={[45.779699, -79.44734]}>
          <Popup>this is you</Popup>
@@ -83,6 +85,7 @@ console.log(requestList)
        {requestList.map((requester) => (
          <RequesterMarker
            position={[parseFloat(requester.lat), parseFloat(requester.long)]}
+           name ={requester.posted_by}
            description={requester.task_description}
          />
        ))}

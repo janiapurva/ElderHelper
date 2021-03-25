@@ -76,6 +76,8 @@ export default function AddContact(props) {
   };
 
   return (
+    <>
+    <h1 className="dependent"> Add a New Contact</h1>
     <Form className="add-contact" onSubmit={onSubmit}>
       {pop && <Alert variant="success">Contact Saved!</Alert>}
       <Form.Group controlId="formBasicFullname">
@@ -107,5 +109,6 @@ export default function AddContact(props) {
         Submit
       </Button>
     </Form>
+    </>
   );
 }

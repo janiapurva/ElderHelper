@@ -15,14 +15,26 @@ export default function LandingPage() {
       <MasterNavbar />
       <span className="landing-page">
         <div className="inner">
-          <Link to="/sign-in">Elder Login </Link>
+          <Link to="/sign-in">
+            Elder
+            <br /> Login{" "}
+          </Link>
           <br></br>
-          <Link to="/sign-up">Elder Register</Link>
+          <Link to="/sign-up">
+            Elder <br />
+            Register
+          </Link>
         </div>
         <div className="inner">
-          <Link to="/volunteer-sign-in">Volunteer Login</Link>
+          <Link to="/volunteer-sign-in">
+            Volunteer <br />
+            Login
+          </Link>
           <br></br>
-          <Link to="/volunteer-sign-up">Volunteer Register</Link>
+          <Link to="/volunteer-sign-up">
+            Volunteer <br />
+            Register
+          </Link>
         </div>
       </span>
     </>

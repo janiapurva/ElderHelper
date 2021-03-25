@@ -5,5 +5,11 @@ import jwt_decode from "jwt-decode";
 
 export default function HomeLandingUsers(props) {
   // console.log(props)
-  return <h1>Welcome elder landing page</h1>;
+  return(
+  <div className="volunteer-landing">
+    
+    <h1>Welcome {props.headerName}!
+    <br/> you've made x many requests</h1>
+  </div>
+  )
 }
