@@ -26,7 +26,7 @@ export default function HomeLandingUsers(props) {
     <div className="volunteer-landing">
       <h1>
         Welcome {props.headerName}!
-        <br /> You have made {countOfUserReqeusts} requests
+        <br /> You have made {countOfUserReqeusts} request(s)
       </h1>
     </div>
   );

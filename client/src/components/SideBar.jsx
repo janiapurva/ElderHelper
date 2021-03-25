@@ -32,7 +32,7 @@ export default function SideBar(props) {
           <PopupContact sessionID={props.sessionID}  setActive={setActive} />
         </a>
         <a href="#" onClick={() => setActive("two")}>
-          Past Request
+          Past Requests
         </a>
         <a href="#" onClick={() => setActive("three")}>
           Add a new Contact
