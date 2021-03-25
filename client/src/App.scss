@@ -23,13 +23,22 @@
   margin-right: 20px;
   color: #818181;
 }
-.contact-button{
+.popupButton:hover {
+  background: none;
+  background-color: none;
+  color: #f1f1f1;
+}
+.contact-button {
   background: none;
   border: none;
   font-size: 25px;
   color: #818181;
 }
-
+.contact-button:hover {
+  background: none;
+  background-color: none;
+  color: #f1f1f1;
+}
 .volunteerPendingRequests {
   width: fit-content;
 
@@ -44,22 +53,22 @@
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
   transition: all 0.3s;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
 }
 
 #mapid {
-  padding-top: 100px;
   align-self: center;
-  padding-left: 100px;
-  width: 50%;
-  margin-left: 25%;
+  margin-top: 2%;
+  margin-left: 15%;
+  height: 1500px;
 }
 .leaflet-container {
-  height: 400px;
-  width: 400px;
+  height: 800px;
+  width: 1500px;
 }
-.inner {
-  background-color: purple;
-}
+
 .welcome {
   text-align: center;
   padding-top: 100px;
@@ -100,7 +109,17 @@
 
 .nav-logged-in {
   font-size: 20px;
-  background-color: #1974e3;
+  background-image: linear-gradient(
+    153deg,
+    #faa691 14.29%,
+    #ffffff 14.29%,
+    #ffffff 50%,
+    #faa691 50%,
+    #d97b93 64.29%,
+    #ffffff 64.29%,
+    #ffffff 100%
+  );
+  background-size: 154.19px 78.56px;
 
   height: 100px;
   padding-top: 40px;
@@ -108,6 +127,7 @@
   justify-content: space-between;
   margin-left: 15%;
   width: 85%;
+  font:  small-caps bold 40px/60px Georgia, serif;
 }
 
 .nav-logged-in-logo {
@@ -117,6 +137,7 @@
   font-weight: 900;
 }
 .logout {
+  margin-top: 3%;
   padding: 5px;
   margin-left: 40px;
   background-color: #28292e;
@@ -189,28 +210,54 @@
 }
 .nav-logged-out {
   font-size: 20px;
-  background-color: #1974e3;
+  background-image: linear-gradient(
+    153deg,
+    #faa691 14.29%,
+    #ffffff 14.29%,
+    #ffffff 50%,
+    #faa691 50%,
+    #d97b93 64.29%,
+    #ffffff 64.29%,
+    #ffffff 100%
+  );
+  background-size: 154.19px 78.56px;
   height: 100px;
   padding-top: 40px;
   padding-bottom: 40px;
   justify-content: space-between;
+  font:  small-caps bold 40px/60px Georgia, serif;
 }
 .nav-logged-out a {
   color: black;
 }
 .table-pending {
-  margin-top: 200px;
+  margin-top: 100px;
+  padding-top: 100px;
+  align-self: center;
+  width: 70%;
+  margin-left: 15%;
+}
+.open-requests{
+  text-align: center;
+  padding-top: 40px;
+  font-weight: 700;
+  font-size: 100px;
+  color: black; 
+  margin-left: 15%; 
+}
+.elder-table {
+  margin-top: 100px;
   padding-top: 200px;
   align-self: center;
   width: 70%;
   margin-left: 15%;
 }
-.elder-table {
-  margin-top: 200px;
-  padding-top: 200px;
-  align-self: center;
-  width: 70%;
-  margin-left: 25%;
+.your-requests{
+  text-align: center;
+  padding-top: 40px;
+  font-weight: 700;
+  font-size: 100px;
+  color: black;
 }
 .table-completed {
   margin-top: 200px;
@@ -219,24 +266,49 @@
   width: 70%;
   margin-left: 15%;
 }
+.accepted-requests{
+  text-align: center;
+  padding-top: 40px;
+  font-weight: 700;
+  font-size: 80px;
+  color: black;
+  margin-left: 15%;
+}
 .logged-out-logo {
   font-size: 40px;
   color: black;
   opacity: 1;
   font-weight: 600;
 }
-  
+.dependent{
+  text-align: center;
+  padding-top: 40px;
+  font-weight: 700;
+  font-size: 80px;
+  color: black;
+  margin-left: 15%;
+}
 .add-contact {
   flex-direction: column-reverse;
   width: 50%;
   align-self: center;
   margin-top: 200px;
- 
+  margin-left: 15%;
 }
 
-.alert{
+.alert {
   font-size: 40px;
   font-weight: 400;
+}
 
-
+.volunteer-landing {
+  padding: 100px;
+  font-size: 600px;
+  font-weight: 600;
+  margin-left: 15%;
+}
+.volunteer-landing h1 {
+  font-size: 100px;
+  font-weight: 600;
+  text-align: center;
 }

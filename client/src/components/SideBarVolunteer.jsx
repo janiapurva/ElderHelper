@@ -25,7 +25,7 @@ export default function SideBarVolunteer(props) {
           alt="new"
         />
         <a href="#" onClick={() => setActive("one")}>
-          Landing Page
+          Home
         </a>
         <a href="#" onClick={() => setActive("two")}>
           Open Requests
@@ -41,7 +41,8 @@ export default function SideBarVolunteer(props) {
         </a>
       </div>
       <>
-        {active === "one" && <HomeLandingVolunteers sessionID={props.sessionID}/>}
+        {active === "one" && <HomeLandingVolunteers sessionID={props.sessionID}
+        headerName={props.headerName}/>}
         {active === "two" && (
           <VolunteerRequestItem sessionID={props.sessionID} />
         )}

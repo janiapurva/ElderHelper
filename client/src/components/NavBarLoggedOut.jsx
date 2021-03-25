@@ -11,23 +11,13 @@ export default function NavBarLoggedOut() {
   return (
     <>
       <Navbar className="nav-logged-out">
-        <Navbar.Brand href="#home" className="logged-out-logo">ElderHelper</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-        </Nav>
+        <Navbar.Brand href="#home" className="logged-out-logo">
+          ElderHelper
+        </Navbar.Brand>
         <Form inline>
-          <Link className="nav-link" to={"/sign-in"}>
-            Sign in as Requster/Elder
-          </Link>
-          <Link className="nav-link" to={"/sign-up"}>
-            Sign up as Requster/Elder
-          </Link>
-          <Link className="nav-link" to={"/volunteer-sign-in"}>
-             Volunteer Sign in
-          </Link>
-          <Link className="nav-link" to={"/volunteer-sign-up"}>
-            Volunteer Sign up
-          </Link>
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+          </Nav>
         </Form>
       </Navbar>
     </>

@@ -78,37 +78,38 @@ function RequestTablei(props) {
 export default function VolunteerRequestList(props) {
   return (
     // <p> HI </p>
+    <>
+      <h1 className="accepted-requests">Accepted and Completed <br/> Requests</h1>
+      <Table className="table-completed" striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>Request #</th>
+            <th>Posted by</th>
+            <th>Date Requested</th>
+            <th>Description</th>
+            <th>Postal Code</th>
+            <th>Date Posted</th>
+            <th>Volunteer</th>
+            <th>Status</th>
+            <th>Mark Request Complete</th>
+          </tr>
+        </thead>
 
-    <Table className="table-completed" striped bordered hover variant="dark">
-      <thead>
-        <h4>Accepted and Completed Requests</h4>
-        <tr>
-          <th>Request #</th>
-          <th>Posted by</th>
-          <th>Date Requested</th>
-          <th>Description</th>
-          <th>Postal Code</th>
-          <th>Date Posted</th>
-          <th>Volunteer</th>
-          <th>Status</th>
-          <th>Mark Request Complete</th>
-        </tr>
-      </thead>
-
-      {props.acceptedRequestList.map((response) => (
-        <RequestTablei
-          key={response.id}
-          requestID={response.id}
-          posted_by={response.posted_by}
-          date_of_request={response.date_of_request}
-          task_description={response.task_description}
-          task_postal_code={response.task_postal_code}
-          date_posted={response.date_posted}
-          fullilled_by_volunter={response.fullilled_by_volunter}
-          status={response.status}
-          sessionIDTOUSE={props.sessionID}
-        />
-      ))}
-    </Table>
+        {props.acceptedRequestList.map((response) => (
+          <RequestTablei
+            key={response.id}
+            requestID={response.id}
+            posted_by={response.posted_by}
+            date_of_request={response.date_of_request}
+            task_description={response.task_description}
+            task_postal_code={response.task_postal_code}
+            date_posted={response.date_posted}
+            fullilled_by_volunter={response.fullilled_by_volunter}
+            status={response.status}
+            sessionIDTOUSE={props.sessionID}
+          />
+        ))}
+      </Table>
+    </>
   );
 }
