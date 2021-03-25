@@ -5,6 +5,13 @@ import Button from "react-bootstrap/Button";
 import CustomizedRatings from "./CustomizedRatings";
 
 function RequestTable(props) {
+
+const handleSubmit = () => {
+
+
+}
+
+
   return (
     <tbody>
       <tr>
@@ -18,6 +25,12 @@ function RequestTable(props) {
         <td>
           <CustomizedRatings id={props.id} />
         </td>
+        <td> 
+        <Button onClick={handleSubmit} variant="success" type="submit">
+          Add Volunteer
+        </Button>{" "}
+          
+          </td>
       </tr>
     </tbody>
   );

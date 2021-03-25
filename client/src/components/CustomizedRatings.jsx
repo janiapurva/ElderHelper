@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
@@ -69,7 +70,7 @@ export default function CustomizedRatings(props) {
   return (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">
-        {props.id}
+     
         <StyledRating
           name={"customized-color" + uuidv4()}
           defaultValue={0}
@@ -80,6 +81,15 @@ export default function CustomizedRatings(props) {
             evt.preventDefault();
             setRating(value)
             console.log('value', value);
+
+            const updateRatingObj = {}
+
+            //axios post to store value; 
+
+            axios
+            .post("http://localhost:8000/newRating", { updateRatingObj  })
+
+
           
           }}
           icon={<FavoriteIcon fontSize="inherit" />}

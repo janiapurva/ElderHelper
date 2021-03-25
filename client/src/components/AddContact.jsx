@@ -40,13 +40,6 @@ export default function AddContact(props) {
       elder_id: sessionID,
     };
 
-    //     console.log('newUser', newUser)
-    //     {full_name: "hi", phone_number: "hi", email_address: "hi", elder_id: 7}
-    // elder_id: 7
-    // email_address: "hi"
-    // full_name: "hi"
-    // phone_number: "hi"
-
     axios
       .post("http://localhost:8000/usersAddContact", { newContact })
       .then((res) => {
@@ -54,61 +47,47 @@ export default function AddContact(props) {
           "inside front end - AddContact.js - consloe log res",
           res.data
         );
-
-        // setTimeout(() => {
-        //   console.log("inside Set timout")
-        //   return <Alert variant="success">Contact Saved ✅ !</Alert>;
-
-        // }, 2000);
       });
 
     setTimeout(() => {
       props.setActive("one");
     }, 2000);
-
-    // alert("Contact Saved")
-
-    // setTimeout(() => {
-    //   props.setActive("one");
-    // }, 3000);
-
-    // history.push("/homeUsers");
   };
 
   return (
     <>
-    <h1 className="dependent"> Add a New Contact</h1>
-    <Form className="add-contact" onSubmit={onSubmit}>
-      {pop && <Alert variant="success">Contact Saved!</Alert>}
-      <Form.Group controlId="formBasicFullname">
-        <Form.Label>Full Name</Form.Label>
-        <Form.Control
-          type="fullName"
-          placeholder="Full Name"
-          onChange={handleFullNameChange}
-        />
-      </Form.Group>
-      <Form.Group controlId="formBasicPhoneNumber">
-        <Form.Label>Phone Number</Form.Label>
-        <Form.Control
-          type="PhoneNumber"
-          placeholder="Phone Number"
-          onChange={handlePhoneChange}
-        />
-      </Form.Group>
+      <h1 className="dependent"> Add a New Contact</h1>
+      <Form className="add-contact" onSubmit={onSubmit}>
+        {pop && <Alert variant="success">Contact Saved!</Alert>}
+        <Form.Group controlId="formBasicFullname">
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control
+            type="fullName"
+            placeholder="Full Name"
+            onChange={handleFullNameChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formBasicPhoneNumber">
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control
+            type="PhoneNumber"
+            placeholder="Phone Number"
+            onChange={handlePhoneChange}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicEmailAdddress">
-        <Form.Label>Email Address</Form.Label>
-        <Form.Control
-          type="emailAddress"
-          placeholder="Email Address"
-          onChange={handleEmailChange}
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Form.Group controlId="formBasicEmailAdddress">
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control
+            type="emailAddress"
+            placeholder="Email Address"
+            onChange={handleEmailChange}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </>
   );
 }

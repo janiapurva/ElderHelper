@@ -10,6 +10,9 @@ import VolunteerRequestItem from "./VolunteerRequestItem";
 import LeafletMap from "./LeafletMap";
 import RequestMap from "./RequestMap";
 import HomeLandingVolunteers from "./HomeLandingVolunteers";
+import elderHelperLogo from '../images/elderHelperLogo.png';
+
+
 
 export default function SideBarVolunteer(props) {
   console.log("this on is in sidebar", props);
@@ -19,7 +22,12 @@ export default function SideBarVolunteer(props) {
   return (
     <>
       <div className="sidenav">
- 
+        <img
+          className="picture"
+          src={elderHelperLogo}
+          alt="BigCo Inc. logo"
+          alt="new"
+        />
         <a href="#" onClick={() => setActive("one")}>
           Home
         </a>
@@ -37,8 +45,12 @@ export default function SideBarVolunteer(props) {
         </a>
       </div>
       <>
-        {active === "one" && <HomeLandingVolunteers sessionID={props.sessionID}
-        headerName={props.headerName}/>}
+        {active === "one" && (
+          <HomeLandingVolunteers
+            sessionID={props.sessionID}
+            headerName={props.headerName}
+          />
+        )}
         {active === "two" && (
           <VolunteerRequestItem sessionID={props.sessionID} />
         )}
