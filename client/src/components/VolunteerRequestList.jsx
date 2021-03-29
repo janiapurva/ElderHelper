@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
 
 function RequestTablei(props) {
   console.log("props VolDispList LINE 8 VOL REQ JSX ", props);
@@ -11,42 +10,29 @@ function RequestTablei(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    //console.log("inside accept request");
 
     let updateOfStatus = "accepted";
 
     const geti = () => {
       let returnObj = {};
       for (let i in props) {
-        //console.log("props.listItem[]iiiiiiiiiiiiii", props);
-
         returnObj = {
           fullilled_by_volunter: props.sessionIDTOUSE,
           status: updateOfStatus,
           requestID: props.requestID,
         };
       }
-      //console.log("returnObj", returnObj);
+
       return returnObj;
     };
 
     let updateRequestObjVolunteerAccept = geti();
-
-    // console.log(
-    //   "update object to send back to db",
-    //   updateRequestObjVolunteerAccept
-    // );
-
-    // useEffect((),[])
 
     axios
       .post("http://localhost:8000/updateRequest", {
         updateRequestObjVolunteerAccept,
       })
       .then((res) => {
-        //console.log("inside .then success update ");
-        //NOW WHAT - START HERE
-
         setSuccessfulForm(true);
       })
       .catch((err) => {
@@ -63,8 +49,6 @@ function RequestTablei(props) {
         <td>{props.task_description}</td>
         <td>{props.task_postal_code}</td>
         <td>{props.date_posted}</td>
-        {/* <td>{props.lat}</td>
-        <td>{props.long}</td> */}
         <td>{props.fullilled_by_volunter}</td>
         <td>{props.status}</td>
         <Button onClick={handleSubmit} variant="success" type="submit">
@@ -88,9 +72,6 @@ export default function VolunteerRequestList(props) {
             <th>Description</th>
             <th>Postal Code</th>
             <th>Date Posted</th>
-            {/* <th>lat</th>
-          <th>long</th> */}
-
             <th>Volunteer</th>
             <th>Status</th>
             <th>Accept Request</th>

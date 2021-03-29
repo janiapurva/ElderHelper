@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { Redirect, useHistory } from "react-router";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import React from "react";
+import {useHistory } from "react-router";
+import { Navbar, Nav, Form } from "react-bootstrap";
 
 export default function NavBarLoggedOut() {
   const history = useHistory();

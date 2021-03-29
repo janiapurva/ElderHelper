@@ -1,9 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router";
 import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
-import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
 import Alert from "react-bootstrap/Alert";
 
@@ -64,8 +62,6 @@ export default function Login(props) {
           console.log("error");
           return history.push("/LoginErrorPage");
         } else {
-          console.log("NO error");
-
           //set headerName with full_name from backend..
           handleHeaderNameChange(res.data.full_name);
           handleHeaderIDChange(res.data.user_id);
@@ -76,12 +72,6 @@ export default function Login(props) {
           } catch (e) {}
 
           const myUserToken = localStorage.getItem("token");
-
-          if (myUserToken) {
-            console.log("token exist", myUserToken);
-          } else {
-            console.log("token DOESNT  exist");
-          }
 
           setSuccessfulForm(true);
         }
@@ -98,16 +88,14 @@ export default function Login(props) {
   return (
     <>
       <MasterNavbar headerName={headerName} />
-
       <form className="elder-login" onSubmit={handleSubmit}>
-      {show && (
+        {show && (
           <Alert className="alert" variant="danger">
             {" "}
             <h1>{error}</h1>
           </Alert>
         )}
         <h3>Login</h3>
-
         <div className="form-group">
           <label>Email</label>
           <input
@@ -119,7 +107,6 @@ export default function Login(props) {
             placeholder="Enter Email"
           />
         </div>
-
         <div className="form-group">
           <label>Password</label>
           <input
@@ -131,7 +118,6 @@ export default function Login(props) {
             placeholder="Enter Password"
           />
         </div>
-
         <button type="submit" className="btn btn-dark btn-lg btn-block">
           Login
         </button>

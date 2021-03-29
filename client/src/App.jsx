@@ -2,22 +2,20 @@ import React, { useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+//components
 import Login from "./components/login";
 import Register from "./components/register";
 import homeUsers from "./components/homeUsers";
-
-import VolunteerLogin from "./components/VolunteerLogin"
-import VolunteerRegister from "./components/VolunteerRegister"
-import HomeVolunteers from"./components/homeVolunteers"
-import VolunteerRequestList from"./components/VolunteerRequestList"
-import LandingPage from './components/LandingPage'
-import LoginErrorPage from './components/LoginErrorPage'
-import RegisterErrorPage from './components/RegisterErrorPage'
-
+import VolunteerLogin from "./components/VolunteerLogin";
+import VolunteerRegister from "./components/VolunteerRegister";
+import HomeVolunteers from "./components/homeVolunteers";
+import VolunteerRequestList from "./components/VolunteerRequestList";
+import LandingPage from "./components/LandingPage";
+import LoginErrorPage from "./components/LoginErrorPage";
+import RegisterErrorPage from "./components/RegisterErrorPage";
 
 function App() {
-  const [token, setToken] = useState(null);
-
   return (
     <Router>
       <div className="App">
@@ -32,7 +30,6 @@ function App() {
           <Route path="/homeVolunteerUsers" component={VolunteerRequestList} />
           <Route path="/LoginErrorPage" component={LoginErrorPage} />
           <Route path="/RegisterErrorPage" component={RegisterErrorPage} />
-
         </Switch>
       </div>
     </Router>

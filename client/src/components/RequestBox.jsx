@@ -1,47 +1,30 @@
 import axios from "axios";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import "../components/RequestBox.scss";
 import { Form, Button } from "react-bootstrap";
-
 import DatePicker from "react-datepicker";
-import Modal from "react-bootstrap/Modal";
+
 import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from "react-router";
 
-
 export default function RequestBox(props) {
-  // const [day, setday] = useState("");
-  
   let [description, setdescription] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [requestDate, setRequestDate] = useState();
   const [successfulForm, setSuccessfulForm] = useState("");
-  const [speech , setSpeech] = useState();
-
   const { transcript, resetTranscript } = useSpeechRecognition();
-
   const [show, setShow] = useState(false);
-
   const handleDescription = (evt) => setdescription(evt.target.value);
   const handlePostalCode = (evt) => setPostalCode(evt.target.value);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(!show);
 
-//TO ACTIVATE SPEECH DESK
-  // description = transcript
-  
-
-
-useEffect(() => {
-  setdescription(transcript)
-  
-}, [transcript])
-
-
-
+  useEffect(() => {
+    setdescription(transcript);
+  }, [transcript]);
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
@@ -49,11 +32,8 @@ useEffect(() => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.setHeader("Request Submitted ✅")
+    props.setHeader("Request Submitted ✅");
 
-    console.log("Hi - in req submit");
-    // console.log('props.user_id - RequestBox.jsx', props.sessionID)
-    //get user ID from state
     const userIdFromState = props.sessionID;
 
     //format Request post date (timestamp):
@@ -96,8 +76,7 @@ useEffect(() => {
       status: "pending",
     };
 
-    console.log('newRequestObj', newRequestObj)
-
+    console.log("newRequestObj", newRequestObj);
 
     axios
       .post("http://localhost:8000/newRequest", { newRequestObj })
@@ -107,8 +86,6 @@ useEffect(() => {
       .catch((err) => {
         console.log("Error ReqBox 54", err);
       });
-
-    // return <Redirect to="/homeUsers" />;
   };
 
   if (successfulForm) {
@@ -133,9 +110,7 @@ useEffect(() => {
       <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Request Description </Form.Label>
         <Form.Label>For Speech to Text press Start Button</Form.Label>
-
         <div>
-        
           <Button
             variant="outline-success"
             onClick={SpeechRecognition.startListening}
@@ -145,13 +120,10 @@ useEffect(() => {
           <Button variant="outline-dark" onClick={resetTranscript}>
             Reset
           </Button>{" "}
-          {/* <p>{transcript}</p> */}
         </div>
-        {/* <Form.Control as="textarea" rows={3} value={transcript} /> */}
         <Form.Control
           as="textarea"
-          value={description} 
-          // value={transcript}
+          value={description}
           onChange={handleDescription}
           rows={3}
         />
@@ -169,4 +141,3 @@ useEffect(() => {
     </Form>
   );
 }
-// export default RequestBox;

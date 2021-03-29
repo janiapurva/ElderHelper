@@ -1,11 +1,4 @@
-import React, { useState } from "react";
-import SignIn from "./login";
-import SignUp from "./register";
-import VolunteerSignUp from "./VolunteerRegister";
-import VolunteerSignIn from "./VolunteerLogin";
-
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MasterNavbar from "./MasterNavbar";
 

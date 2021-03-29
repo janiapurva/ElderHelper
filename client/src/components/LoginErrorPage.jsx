@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import React from "react";
+import { Nav } from "react-bootstrap";
 
 export default function LoginErrorPage() {
   return (
@@ -9,13 +9,12 @@ export default function LoginErrorPage() {
       <img src="https://assets.codepen.io/1538474/meteor.svg" class="meteor" />
       <h1 class="title">Oh no!!</h1>
       <h3 class="subtitle">
-        Either the UserName  <br /> or Password is not Correct.
-        Hit the link to try again!
+        Either the UserName <br /> or Password is not Correct. Hit the link to
+        try again!
       </h3>
       <div align="center">
         <a class="btn-back" href="/">
-        <Nav.Link href="/">Back to previous page</Nav.Link>
-          
+          <Nav.Link href="/">Back to previous page</Nav.Link>
         </a>
       </div>
       <img

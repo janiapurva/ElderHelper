@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import React from "react";
+import {Nav} from "react-bootstrap";
 
 export default function LoginErrorPage() {
   return (
@@ -13,8 +13,7 @@ export default function LoginErrorPage() {
       </h3>
       <div align="center">
         <a class="btn-back" href="/">
-        <Nav.Link href="/">Back to previous page</Nav.Link>
-          
+        <Nav.Link href="/">Back to previous page</Nav.Link>          
         </a>
       </div>
       <img

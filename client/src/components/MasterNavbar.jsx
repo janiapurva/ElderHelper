@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import NavBarLoggedIn from "./NavBarLoggedIn";
 import NavBarLoggedOut from "./NavBarLoggedOut";
-import jwt_decode from "jwt-decode";
 
 export default function MasterNavbar(props) {
-  // console.log(props)
   const myUserToken = localStorage.getItem("token");
 
   if (!myUserToken) {

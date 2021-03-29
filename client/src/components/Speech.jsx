@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { Card,Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const Dictaphone = () => {
   const { transcript, resetTranscript } = useSpeechRecognition()
   
-
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null
   }

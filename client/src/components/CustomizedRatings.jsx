@@ -10,7 +10,6 @@ import SentimentDissatisfiedIcon from "@material-ui/icons/SentimentDissatisfied"
 import SentimentSatisfiedIcon from "@material-ui/icons/SentimentSatisfied";
 import SentimentSatisfiedAltIcon from "@material-ui/icons/SentimentSatisfiedAltOutlined";
 import SentimentVerySatisfiedIcon from "@material-ui/icons/SentimentVerySatisfied";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 function uuidv4() {
@@ -19,8 +18,6 @@ function uuidv4() {
     return v.toString(16);
   });
 }
-
-// console.log(uuidv4());
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -80,22 +77,11 @@ export default function CustomizedRatings(props) {
           onChange={(evt,value)=>{
             evt.preventDefault();
             setRating(value)
-            console.log('value', value);
-
-
-
             //axios post to store value; 
-
             axios
             .post("http://localhost:8000/newRating", { value  })
-            .then(()=>{
-
-
-              
-            })
-
-
-          
+            .then((result)=>{return result})
+            .catch((err)=>{return err})          
           }}
           icon={<FavoriteIcon fontSize="inherit" />}
         />

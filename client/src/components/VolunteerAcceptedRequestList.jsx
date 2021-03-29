@@ -11,49 +11,33 @@ function RequestTablei(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("inside complete request");
 
     let updateOfStatus = "complete";
 
     const geti = () => {
       let returnObj = {};
       for (let i in props) {
-        //console.log("props.listItem[]iiiiiiiiiiiiii", props);
-
         returnObj = {
           fullilled_by_volunter: props.sessionIDTOUSE,
           status: updateOfStatus,
           requestID: props.requestID,
         };
       }
-      console.log("returnObj", returnObj);
       return returnObj;
     };
 
     let updateRequestObjVolunteerAccept = geti();
-    console.log(
-      "inside complete request - OBJ TO SEND BACKEND LINE35",
-      updateRequestObjVolunteerAccept
-    );
 
     axios
       .post("http://localhost:8000/updateRequest", {
         updateRequestObjVolunteerAccept,
       })
       .then((res) => {
-        //console.log("inside .then success update ");
-        //NOW WHAT - START HERE
-
         setSuccessfulForm(true);
       })
       .catch((err) => {
         console.log("Error ReqBox 54", err);
       });
-
-    console.log(
-      "update object to send back to db",
-      updateRequestObjVolunteerAccept
-    );
   };
 
   return (
@@ -77,9 +61,8 @@ function RequestTablei(props) {
 
 export default function VolunteerRequestList(props) {
   return (
-    // <p> HI </p>
     <>
-      <h1 className="accepted-requests">Accepted and Completed <br/> Requests</h1>
+      <h1 className="accepted-requests">Accepted and Completed Requests</h1>
       <Table className="table-completed" striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -94,7 +77,6 @@ export default function VolunteerRequestList(props) {
             <th>Mark Request Complete</th>
           </tr>
         </thead>
-
         {props.acceptedRequestList.map((response) => (
           <RequestTablei
             key={response.id}

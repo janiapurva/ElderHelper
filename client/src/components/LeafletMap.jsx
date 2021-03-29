@@ -33,18 +33,13 @@ export default function LeafletMap(props) {
   const [elderList, setElderList] = useState([]);
 
   useEffect(() => {
-    // console.log("inside use");
-
     axios
       .get("http://localhost:8000/api/users")
-
       .then((res) => {
-        console.log("line 35 leaflet", res.data);
         setElderList(res.data);
-        // console.log("this is rsponse", res);
       })
       .catch((err) => {
-        console.log("error leaflet line 40", err);
+        console.log("error leaflet line 42", err);
       });
   }, []);
 

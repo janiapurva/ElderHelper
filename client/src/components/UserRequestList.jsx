@@ -1,16 +1,11 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import CustomizedRatings from "./CustomizedRatings";
 
 function RequestTable(props) {
 
-const handleSubmit = () => {
-
-
-}
-
+  const handleSubmit = () => {};
 
   return (
     <tbody>
@@ -25,19 +20,17 @@ const handleSubmit = () => {
         <td>
           <CustomizedRatings id={props.id} />
         </td>
-        <td> 
-        <Button onClick={handleSubmit} variant="success" type="submit">
-          Add Volunteer
-        </Button>{" "}
-          
-          </td>
+        <td>
+          <Button onClick={handleSubmit} variant="success" type="submit">
+            Add Volunteer
+          </Button>{" "}
+        </td>
       </tr>
     </tbody>
   );
 }
-export default function UserRequestList(props) {
-  console.log("userRequestList props", props);
 
+export default function UserRequestList(props) {
   return (
     <>
       <h1 className="your-requests">Your Requests</h1>
@@ -45,7 +38,6 @@ export default function UserRequestList(props) {
         <thead>
           <tr>
             <th>Request #</th>
-
             <th>Date Requested</th>
             <th>Description</th>
             <th>Postal Code</th>

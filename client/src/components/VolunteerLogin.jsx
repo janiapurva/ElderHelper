@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
-import PropTypes from "prop-types";
-import jwt_decode from "jwt-decode";
 import MasterNavbar from "./MasterNavbar";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
@@ -16,7 +14,6 @@ export default function VolunteerLogin(props) {
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
   const history = useHistory();
-
 
   const handleHeaderIDChange = (data) => {
     setheaderId(data);
@@ -55,18 +52,10 @@ export default function VolunteerLogin(props) {
     axios
       .post("http://localhost:8000/volunteerLogin", { checkUser })
       .then((res) => {
-        console.log(
-          "inside front end - signUpVolutneers.js - consloe log res...want to set token",
-          res.data
-        );
-
         if (res.data.error) {
           console.log("error");
           return history.push("/LoginErrorPage");
         } else {
-          console.log("NO error");
-
-          //set headerName with full_name from backend..
           handleHeaderNameChange(res.data.full_name);
           handleHeaderIDChange(res.data.user_id);
 
@@ -76,12 +65,6 @@ export default function VolunteerLogin(props) {
           } catch (e) {}
 
           const myUserToken = localStorage.getItem("token");
-
-          if (myUserToken) {
-            console.log("token exist", myUserToken);
-          } else {
-            console.log("token DOESNT  exist");
-          }
 
           setSuccessfulForm(true);
         }
@@ -98,7 +81,6 @@ export default function VolunteerLogin(props) {
   return (
     <>
       <MasterNavbar headerName={headerName} />
-
       <form className="volunteer-login" onSubmit={handleSubmit}>
         {show && (
           <Alert className="alert" variant="danger">
@@ -107,7 +89,6 @@ export default function VolunteerLogin(props) {
           </Alert>
         )}
         <h3> Volunteer Login</h3>
-
         <div className="form-group">
           <label>Email</label>
           <input
@@ -119,7 +100,6 @@ export default function VolunteerLogin(props) {
             placeholder="Enter Email"
           />
         </div>
-
         <div className="form-group">
           <label>Password</label>
           <input
@@ -131,7 +111,6 @@ export default function VolunteerLogin(props) {
             placeholder="Enter Password"
           />
         </div>
-
         <button type="submit" className="btn btn-dark btn-lg btn-block">
           Login
         </button>
