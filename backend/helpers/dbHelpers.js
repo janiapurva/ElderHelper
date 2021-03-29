@@ -8,9 +8,9 @@ module.exports = (db) => {
     return db.query(query).then((result) => {
       return result.rows;
     });
-    // .catch((err) => err);
   };
   /////////////////////////////////////////////////
+  
   const addUser = (
     fullName,
     age,
@@ -22,7 +22,6 @@ module.exports = (db) => {
     long,
     street_address
   ) => {
-    //console.log(`adding user`)
     const query = {
       text: `INSERT INTO users_elders (full_name, age, email_address, password, phone_number, postal_code,lat,long, street_address) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9) RETURNING *`,
       values: [
@@ -38,95 +37,63 @@ module.exports = (db) => {
       ],
     };
 
-    return db
-      .query(query)
-      .then((result) => {
-        // console.log('id',result.rows[0].id)
-        // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
-        return result.rows[0];
-      })
-      // .catch((err) => {
-      //   console.log(`err on adduser: ${err}`);
-      //   return err;
-      // });
+    return db.query(query).then((result) => {
+      return result.rows[0];
+    });
   };
-
   //////////////////////////////////////////////////////
+  
   const getUserByEmail = (email_address) => {
     const query = {
       text: `SELECT * FROM users_elders WHERE email_address = $1;`,
       values: [email_address],
     };
     return db.query(query).then((result) => {
-      // console.log(
-      //   "result from  getUserByEmail query dbhelpers  ",
-      //   email_address,
-      //   result
-      // );
       if (result.rows.length < 0) {
         console.log("ERROR, emaild does not exist");
       } else {
         return result.rows[0];
       }
     });
-    //.catch((err) => console.log("line 33 dbhelpers", err));
   };
-
   //////////////////////////////////////////////////////
-  const addContactsForUser = ( full_name,
+  
+  const addContactsForUser = (
+    full_name,
     phone_number,
     email_address,
-    belongs_to,) => {
+    belongs_to
+  ) => {
     const query = {
       text: `INSERT INTO users_relatives (full_name, phone_number, email_address,elder_id) VALUES ($1, $2, $3, $4) RETURNING *`,
-      values: [
-        full_name,
-        phone_number,
-        email_address,
-        belongs_to,
-      ],
+      values: [full_name, phone_number, email_address, belongs_to],
     };
     return db.query(query).then((result) => {
-      console.log(
-        "result from  getUserByEmail query dbhelpers  ",
-        email_address,
-        result
-      );
-
+      console.log("Successfull insert!");
     });
-    //.catch((err) => console.log("line 33 dbhelpers", err));
   };
-
-  //TABLE --- users_volunteers ---
-
   /////////////////////////////////////////////////
 
+  //TABLE --- users_volunteers ---
   const getVolunteersUsers = () => {
     const query = {
       text: "SELECT * FROM users_volunteers",
     };
-
     return db.query(query).then((result) => {
       return result.rows;
     });
-    // .catch((err) => err);
   };
-
   /////////////////////////////////////////////////
+  
   const getVolunteerByEmail = (email_address) => {
     const query = {
       text: `SELECT * FROM users_volunteers WHERE email_address LIKE $1;`,
       values: [email_address],
     };
-    return db
-      .query(query)
-      .then((result) => {
-        //console.log('result from query dbhelpers -getVolunteerByEmail ', result.rows);
-        return result.rows;
-      })
-      // .catch((err) => console.log("line 33 dbhelpers", err));
+    return db.query(query).then((result) => {
+      return result.rows;
+    });
   };
-
   /////////////////////////////////////////////////
 
   const addVolunteerUser = (
@@ -159,18 +126,13 @@ module.exports = (db) => {
     };
 
     return db.query(query).then((result) => {
-      // console.log('id',result.rows[0].id)
-      // console.log(`isnide success ful promist from query res from add user / want to return userID for the token: ${result.rows[0].id}`)
       return result.rows[0];
     });
-    // .catch((err) => {
-    //   console.log(`err on adduser: ${err}`);
-    //   return err;
-    // });
   };
+  /////////////////////////////////////////////////  
 
   //TABLE --- requests ---
-  // // Basically getUserRequests -- needs to get an id
+
   const getCountRequests = (id) => {
     const query = {
       text: `SELECT COUNT(*) FROM requests WHERE posted_by = $1;;`,
@@ -179,14 +141,12 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        console.log('result from  getCountRequests AAABBBCC', result.rows);
         return result.rows;
       })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      .catch((err) => console.log("line 147 dbhelpers", err));
   };
-
   /////////////////////////////////////////////////
-  //Add this function to get pending requests to show on homeVolunteers
+  
   const getPendingRequests = () => {
     const query = {
       text: `SELECT 
@@ -199,13 +159,12 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        // console.log('result from  getRequests query dbhelpers', result.rows);
         return result.rows;
       })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      .catch((err) => console.log("line 165 dbhelpers", err));
   };
   /////////////////////////////////////////////////
-  //Add this function to get pending requests to show on homeVolunteers
+  
   const getAcceptedAndCompletedRequestsForVolunteer = (id) => {
     const query = {
       text: `SELECT 
@@ -219,12 +178,12 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        // console.log('result from  getAcceptedRequestsForVolunteerAAAAAAAAAAAAAAAA', result.rows);
         return result.rows;
       })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      .catch((err) => console.log("line 186 dbhelpers", err));
   };
   /////////////////////////////////////////////////
+  
   const getUserPastRequests = (id) => {
     const query = {
       text: `SELECT 
@@ -238,10 +197,9 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        //console.log('result from query dbhelpers', result.rows);
         return result.rows;
       })
-      .catch((err) => console.log("line 33 dbhelpers", err));
+      .catch((err) => console.log("line 204 dbhelpers", err));
   };
   //////////////////////////////////////////////////
 
@@ -256,7 +214,6 @@ module.exports = (db) => {
     fullilled_by_volunter,
     status
   ) => {
-    //console.log(`adding user`)
     const query = {
       text: `INSERT INTO requests (posted_by, date_of_request, task_description, task_postal_code,lat,long, date_posted, fullilled_by_volunter, status) VALUES ($1, $2, $3, $4, $5,$6,$7, $8,$9) RETURNING *`,
       values: [
@@ -275,25 +232,21 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        // console.log('id',result.rows[0].id)
-        //what do I want to do after a successfull submission
-        // console.log(`isnide success ful promist from query res from add user /WHAT DO YOU WANT TO RETURN: ${result.rows[0].id}`)
         return result;
       })
       .catch((err) => {
-        console.log(`err on adduser: ${err}`);
+        console.log(`err on adduser, dbhelper 241: ${err}`);
         return err;
       });
   };
-
   /////////////////////////////////////////////////
+ 
   const updateRequest = (
-    ////////////////// STOP CTRL + Z NOW /////////////////////
     fullilled_by_volunter,
     status,
     requestID
   ) => {
-    console.log(`UPDATING STATUS TO COMPLETE`);
+    console.log(`Updated status to complete`);
 
     const query = {
       text: `UPDATE requests SET fullilled_by_volunter = $1, status=$2 WHERE requests.id = $3  RETURNING *`,
@@ -303,11 +256,6 @@ module.exports = (db) => {
     return db
       .query(query)
       .then((result) => {
-        // console.log('id',result.rows[0].id)
-        //what do I want to do after a successfull submission
-        // console.log(
-        //   `UPDATE STATUS COMEPLTE /WHAT DO YOU WANT TO RETURN: ${result.rows}`
-        // );
         return result;
       })
       .catch((err) => {
@@ -315,11 +263,9 @@ module.exports = (db) => {
         return err;
       });
   };
-
   /////////////////////////////////////////////////
-
+  
   const getUsersRelatives = (id) => {
-    console.log("inside get user relatives");
     //gets relatives along with
     const query = {
       text: `SELECT ur.full_name AS Relative, ur.phone_number, ur.email_address, ue.full_name AS Elder , r.task_description, r.date_of_request FROM users_relatives ur JOIN requests r on ur.elder_id = r.posted_by JOIN users_elders ue ON ue.id = ur.elder_id  WHERE elder_id = $1 AND date_of_request > CURRENT_DATE;
@@ -348,6 +294,6 @@ module.exports = (db) => {
     updateRequest,
     getAcceptedAndCompletedRequestsForVolunteer,
     getUsersRelatives,
-    addContactsForUser
+    addContactsForUser,
   };
 };
