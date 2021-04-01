@@ -17,7 +17,8 @@
     "react-dom": "^16.14.0",
     "react-leaflet": "^3.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.0.0",
+    "react-scripts": "^4.0.3",
+    "sass": "^1.32.8",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
@@ -46,15 +47,15 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.3",
-    "@material-ui/lab": "latest",
     "@material-ui/icons": "latest",
+    "@material-ui/lab": "latest",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "emailjs-com": "^2.6.4",
     "jwt-decode": "^3.1.2",
+    "prop-types": "latest",
     "react-datepicker": "^3.6.0",
     "react-speech-recognition": "^3.7.0",
     "react-test-renderer": "^16.9.0",
-    "sendmail": "^1.6.1",
-    "prop-types": "latest"
+    "sendmail": "^1.6.1"
   }
 }
