@@ -8,7 +8,9 @@ init("user_ORHKXu6tXES8JF25Fe5D2");
 
 function ContactList(props) {
   const handleSubmitEmail = (evt) => {
-    props.handlePop();
+console.log('hi inside ContactList ')
+
+.handlePop();
     props.handleClose();
 
     const userTestEmail = "elderhelperuser@gmail.com";
@@ -48,6 +50,8 @@ function ContactList(props) {
 }
 
 export default function ContactCard(props) {
+  console.log('hi inside ContactCard card', props)
+
   const [contact, setContact] = useState([]);
 
   const sessionID = props.sessionID;

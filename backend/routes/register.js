@@ -3,6 +3,8 @@ const axios = require("axios");
 const { hashPasswordFn } = require("../helpers/passwordHelpers");
 const { generateToken } = require("../helpers/passwordHelpers");
 
+
+
 module.exports = ({ addUser }) => {
   router.post("/", (req, res) => {
     if (!req.body.newUser.email_address || !req.body.newUser.password) {
@@ -28,8 +30,7 @@ module.exports = ({ addUser }) => {
         `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&Postal=${postal_code}`
       )
       .then((res2) => {
-        console.log(res2);
-        console.log("acrgiscall", res2.data.candidates[0].location);
+       
         let location = res2.data.candidates[0];
         if (location) {
           const { x: long, y: lat } = location.location;

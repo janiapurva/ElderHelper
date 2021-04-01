@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import ContactCard from "./ContactCard";
 
 export default function PopupContact(props) {
+
   const [show, setShow] = useState(false);
   const [pop, setPop] = useState(false);
   const handleClose = () => setShow(false);

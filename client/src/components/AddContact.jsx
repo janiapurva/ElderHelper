@@ -29,8 +29,6 @@ export default function AddContact(props) {
 
     evt.preventDefault();
 
-    // console.log("props", props.sessionID);
-
     const sessionID = props.sessionID;
 
     const newContact = {
@@ -75,7 +73,6 @@ export default function AddContact(props) {
             onChange={handlePhoneChange}
           />
         </Form.Group>
-
         <Form.Group controlId="formBasicEmailAdddress">
           <Form.Label>Email Address</Form.Label>
           <Form.Control
