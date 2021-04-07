@@ -6,27 +6,54 @@ ElderHelper is a full stack web application built with React, Node and Express t
 
 ## App Walkthrough
 Landing Page - Login or create an account depending on what type of user you are
-!["Login Page"](https://github.com/prnvthir14/tinyapp/blob/master/docs/login.png)
+!["Login Page"](https://github.com/janiapurva/ElderHelper/blob/master/images/1%20-%20landingPage.png)
 
-Login Page
-!["Login Page"](https://github.com/prnvthir14/tinyapp/blob/master/docs/login.png)
-Bad Login Attempt
-!["Bad Login Attempt"](https://github.com/prnvthir14/tinyapp/blob/master/docs/badLogin.png)
-Registration Page
-!["Registration Page"](https://github.com/prnvthir14/tinyapp/blob/master/docs/register.png)
-Bad Registration - email in use
-!["Bad Registration - email in use"](https://github.com/prnvthir14/tinyapp/blob/master/docs/badRegistrationEmailInUSe.png)
+Elder Registration page
+!["Registration Page"](https://github.com/janiapurva/ElderHelper/blob/master/images/2%20-%20Elder%20register.png)
+
 Elder Landing page
-!["Urls Landing page"](https://github.com/prnvthir14/tinyapp/blob/master/docs/urlsLandingPage.png)
-Add a new URL
-!["Add a new URL"](https://github.com/prnvthir14/tinyapp/blob/master/docs/addNewURL.png)
-Edit existing entry
-!["Edit existing entry"](https://github.com/prnvthir14/tinyapp/blob/master/docs/urlsEditPage.png?raw=true)
-URLS page after adding new URL *mysite123456.."
-!["URLS page after adding new URL"](https://github.com/prnvthir14/tinyapp/blob/master/docs/urlsAfterAddingURL.png)
-URLS page after deleting new URL *mysite123456.."
-!["URLS page after adding new URL"](https://github.com/prnvthir14/tinyapp/blob/master/docs/urlsAfterDelete.png)
+!["Urls Landing page"](https://github.com/janiapurva/ElderHelper/blob/master/images/3%20-%20Elder%20Landing%20page%20after%20register.png)
 
+Elder can make new Request
+!["Make new request"](https://github.com/janiapurva/ElderHelper/blob/master/images/4%20-%20Elder%20Make%20request.png)
+
+Once posted, the Elder can see their request has been added to the request board
+!["See posted request"](https://github.com/janiapurva/ElderHelper/blob/master/images/6%20-%20see%20requsest%20get%20posted%20to%20Elder's%20request%20board.png)
+
+Elder can add a contact (relative, friend etc.)
+!["Elder can add a contact"](https://github.com/janiapurva/ElderHelper/blob/master/images/7%20-%20Elder%20can%20add%20contact.png)
+
+Elder can press "send email" to notify contact of an upcoming appointment
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
+
+Once the Volunteer has registered or Logged-in they will hit thier landing page
+!["Once the Volunteer has registered or Logged-in they will hit thier landing page"](https://github.com/janiapurva/ElderHelper/blob/master/images/9%20-%20volunteer%20can%20login%20or%20register%20and%20hit%20the%20landing%20page.png)
+
+Volunteer can see all open requests on the request board
+!["Volunteer can see all open requests on the request board"](https://github.com/janiapurva/ElderHelper/blob/master/images/10%20-%20volutneer%20can%20see%20open%20requests%20on%20request%20board.png)
+
+Or the Volunteer can see open requests on Map layout, with the map center as the volunteer's location 
+!["Or the Volunteer can see open requests on Map layout, with the map center as the volunteer's location"](https://github.com/janiapurva/ElderHelper/blob/master/images/12%20-%20voluteer%20can%20also%20see%20requests%20by%20map.png)
+
+Volunteer clicks "accept" to claim the request
+!["Volunteer clicks "accept" to claim the request"](https://github.com/janiapurva/ElderHelper/blob/master/images/11%20-%20volunteer%20can%20click%20accept%20to%20pick%20up%20a%20request.png)
+
+Elder can now see that their request has been picked up and the volunteers name
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/14%20-%20Elder%20can%20see%20that%20their%20request%20has%20been%20picked%20up%20and%20by%20the%20volunteer.png)
+
+Once the volunteer has completed the request, they will update the status as complete.
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
+
+
+
+
+
+Elder can press "send email" to notify contact of an upcoming appointment
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
+Elder can press "send email" to notify contact of an upcoming appointment
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
+Elder can press "send email" to notify contact of an upcoming appointment
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
 
 ## Dependencies
 
