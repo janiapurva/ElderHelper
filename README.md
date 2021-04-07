@@ -39,21 +39,21 @@ Volunteer clicks "accept" to claim the request
 !["Volunteer clicks "accept" to claim the request"](https://github.com/janiapurva/ElderHelper/blob/master/images/11%20-%20volunteer%20can%20click%20accept%20to%20pick%20up%20a%20request.png)
 
 Elder can now see that their request has been picked up and the volunteers name
-!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/14%20-%20Elder%20can%20see%20that%20their%20request%20has%20been%20picked%20up%20and%20by%20the%20volunteer.png)
+!["Elder views request claimed"](https://github.com/janiapurva/ElderHelper/blob/master/images/14%20-%20Elder%20can%20see%20that%20their%20request%20has%20been%20picked%20up%20and%20by%20the%20volunteer.png)
 
 Once the volunteer has completed the request, they will update the status as complete.
-!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
+!["Volunteer status complete"](https://github.com/janiapurva/ElderHelper/blob/master/images/15%20-%20after%20task%20is%20complete%2C%20volunteer%20will%20press%20completed%20and%20status%20will%20update.png)
+
+Elder will see status update and can add a rating upon completion and add the volunteer to their contacts for future requests!
+!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/16%20-%20Elder%20will%20see%20status%20update%20and%20can%20add%20a%20rating%20upon%20completion.png)
 
 
+## Features/Work in Progress:
+- Chat client to connect volunteer and elder
+- Implemnet concurrently for deployment on heroku
+- Using Redux to simply state storage on front-end
+- Unit tests
 
-
-
-Elder can press "send email" to notify contact of an upcoming appointment
-!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
-Elder can press "send email" to notify contact of an upcoming appointment
-!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
-Elder can press "send email" to notify contact of an upcoming appointment
-!["Elder can press "send email" to notify contact of an upcoming appointment"](https://github.com/janiapurva/ElderHelper/blob/master/images/8%20-%20Elder%20can%20send%20email%20to%20a%20contact%20to%20inform%20them%20of%20any%20upcoming%20appointments.png)
 
 ## Dependencies
 
