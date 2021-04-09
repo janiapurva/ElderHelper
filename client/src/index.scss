@@ -7,8 +7,8 @@ body {
   display: flex;
   font-weight: 900;
   font-family: sans-serif;
-  background-color: pink;
-  background: linear-gradient(to bottom, #6e529d 0%, #d97b93 100%);
+  background-color: #99ccff;
+  // background: linear-gradient(to bottom, #6e529d 0%, #d97b93 100%);
 }
 
 body,
@@ -18,9 +18,10 @@ html,
 .outer {
   width: 100%;
   height: 100%;
-  background-color: #e5e5f7;
-  background-size: 20px 20px;
-  background: linear-gradient(to bottom, #6e529d 0%, #d97b93 100%);
+  background-color:#99ccff;
+  // background-size: 20px 20px;
+  background-image: url("https://pixabay.com/get/g438807ec46b0ce4f0f3f7d4b59aa2ec7d70a089810e3855ab487a6b48e41a89b427ecfc65b7c69865785429c5c419295_1920.jpg");
+  // background: linear-gradient(to bottom, #6e529d 0%, #d97b93 100%);
 }
 
 .navbar-light {

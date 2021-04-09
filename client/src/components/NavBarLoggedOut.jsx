@@ -1,9 +1,20 @@
 import React from "react";
-import {useHistory } from "react-router";
+import { useHistory } from "react-router";
 import { Navbar, Nav, Form } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function NavBarLoggedOut() {
   const history = useHistory();
+
+  const handleClick = () => {
+    console.log("hi");
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  };
 
   return (
     <>
@@ -11,10 +22,37 @@ export default function NavBarLoggedOut() {
         <Navbar.Brand href="#home" className="logged-out-logo">
           ElderHelper
         </Navbar.Brand>
+
         <Form inline>
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-          </Nav>
+          <div class="dropdown">
+            <button class="dropbtn">LOGIN</button>
+            <div class="dropdown-content">
+              <Link to="/sign-in">Elder Login</Link>
+              <Link to="/volunteer-sign-in">Volunteer Login</Link>
+            </div>
+          </div>
+
+          {/* 
+          <div>
+            <button>LOGIN</button>
+
+            <div class="dropdown-content">
+              <Link to="/sign-in">Elder Login</Link>
+              <br></br>
+              <Link to="/volunteer-sign-in">Volunteer Login</Link>
+              <br></br>
+            </div>
+          </div> */}
+
+          {/* <Link to="/sign-up">
+            Elder <br />
+            Register
+          </Link> */}
+          <br></br>
+          {/* <Link to="/volunteer-sign-up">
+            Volunteer <br />
+            Register
+          </Link> */}
         </Form>
       </Navbar>
     </>

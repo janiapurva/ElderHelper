@@ -7,7 +7,7 @@ export default function LandingPage() {
     <>
       <MasterNavbar />
       <span className="landing-page">
-        <div className="inner">
+        {/* <div className="inner">
           <Link to="/sign-in">
             Elder
             <br /> Login{" "}
@@ -17,8 +17,8 @@ export default function LandingPage() {
             Elder <br />
             Register
           </Link>
-        </div>
-        <div className="inner">
+        </div> */}
+        {/* <div className="inner">
           <Link to="/volunteer-sign-in">
             Volunteer <br />
             Login
@@ -28,7 +28,7 @@ export default function LandingPage() {
             Volunteer <br />
             Register
           </Link>
-        </div>
+        </div> */}
       </span>
     </>
   );
