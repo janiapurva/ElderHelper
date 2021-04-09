@@ -31,8 +31,6 @@ export default function NavBarLoggedOut() {
               <Link to="/volunteer-sign-in">Volunteer Login</Link>
             </div>
           </div>
- 
-
 
           <div class="dropdown">
             <Link class="dropbtn">Register</Link>

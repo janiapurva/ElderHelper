@@ -88,35 +88,36 @@ export default function VolunteerLogin(props) {
             <h1>{error}</h1>
           </Alert>
         )}
-        <h3> Volunteer Login</h3>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-            className="form-control"
-            placeholder="Enter Email"
-          />
+        <div className="form-group-login">
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+              className="form-control"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={pass}
+              onChange={handlePassChange}
+              className="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+          <button type="submit" className="btn btn-dark btn-lg btn-block">
+            Login
+          </button>
+          <p className="forgot-password text-right">
+            <a href="/sign-up">Looking to Register?</a>
+          </p>
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={pass}
-            onChange={handlePassChange}
-            className="form-control"
-            placeholder="Enter Password"
-          />
-        </div>
-        <button type="submit" className="btn btn-dark btn-lg btn-block">
-          Login
-        </button>
-        <p className="forgot-password text-right">
-          <a href="/sign-up">Looking to Register?</a>
-        </p>
       </form>
     </>
   );
