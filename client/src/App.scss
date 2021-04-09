@@ -363,7 +363,16 @@
   position: absolute;
   right: 3%;
   top: 7%;  
+}
 
-
-
+.form-group-register {
+  display: flexbox;
+  justify-content:flex-end;
+  // background-color: #79a4e9;
+  font-weight: bold;
+  color: #28292e;
+  padding: 2%;
+  position: absolute;
+  right: 3%;
+  top: 7%;  
 }

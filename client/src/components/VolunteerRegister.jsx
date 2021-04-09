@@ -126,93 +126,95 @@ export default function SignUpUsers(props) {
             <h1>{error}</h1>
           </Alert>
         )}
-        <h3>Volunteer Sign up</h3>
-        <div className="form-group">
-          <label>Full Name</label>
-          <input
-            type="fullName"
-            name="fullName"
-            onChange={handleFullNameChange}
-            className="form-control"
-            placeholder="Enter name"
-          />
+
+        <div className="form-group-register">
+          <div className="form-group">
+            <label>Full Name</label>
+            <input
+              type="fullName"
+              name="fullName"
+              onChange={handleFullNameChange}
+              className="form-control"
+              placeholder="Enter name"
+            />
+          </div>
+          <div className="form-group">
+            <label>Age</label>
+            <input
+              type="age"
+              name="age"
+              onChange={handleAgeChange}
+              className="form-control"
+              placeholder="Enter Age"
+            />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              onChange={handleEmailChange}
+              className="form-control"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              onChange={handlePassChange}
+              className="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input
+              type="phoneNumber"
+              name="phoneNumber"
+              onChange={handlePhoneChange}
+              className="form-control"
+              placeholder="Enter Phone Number"
+            />
+          </div>
+          <div className="form-group">
+            <label>Postal Code</label>
+            <input
+              type="postalCode"
+              name="postalCode"
+              onChange={handlePostalChange}
+              className="form-control"
+              placeholder="Enter Postal Code"
+            />
+          </div>
+          <div className="form-group">
+            <label>Street Address:</label>
+            <input
+              type="street_address"
+              name="street_address"
+              onChange={handleStreetAddressChange}
+              className="form-control"
+              placeholder="Street Address"
+            />
+          </div>
+          <div className="form-group">
+            <label>Special Skills</label>
+            <input
+              type="special_skills"
+              name="special_skills"
+              onChange={handleSpecialSkillsChange}
+              className="form-control"
+              placeholder="Special Skills"
+            />
+          </div>
+          <button type="submit" className="btn btn-dark btn-lg btn-block">
+            Register
+          </button>
+          <p className="forgot-password text-right">
+            <a href="/login">Looking to Login?</a>
+          </p>
         </div>
-        <div className="form-group">
-          <label>Age</label>
-          <input
-            type="age"
-            name="age"
-            onChange={handleAgeChange}
-            className="form-control"
-            placeholder="Enter Age"
-          />
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            onChange={handleEmailChange}
-            className="form-control"
-            placeholder="Enter Email"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handlePassChange}
-            className="form-control"
-            placeholder="Enter Password"
-          />
-        </div>
-        <div className="form-group">
-          <label>Phone Number</label>
-          <input
-            type="phoneNumber"
-            name="phoneNumber"
-            onChange={handlePhoneChange}
-            className="form-control"
-            placeholder="Enter Phone Number"
-          />
-        </div>
-        <div className="form-group">
-          <label>Postal Code</label>
-          <input
-            type="postalCode"
-            name="postalCode"
-            onChange={handlePostalChange}
-            className="form-control"
-            placeholder="Enter Postal Code"
-          />
-        </div>
-        <div className="form-group">
-          <label>Street Address:</label>
-          <input
-            type="street_address"
-            name="street_address"
-            onChange={handleStreetAddressChange}
-            className="form-control"
-            placeholder="Street Address"
-          />
-        </div>
-        <div className="form-group">
-          <label>Special Skills</label>
-          <input
-            type="special_skills"
-            name="special_skills"
-            onChange={handleSpecialSkillsChange}
-            className="form-control"
-            placeholder="Special Skills"
-          />
-        </div>
-        <button type="submit" className="btn btn-dark btn-lg btn-block">
-          Register
-        </button>
-        <p className="forgot-password text-right">
-          <a href="/login">Looking to Login?</a>
-        </p>
       </form>
     </>
   );
