@@ -25,10 +25,20 @@ export default function NavBarLoggedOut() {
 
         <Form inline>
           <div class="dropdown">
-            <button class="dropbtn">LOGIN</button>
+            <Link class="dropbtn">Login</Link>
             <div class="dropdown-content">
               <Link to="/sign-in">Elder Login</Link>
               <Link to="/volunteer-sign-in">Volunteer Login</Link>
+            </div>
+          </div>
+ 
+
+
+          <div class="dropdown">
+            <Link class="dropbtn">Register</Link>
+            <div class="dropdown-content">
+              <Link to="/sign-up">Elder Register</Link>
+              <Link to="/volunteer-sign-up">Volunteer Register</Link>
             </div>
           </div>
 
