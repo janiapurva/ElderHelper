@@ -13,7 +13,7 @@ export default function DropDown(props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow} className="popupButton">
-        Make a New Request
+      New Request
       </Button>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>

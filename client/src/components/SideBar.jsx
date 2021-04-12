@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import PopupContact from "./PopupContact";
 import PopupButton from "./PopupButton";
@@ -15,20 +16,25 @@ export default function SideBar(props) {
           className="picture"
           src={elderHelperLogo}
           alt="BigCo Inc. logo"
-          alt="new"
+      
         />
         <a href="#" onClick={() => setActive("one")}>
           Home
         </a>
+
         <a>
           <PopupButton sessionID={props.sessionID} />
+          
         </a>
+       
         <a>
           <PopupContact sessionID={props.sessionID} setActive={setActive} />
         </a>
+       
         <a href="#" onClick={() => setActive("two")}>
           Past Requests
         </a>
+       
         <a href="#" onClick={() => setActive("three")}>
           Add a new Contact
         </a>

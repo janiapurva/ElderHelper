@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import ContactCard from "./ContactCard";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function PopupContact(props) {
 
@@ -13,9 +14,9 @@ export default function PopupContact(props) {
 
   return (
     <>
-      <Button variant="info" onClick={handleShow} className="contact-button">
+      <Link variant="info" onClick={handleShow} className="contact-button">
         My Contacts
-      </Button>
+      </Link>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>My Contacts</Modal.Title>
