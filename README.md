@@ -6,7 +6,10 @@ ElderHelper is a full stack web application built with React, Node and Express t
 
 ## App Walkthrough
 Landing Page - Login or create an account depending on what type of user you are
-!["Login Page"](https://github.com/janiapurva/ElderHelper/blob/master/images/1%20-%20landingPage.png)
+!["Login Page"](https://github.com/janiapurva/ElderHelper/blob/master/images/1-landingPage.png)
+
+Login page
+!["Registration Page"](https://github.com/janiapurva/ElderHelper/blob/master/images/1.5-login.png)
 
 Elder Registration page
 !["Registration Page"](https://github.com/janiapurva/ElderHelper/blob/master/images/2%20-%20Elder%20register.png)
